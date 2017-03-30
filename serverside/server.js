@@ -26,7 +26,11 @@ function checkUnd(theValue){
 	if(typeof(theValue) ==="undefined"){
 		return "unavailable";
 	}else{
-		return theValue;
+		if(theValue.open_now){
+			return "true";
+		}else{
+			return "false";
+		}
 	}
 }
 
@@ -42,7 +46,7 @@ function thePlace(){
 	this.place_id = "";
 	this.name = "";
 	this.location = "";
-	this.opening_hours = "unavailable";
+	this.open_now = "";
 	this.address = "";
 	this.numbers = "";
 	this.rating = "";
@@ -72,7 +76,7 @@ function basicInfo(type,location,callback){
 					var myPlace = new thePlace();
 					myPlace.name = results[i].name;
 					myPlace.location = results[i].geometry.location;
-					myPlace.opening_hours = checkUnd(results[i].opening_hours);
+					myPlace.open_now = checkUnd(results[i].opening_hours);
 					myPlace.place_id = results[i].place_id;
 					myPlace.price_level = results[i].price_level;
 					myPlace.rating = results[i].rating;
