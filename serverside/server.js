@@ -30,6 +30,14 @@ function checkUnd(theValue){
 	}
 }
 
+function checkResu(result){
+	if (result.status === "OK"){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 function thePlace(){
 	this.place_id = "";
 	this.name = "";
@@ -48,8 +56,9 @@ function basicInfo(type,location,callback){
 	var final = [];
 	var atype = type;
 	var alocation = location;
+	var shishirakey = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
 	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+gkey;
+	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+shishirakey;
 	https.get(purl, function(response) {
 		var body ="";
 		response.on('data', function(chunk) {
@@ -57,16 +66,20 @@ function basicInfo(type,location,callback){
 		})
 		response.on('end', function () {
 			places = JSON.parse(body);
-			var results = places.results;
-			for (i=0;i<10;i++){
-				var myPlace = new thePlace();
-				myPlace.name = results[i].name;
-				myPlace.location = results[i].geometry.location;
-				myPlace.opening_hours = checkUnd(results[i].opening_hours);
-				myPlace.place_id = results[i].place_id;
-				myPlace.price_level = results[i].price_level;
-				myPlace.rating = results[i].rating;
-				final.push(myPlace);
+			if(checkResu(places)){
+				var results = places.results;
+				for (i=0;i<10;i++){
+					var myPlace = new thePlace();
+					myPlace.name = results[i].name;
+					myPlace.location = results[i].geometry.location;
+					myPlace.opening_hours = checkUnd(results[i].opening_hours);
+					myPlace.place_id = results[i].place_id;
+					myPlace.price_level = results[i].price_level;
+					myPlace.rating = results[i].rating;
+					final.push(myPlace);
+				}
+			}else{
+				console.log("no results");
 			}
 			callback(null,final);
 		})
@@ -78,7 +91,7 @@ function detailedInfo(final,callback){
 	for (i=0;i<10;i++){
         ++count;
 		var placeId = final[i].place_id;
-		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
         function back (durl,i){
 		https.get(durl,function(response) {
 			var body ="";
