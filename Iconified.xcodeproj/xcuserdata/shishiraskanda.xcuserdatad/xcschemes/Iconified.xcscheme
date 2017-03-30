@@ -20,6 +20,34 @@
                ReferencedContainer = "container:Iconified.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1AB2500C1E7F8B77007CFD1B"
+               BuildableName = "IconifiedTests.xctest"
+               BlueprintName = "IconifiedTests"
+               ReferencedContainer = "container:Iconified.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1AB250171E7F8B77007CFD1B"
+               BuildableName = "IconifiedUITests.xctest"
+               BlueprintName = "IconifiedUITests"
+               ReferencedContainer = "container:Iconified.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1AB2500C1E7F8B77007CFD1B"
-               BuildableName = "IconifiedTests.xctest"
-               BlueprintName = "IconifiedTests"
-               ReferencedContainer = "container:Iconified.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1AB250171E7F8B77007CFD1B"
-               BuildableName = "IconifiedUITests.xctest"
-               BlueprintName = "IconifiedUITests"
-               ReferencedContainer = "container:Iconified.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

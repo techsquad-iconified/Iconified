@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+       let navBar: UIImage = UIImage(named: "orange-pattern")!
+        UINavigationBar.appearance().setBackgroundImage(navBar, for: .default)
+       // UINavigationBar.appearance().tintColor = UIColor(red: 177/255, green: 56/255, blue: 53/255, alpha: 1)
+        
+        
+        let navBarItemsColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navBarItemsColor]
+        UIBarButtonItem.appearance().tintColor = navBarItemsColor
+        UINavigationBar.appearance().tintColor = navBarItemsColor
+        
+        //UITabBar.appearance().barTintColor = UIColor.lightGray
+
         // Override point for customization after application launch.
         return true
     }

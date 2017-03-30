@@ -1,0 +1,6 @@
+framework module Pods_IconifiedUITests {
+  umbrella header "Pods-IconifiedUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
