@@ -6,6 +6,9 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+//Code extracted from open source repository in Github at https://github.com/AlexLittlejohn/ALRadialMenu
+//Credit to Author: Alex Littlejohn
+
 import UIKit
 
 private typealias ALAnimationsClosure = () -> Void

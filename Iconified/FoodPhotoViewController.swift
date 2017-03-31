@@ -1,23 +1,23 @@
 //
-//  TrialViewController.swift
+//  FoodPhotoViewController.swift
 //  Iconified
 //
-//  Created by Shishira Skanda on 26/3/17.
+//  Created by Shishira Skanda on 31/3/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
 import UIKit
 
-class TrialViewController: UIViewController {
+class FoodPhotoViewController: UIViewController {
 
-    @IBOutlet var containerOne: UIView!
-    @IBOutlet var segment: UISegmentedControl!
-    @IBOutlet var containerTwo: UIView!
+    @IBOutlet var photoView: UIImageView!
+    var selectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerOne.isHidden = false
-        containerTwo.isHidden = true
+        self.photoView.image = self.selectedImage
+        
+
         // Do any additional setup after loading the view.
     }
 
@@ -27,19 +27,6 @@ class TrialViewController: UIViewController {
     }
     
 
-    @IBAction func SegmentAtion(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex
-        {
-        case 0 : containerOne.isHidden = false
-                 containerTwo.isHidden = true
-        case 1: containerOne.isHidden = true
-                containerTwo.isHidden = false
-        default: break;
-        }
-
-        
-        
-    }
     /*
     // MARK: - Navigation
 

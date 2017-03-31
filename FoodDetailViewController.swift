@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodDetailViewController: UIViewController, aboutViewDelegate {
+class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDelegate {
     
     var selectedPlace: Place
  
@@ -16,7 +16,9 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate {
     @IBOutlet var aboutContainer: UIView!
     @IBOutlet var photosContainer: UIView!
     @IBOutlet var bannerImage: UIImageView!
-  
+    
+    var selectedImage: UIImage?
+    var photoArray = [UIImage]()
     var browseType: String?
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +33,7 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate {
         photosContainer.isHidden = true
         self.title = self.selectedPlace.placeName
         //performSegue(withIdentifier: "aboutSegue", sender: nil)
-        self.bannerImage.image = self.selectedPlace.photos.first
+        self.bannerImage.image = self.selectedPlace.firstPhoto
         
         print("In detail view \(selectedPlace.placeName!)")
         
@@ -66,6 +68,13 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate {
         performSegue(withIdentifier: "webViewSegue", sender: nil)
     }
     
+    func photoSegue(selectedImage: UIImage, photoArray: [UIImage])
+    {
+        self.selectedImage = selectedImage
+        self.photoArray = photoArray
+        performSegue(withIdentifier: "trialSegue", sender: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -75,12 +84,32 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate {
             aboutView.selectedPlace = self.selectedPlace
             aboutView.delegate = self
         }
+        
+        if segue.identifier == "photoAlbumSegue" {
+            let photoView = (segue.destination as? FoodPhotoAlbumViewController)!
+            photoView.selectedPlace = self.selectedPlace
+            photoView.delegate = self
+        }
+        
         if segue.identifier == "webViewSegue" {
             let webView = (segue.destination as? WebViewController)!
             webView.selectedPlace = self.selectedPlace
             webView.type = self.browseType
             // containerViewController!.containerToMaster = self
         }
+        
+        if(segue.identifier == "photoViewSegue")
+        {
+            let destinationVC: FoodPhotoViewController = segue.destination as! FoodPhotoViewController
+            destinationVC.selectedImage = self.selectedImage
+        }
+        if(segue.identifier == "trialSegue")
+        {
+            let destinationVC: PhotoViewController = segue.destination as! PhotoViewController
+            destinationVC.imageArray = self.photoArray
+            destinationVC.selectedImage = self.selectedImage
+        }
+        
         
     }
     

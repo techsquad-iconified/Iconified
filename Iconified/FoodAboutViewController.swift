@@ -17,6 +17,8 @@ class FoodAboutViewController: UIViewController {
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var websiteLabel: UILabel!
+    @IBOutlet var priceLevelUnavailable: UILabel!
+    @IBOutlet var ratingUnavailable: UILabel!
     
     @IBOutlet var ratingOne: UIImageView!
     @IBOutlet var ratingTwo: UIImageView!
@@ -131,12 +133,16 @@ class FoodAboutViewController: UIViewController {
         }
         else
         {
+            self.ratingUnavailable.tintColor = UIColor.gray
+            self.ratingUnavailable.text = "Unavailable"
+        
+            /*
             self.ratingOne.image = emptyStarImage
             self.ratingTwo.image = emptyStarImage
             self.ratingThree.image = emptyStarImage
             self.ratingFour.image = emptyStarImage
             self.ratingFive.image = emptyStarImage
-            
+            */
         }
     }
     
@@ -188,11 +194,16 @@ class FoodAboutViewController: UIViewController {
         }
         else
         {
+            self.priceLevelUnavailable.tintColor = UIColor.gray
+            self.priceLevelUnavailable.text = "Unavailable"
+            
+            /*
             self.coinOne.image = cheapGreyImage
             self.coinTwo.image = leastExpensiveGreyImage
             self.coinThree.image = intermediateExpensiveGreyImage
             self.coinFour.image = expensiveGreyImage
             self.coinFive.image = veryExpensiveGreyImage
+            */
         
         }
     }
@@ -200,14 +211,16 @@ class FoodAboutViewController: UIViewController {
     func navigationIconSelected()
     {
         print("Navigation was clicked.")
-        delegate?.generateSegue(type: "navigation")
+        if(self.selectedPlace?.url != nil)
+        {
+            delegate?.generateSegue(type: "navigation")
+        }
         
     }
     func websiteSelected()
     {
         if(self.selectedPlace?.website != nil)
         {
-        
             delegate?.generateSegue(type: "website")
         }
     }
@@ -233,9 +246,9 @@ class FoodAboutViewController: UIViewController {
         else {
             print("error")}
         */
-        
-        var url:NSURL = NSURL(string: "tel://0451783223")!
-        UIApplication.shared.openURL(url as URL)
+        if let url = URL(string: "telprompt://0451783223") {
+            UIApplication.shared.openURL(url)
+        }
  }
     
     

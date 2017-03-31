@@ -14,14 +14,15 @@ class Place: NSObject {
     var lng: Double?
     var placeId: String?
     var placeName: String?
-    var isOpen: Bool?
+    var isOpen: String?
     var placeAddress: String?
     var phoneNumber: String?
     var rating: Float?
     var priceLevel: Int?
     var website: String?
     var url: String?
-    var photos = [UIImage]()
+    var firstPhoto = UIImage()
+    var photoReference = [String]()
     
     override init(){
         self.lat = nil
@@ -45,7 +46,7 @@ class Place: NSObject {
         
     }
     
-    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: Bool )
+    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: String )
     {
         self.lat = lat
         self.lng = lng
@@ -55,7 +56,7 @@ class Place: NSObject {
         self.isOpen = isOpen
         
     }
-    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: Bool, phoneNumber: String, rating: Float, priceLevel: Int, website: String, url: String, photos: [UIImage])
+    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: String, phoneNumber: String, rating: Float, priceLevel: Int, website: String, url: String, firstPhoto: UIImage)
     {
         self.lat = lat
         self.lng = lng
@@ -68,7 +69,7 @@ class Place: NSObject {
         self.priceLevel = priceLevel
         self.website = website
         self.url = url
-        self.photos = photos
+        self.firstPhoto = firstPhoto
     }
 
 }

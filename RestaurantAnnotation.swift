@@ -13,7 +13,7 @@ class RestaurantAnnotation: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D
     var name: String!
-    var isOpen: Bool!
+    var isOpen: String!
     var image: UIImage!
     var place: Place!
     

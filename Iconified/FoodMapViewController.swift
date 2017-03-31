@@ -6,6 +6,7 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+
 import UIKit
 import MapKit
 
@@ -94,13 +95,14 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     }
     
     /*
-     Puts an annotation on the map if the current category had a previous location assigned to it
+     Puts an annotation on the map for the selected category
      */
     func addLocationAnnotations()
     {
-       // var isExist: Bool?
+        //remove all annotations already existing
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
+        
         if(self.placeArray.count != 0 )
         {
             for case let place as Place in placeArray
@@ -109,23 +111,18 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                 {
                     let loc = CLLocationCoordinate2D(latitude: Double((place.lat)!) , longitude: Double((place.lng)!))
                     let center = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
-                   // let region = (name: place.placeName! , coordinate:loc)
-                    /*let mapAnnotation = MKPointAnnotation()
-                    
-                    mapAnnotation.coordinate = region.coordinate
-                    mapAnnotation.title = region.name
-                    mapAnnotation.subtitle = place.isOpen! ? "Open" : "Closed"
-                    */
                     let point = RestaurantAnnotation(coordinate: loc)
-                    if(place.photos.count != 0)
-                    {
-                        point.image = place.photos.first
-                    }
+                    
+                    point.image = place.firstPhoto
+                    
                     point.name = place.placeName
-                    point.isOpen = place.isOpen
+                    if(place.isOpen == "true" || place.isOpen == "false")
+                    {
+                        point.isOpen = place.isOpen
+                    }
                     point.place = place
                     mapView.addAnnotation(point)
-            
+                   
                     let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.005,longitudeDelta: 0.005))
                     mapView.setRegion(area, animated: true)
                 }
@@ -175,8 +172,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         var placeLng: Double = 0.0
         var placeId: String = "unknown"
         var placeName: String = "unknown"
-        var isOpen: Bool = false
+        var isOpen: String = "unavailable"
         var placeAddress: String = "unknown"
+        var firstOneDone : Bool = false
      
         
         do{
@@ -187,6 +185,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
              print("Json Data is \(jsonData)")
             for eachPlace in jsonData
             {
+                firstOneDone = false
                 let place = eachPlace as! NSDictionary
                 print("Place is \(place)")
                 
@@ -199,18 +198,8 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                 placeAddress = place.object(forKey: "address") as! String
                 placeName = place.object(forKey: "name") as! String
                 placeId = place.object(forKey: "place_id") as! String
-                if let openingHours = place["opening_hours"] as? NSDictionary
-                {
-                    let openNow = openingHours.object(forKey: "open_now") as? Bool
-                    print("open now is \(openNow)")
-                    if(openNow != nil)
-                    {
-                        isOpen = openNow!
-                    }
-                    
-                    print("is open is \(isOpen)")
-                }
-                
+                isOpen = place.object(forKey: "open_now") as! String
+               
                 let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
                 
                 newPlace.phoneNumber = place.object(forKey: "numbers") as? String
@@ -226,19 +215,24 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                         let eachPhoto = photo as? NSDictionary
                         let reference: String = (eachPhoto?.object(forKey: "photo_reference") as? String)!
                         print("reference is \(reference)")
-                        // retrieve images for each place.
-                        let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
-                        print(url)
-                        let data = NSData(contentsOf:url as URL)
-                        if(data != nil)
+                        newPlace.photoReference.append(reference)
+                        if(firstOneDone == false)
                         {
-                            print("Photo was not nil")
-                            newPlace.photos.append(UIImage(data:data! as Data)!)
-                            
+                            // retrieve images for each place.
+                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
+                            print(url)
+                            let data = NSData(contentsOf:url as URL)
+                            if(data != nil)
+                            {
+                                print("Photo was not nil")
+                                newPlace.firstPhoto = UIImage(data:data! as Data)!
+                                // newPlace.photos.append(UIImage(data:data! as Data)!)
+                            }
                         }
-                        break
+                        firstOneDone = true
                     }
                 }
+              
                 self.placeArray.add(newPlace)
                 
                 print("PLace name is \(newPlace.placeName)")
@@ -249,15 +243,15 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                 print("price level is\(newPlace.priceLevel)")
                 print("rating is \(newPlace.rating)")
                 print("Webisite is \(newPlace.website)")
-                print("No of photos \(newPlace.photos.count)")
                 print("url is \(newPlace.url)")
+                print("no of photo reference is \(newPlace.photoReference.count)")
             }
             
         }
         catch{
             print("JSON Serialization error")
         }
-        
+        print("while parsing count is \(self.placeArray.count)")
     }
     
     /*
@@ -390,9 +384,12 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
         let calloutView = views?[0] as! CustomCalloutView
         calloutView.restaurantName.text = restaurantAnnotation.name
-        calloutView.restaurantIsOpen.text = (restaurantAnnotation.isOpen)! ? "Open" : "Closed"
+        if(restaurantAnnotation.isOpen != nil)
+        {
+            calloutView.restaurantIsOpen.text = (restaurantAnnotation.isOpen == "true") ? "Open" : "Close"
+        }
+        
         calloutView.restaurantImage.image = restaurantAnnotation.image
-       // calloutView.detailsIcon.image = UIImage(named: "About")
         
         self.selectedPlace = restaurantAnnotation.place
        // self.getPlaceDetails(place: self.selectedPlace, calloutView: calloutView )
