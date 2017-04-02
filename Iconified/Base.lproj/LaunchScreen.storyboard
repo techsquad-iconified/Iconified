@@ -21,25 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iconified Spash" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-po-pWz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iconified splash" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-po-pWz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="8fK-Tf-oUl"/>
-                            <constraint firstAttribute="trailing" secondItem="S8o-po-pWz" secondAttribute="trailing" id="UNA-Fy-EeV"/>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="oLD-ac-iTf"/>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yMt-ha-sbd"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="1is-ie-GGf"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OXo-Zs-f7F"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XOf-Mf-8DE"/>
+                            <constraint firstAttribute="trailing" secondItem="S8o-po-pWz" secondAttribute="trailing" id="tYd-qv-M7L"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="343.17841079460271"/>
+            <point key="canvasLocation" x="255" y="358"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Iconified Spash" width="16" height="16"/>
+        <image name="Iconified splash" width="288" height="512"/>
     </resources>
 </document>

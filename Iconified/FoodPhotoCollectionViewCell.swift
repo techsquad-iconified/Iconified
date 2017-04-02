@@ -8,11 +8,12 @@
 
 import UIKit
 
+//Class representing the collectionviewcell.
+
 class FoodPhotoCollectionViewCell: UICollectionViewCell {
     
+    //UI Image view in present in each cell
     @IBOutlet var photoImageView: UIImageView!
-    
-    
     
     
 }

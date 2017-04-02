@@ -9,11 +9,16 @@
 protocol aboutViewDelegate {
     func generateSegue(type: String)
 }
+/*
+ View controller representing the details about the place selected by the user.
+ The view is embedded into a container in the details page.
+ */
 
 import UIKit
 
 class FoodAboutViewController: UIViewController {
 
+    //UI Variables
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var websiteLabel: UILabel!
@@ -35,13 +40,17 @@ class FoodAboutViewController: UIViewController {
     @IBOutlet var navigationIcon: UIImageView!
     @IBOutlet var callIcon: UIImageView!
     
+    //The plae object of the selected place
     var selectedPlace: Place?
+    //delegate
     var delegate: aboutViewDelegate?
     
+    //Images used to represent the rating of the place
     let fullStarImage:  UIImage = UIImage(named: "Star Full")!
     let halfStarImage:  UIImage = UIImage(named: "Star Half")!
     let emptyStarImage: UIImage = UIImage(named: "Star Grey")!
     
+    //Images used to represent price level of the place
     let cheapImage: UIImage = UIImage(named: "Cheapest")!
     let cheapGreyImage: UIImage = UIImage(named: "Cheapest Grey")!
     
@@ -57,24 +66,26 @@ class FoodAboutViewController: UIViewController {
     let veryExpensiveImage: UIImage = UIImage(named: "Very Expensive")!
     let veryExpensiveGreyImage: UIImage = UIImage(named: "Very Expensive Grey")!
   
-    
+    //method called when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Adding gesture recognition for transportation icon
+        //Adding gesture recognition for navigation icon
         let tapGestureRecogniserForNavigation = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.navigationIconSelected))
         navigationIcon.isUserInteractionEnabled = true
         navigationIcon.addGestureRecognizer(tapGestureRecogniserForNavigation)
         
+        //Adding gesture recognition for website label
         let tapGestureRecogniserForWebsite = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.websiteSelected))
         websiteLabel.isUserInteractionEnabled = true
         websiteLabel.addGestureRecognizer(tapGestureRecogniserForWebsite)
         
+        //Adding gesture recognition for call icon
         let tapGestureRecogniserForCall = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.callSelected))
         callIcon.isUserInteractionEnabled = true
         callIcon.addGestureRecognizer(tapGestureRecogniserForCall)
         
-        //self.addressLabel.text = self.selectedPlace?.placeName
+        //Update values for the labels
         self.updateLabels()
 
         // Do any additional setup after loading the view.
@@ -85,6 +96,7 @@ class FoodAboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //methods loads all details of the place
     func updateLabels()
     {
         if(self.selectedPlace?.placeAddress != nil)
@@ -118,6 +130,7 @@ class FoodAboutViewController: UIViewController {
         
     }
     
+    //Funtion displays the rating of teh place using images of stars
     func getRating()
     {
         if(self.selectedPlace?.rating != nil)
@@ -133,6 +146,7 @@ class FoodAboutViewController: UIViewController {
         }
         else
         {
+            //If rating data is missing - inform the user as "unavailable"
             self.ratingUnavailable.tintColor = UIColor.gray
             self.ratingUnavailable.text = "Unavailable"
         
@@ -146,6 +160,7 @@ class FoodAboutViewController: UIViewController {
         }
     }
     
+    //funtion returns approriate star images
     func getStarImage(starNumber: Float, forRating rating: Float) -> UIImage {
         if rating >= starNumber {
             return fullStarImage
@@ -156,6 +171,7 @@ class FoodAboutViewController: UIViewController {
         }
     }
     
+    //Funtion displays the rating of teh place using images of dollar coins
     func getPriceLevel()
     {
        if(self.selectedPlace?.priceLevel != nil)
@@ -208,23 +224,25 @@ class FoodAboutViewController: UIViewController {
         }
     }
     
+    //Funtion called when navigation is selected
     func navigationIconSelected()
     {
         print("Navigation was clicked.")
         if(self.selectedPlace?.url != nil)
         {
-            delegate?.generateSegue(type: "navigation")
+            delegate?.generateSegue(type: "navigation") // calls the delegate method of the container view
         }
         
     }
+    //Funtion called when website is selected
     func websiteSelected()
     {
         if(self.selectedPlace?.website != nil)
         {
-            delegate?.generateSegue(type: "website")
+            delegate?.generateSegue(type: "website")   // calls the delegate method of the container view
         }
     }
-    
+    //Funtion called when call icon is selected
     func callSelected()
     {
         print("call method called with \(self.selectedPlace?.phoneNumber!)")
@@ -249,17 +267,5 @@ class FoodAboutViewController: UIViewController {
         if let url = URL(string: "telprompt://0451783223") {
             UIApplication.shared.openURL(url)
         }
- }
-    
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
-    
-
 }

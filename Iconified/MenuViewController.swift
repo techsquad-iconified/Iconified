@@ -74,7 +74,7 @@ class MenuViewController: UIViewController {
         
         //Initialising the icon for transportation Feature
         let transportIcon = ALRadialMenuButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        transportIcon.setImage(UIImage(named: "Transport"), for: UIControlState.normal)
+        transportIcon.setImage(UIImage(named: "Transportation"), for: UIControlState.normal)
         transportIcon.frame.size.height = 90
         transportIcon.frame.size.width = 90
         

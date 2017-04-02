@@ -6,25 +6,26 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/* 
+ The view controller represents the photo slideshow of the selecte image from the gallery
+ */
 import UIKit
-
 class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 
+    //UI component
     @IBOutlet var displayView: iCarousel!
     var imageArray = [UIImage]()
-    var selectedImage: UIImage?
-    var resizedImageArray = [UIImage]()
+    var selectedImageIndex: Int?
+    var newArray = [UIImage]()
     
+    //Function called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for eachImage in self.imageArray
-        {
-            self.resizedImageArray.append(self.resizeImage(image: eachImage, targetSize: CGSize(width: 350, height: 350)))
-        }
-        
+      
+        //setting display type of slide show
         self.displayView.type = iCarouselType.invertedCylinder
-        
+        //Setting index to the selected item
+        self.displayView.currentItemIndex = self.selectedImageIndex!
         self.displayView.reloadData()
 
         // Do any additional setup after loading the view.
@@ -35,6 +36,17 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func reArrangeArray()
+    {
+        var i: Int =  self.selectedImageIndex!
+        self.newArray.append(imageArray[i])
+        
+    }
+    
+   
+    
+    //Function to load images into the slide show
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         var imageView: UIImageView!
         
@@ -47,15 +59,16 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
         {
             imageView = view as! UIImageView
         }
-        imageView.image = self.resizedImageArray[index]
+        imageView.image = self.imageArray[index]
         return imageView
     
     }
 
+    //Represents the number of images present
     func numberOfItems(in carousel: iCarousel) -> Int {
         return self.imageArray.count
     }
-    
+    //function used to resize the images retrieved
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         
@@ -84,14 +97,6 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
         
         return newImage!
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

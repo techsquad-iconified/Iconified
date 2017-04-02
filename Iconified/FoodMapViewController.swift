@@ -10,21 +10,35 @@
 import UIKit
 import MapKit
 
+/* The View Controller is linked to the Map view which represnts the various locations of the selected category 
+    around the user. 
+    The user location is checked.
+    The selected type and user location is sent to the server to fetch required information
+    The Place details is recorded and annotations are placed on the map
+ */
 class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    //UI Mapview
     @IBOutlet var mapView: MKMapView!
+    //Variable for the seleted category
     var foodType: String?
+    //users location
     var latitude: Double?
     var longitude: Double?
+    
+    //Array of place details retrieved from the user
     var placeArray: NSMutableArray
+    //Place on the map slected by the user
     var selectedPlace: Place
+    //Array of photos
     var photoArray: [String]
-    // declaring the global variables
+    // declaring the global variable for location manager
     let locationManager: CLLocationManager
     
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
+    //Initialiser
     required init?(coder aDecoder: NSCoder) {
         self.placeArray = NSMutableArray()
         self.foodType = nil
@@ -36,6 +50,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         super.init(coder: aDecoder)
     }
     
+    //Method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -52,13 +67,8 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
            self.downloadLocationDataFromServer()
            //self.downloadLocationData()
         }
+    }
 
-        
-    }
-    
-    @IBAction func refreshActionSelected(_ sender: UIBarButtonItem) {
-        self.viewDidLoad()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,7 +105,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     }
     
     /*
-     Puts an annotation on the map for the selected category
+     Function adds annotations on the map for the selected category
      */
     func addLocationAnnotations()
     {
@@ -131,17 +141,15 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         self.stopProgressView()
         
     }
-    
+    //Function makes a API call to the server to fetch the required place details
     func downloadLocationDataFromServer()
     {
         var url: URL
-        print("lat is \(self.latitude)")
-        print("lat is \(self.longitude)")
         url = URL(string:"http://23.83.248.221/test?searchType=\(self.foodType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
         print(url)
         let urlRequest = URLRequest(url: url)
         
-        //set up session
+        //setting up session
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if (error != nil)    //checking if the any error message received during connection
@@ -162,12 +170,12 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         })
         
         task.resume()
-
-        
     }
     
-    func parseServerJSON(articleJSON:NSData){
-        
+    //Method to parse the JSON response from the server
+    func parseServerJSON(articleJSON:NSData)
+    {
+        //Local variables to store place details
         var placeLat: Double = 0.0
         var placeLng: Double = 0.0
         var placeId: String = "unknown"
@@ -175,39 +183,38 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         var isOpen: String = "unavailable"
         var placeAddress: String = "unknown"
         var firstOneDone : Bool = false
-     
         
         do{
-             //  When the json data is from TIM api
-             
              let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
              
              print("Json Data is \(jsonData)")
             for eachPlace in jsonData
             {
-                firstOneDone = false
+                firstOneDone = false    // Flag to get the forst image in the photo list
                 let place = eachPlace as! NSDictionary
-                print("Place is \(place)")
-                
                 if let location = place["location"] as? NSDictionary
                 {
+                    //get location details of the place
                     placeLat = location.object(forKey: "lat")! as! Double
                     placeLng = location.object(forKey: "lng")! as! Double
                     print("location is \(placeLat) and \(placeLng)")
                 }
+                //get address, name, open status and id of the place
                 placeAddress = place.object(forKey: "address") as! String
                 placeName = place.object(forKey: "name") as! String
                 placeId = place.object(forKey: "place_id") as! String
                 isOpen = place.object(forKey: "open_now") as! String
                
+                //create a object of place for the details obtained
                 let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
-                
+                //addtional details for the place
                 newPlace.phoneNumber = place.object(forKey: "numbers") as? String
                 newPlace.priceLevel = place.object(forKey: "price_level") as? Int
                 newPlace.rating = place.object(forKey: "rating") as? Float
                 newPlace.website = place.object(forKey: "website") as? String
                 newPlace.url = place.object(forKey: "url") as? String
                 
+                //If photo exists get the first photo and an array of photo reference string.
                if let photos = place["photos"] as? NSArray
                 {
                     for photo in photos
@@ -219,7 +226,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                         if(firstOneDone == false)
                         {
                             // retrieve images for each place.
-                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
+                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
                             print(url)
                             let data = NSData(contentsOf:url as URL)
                             if(data != nil)
@@ -232,9 +239,10 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                         firstOneDone = true
                     }
                 }
-              
+                //Add the place to the placeArray
                 self.placeArray.add(newPlace)
                 
+                //printing the details in console for testing purpose
                 print("PLace name is \(newPlace.placeName)")
                 print("open now is \(newPlace.isOpen)")
                 print("place id is \(newPlace.placeId)")
@@ -254,43 +262,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         print("while parsing count is \(self.placeArray.count)")
     }
     
-    /*
-     func loadFirstPhotoForPlace(placeID: String)
-     {
-            GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
-                if let error = error
-                {
-                    // TODO: handle the error.
-                    print("Error: \(error.localizedDescription)")
-                } else
-                {
-                    if let firstPhoto = photos?.results.first
-                    {
-                        self.loadImageForMetadata(photoMetadata: firstPhoto)
-                    }
-                }
-            }
-        }
-        
-    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata)
-    {
-        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback:
-            {
-                (photo, error) -> Void in
-                if let error = error
-                {
-                    // TODO: handle the error.
-                    print("Error: \(error.localizedDescription)")
-                }
-                else
-                {
-                    self.imageView.image = photo;
-                    self.attributionTextView.attributedText = photoMetadata.attributions;
-                }
-            })
-    }
-    */
-
+    
     /*
      Setting up the progress view that displays a spinner while the serer data is being downloaded.
      The view uses an activity indicator (a spinner) and a simple text to convey the information.
@@ -302,7 +274,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     func setProgressView()
     {
         self.progressView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        self.progressView.backgroundColor = UIColor.red
+        self.progressView.backgroundColor = UIColor.darkGray
         self.progressView.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         wait.color = UIColor.white
@@ -340,7 +312,8 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         }
     }
    
-    //MARK: MKMapViewDelegate
+    //MARK: MKMapViewDelegate 
+    //Method to create a view for the annotations - annotations represent the category selected
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation
@@ -351,38 +324,42 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         if annotationView == nil{
             annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
             annotationView?.canShowCallout = false
-        }else{
+        }
+        else{
             annotationView?.annotation = annotation
         }
         if(self.foodType == "cafe")
         {
-            annotationView?.image = UIImage(named: "Cafe Filled")
+            annotationView?.image = UIImage(named: "Cafe Filled")   //cafe annotation
         }
         else if(self.foodType == "bar")
         {
-            annotationView?.image = UIImage(named: "Wine")
+            annotationView?.image = UIImage(named: "Wine")    //drinks annotation
         }
         else if(self.foodType == "restaurant")
         {
-            annotationView?.image = UIImage(named: "Meal")
+            annotationView?.image = UIImage(named: "Meal")     //Restaurant annotation
         }
         return annotationView
     }
     
+    //method is called when a particular annotation is selected
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView)
     {
-        // 1
+        // if users location annotation is selected
         if view.annotation is MKUserLocation
         {
             // Don't proceed with custom callout
             return
         }
         
-        // 2
+        // if other anotations selected
         let restaurantAnnotation = view.annotation as! RestaurantAnnotation
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        //get the callout view
         let calloutView = views?[0] as! CustomCalloutView
+        //Add Image, name, open status and a details icon
         calloutView.restaurantName.text = restaurantAnnotation.name
         if(restaurantAnnotation.isOpen != nil)
         {
@@ -390,10 +367,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         }
         
         calloutView.restaurantImage.image = restaurantAnnotation.image
-        
         self.selectedPlace = restaurantAnnotation.place
-       // self.getPlaceDetails(place: self.selectedPlace, calloutView: calloutView )
-        print("Place is \(self.selectedPlace.placeName!)")
       
         //Adding gesture recognition for details icon
         let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
@@ -404,7 +378,8 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         view.addSubview(calloutView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
-    
+
+    //Method is called when annotation is deselected or clicked outside the location
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: AnnotationView.self)
         {
@@ -414,6 +389,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
             }
         }
     }
+    //Method is called when the details icon is selected
     func detailsSelected()
     {
         performSegue(withIdentifier: "FoodDetailSegue", sender: nil)
@@ -430,9 +406,10 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         }
     }
     
-    
-    
-    // CODE FOR GOOGLE API CALL
+    //---------------------------------------------------------------------------------------------------
+    //                                  FOR TEST PURPOSE ONLY
+    //---------------------------------------------------------------------------------------------------
+    // CODE FOR DIRECT GOOGLE API CALL
     /*
      
      // method to establish connection and download JSON data from the API

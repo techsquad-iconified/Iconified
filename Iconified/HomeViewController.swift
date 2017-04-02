@@ -10,7 +10,6 @@
    It conists of a grid of icons representing various facilities in the application
    On selecting a specific facility, the user is redirected to the faclity page
  
-   The controller tracks the user's current location and passes it to the following screens.
  */
 
 import UIKit
