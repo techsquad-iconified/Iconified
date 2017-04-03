@@ -17,12 +17,17 @@
 		1A50C0EB1E86444A0077CCA1 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0EA1E86444A0077CCA1 /* FoodDetailViewController.swift */; };
 		1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0EE1E868FB50077CCA1 /* RestaurantAnnotation.swift */; };
 		1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */; };
+		1A5509911E8F6F38004786B1 /* Credits in Resources */ = {isa = PBXBuildFile; fileRef = 1A5509901E8F6F38004786B1 /* Credits */; };
 		1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */; };
 		1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */; };
 		1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */; };
 		1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93BAD71E8A5950009FFE04 /* WebViewController.swift */; };
+		1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CC1E8DE258003271AE /* Reachability.swift */; };
+		1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */; };
+		1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */; };
+		1AA966D71E8E5036003271AE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D61E8E5036003271AE /* iCarousel.m */; };
+		1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D81E8E51B6003271AE /* PhotoViewController.swift */; };
 		1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */; };
-		1AB24FFC1E7F8B77007CFD1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB24FFB1E7F8B77007CFD1B /* ViewController.swift */; };
 		1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */; };
 		1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AB250001E7F8B77007CFD1B /* Iconified.xcdatamodeld */; };
 		1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB250031E7F8B77007CFD1B /* Assets.xcassets */; };
@@ -65,13 +70,20 @@
 		1A50C0EE1E868FB50077CCA1 /* RestaurantAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantAnnotation.swift; path = ../RestaurantAnnotation.swift; sourceTree = "<group>"; };
 		1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Iconified.xcodeproj; path = /Users/shishiraskanda/Desktop/Iconified/Iconified.xcodeproj; sourceTree = "<absolute>"; };
-		1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1A5509901E8F6F38004786B1 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits; sourceTree = "<group>"; };
+		1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Iconified/MenuViewController.swift; sourceTree = "<group>"; };
 		1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenu.swift; sourceTree = "<group>"; };
 		1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenuButtonAction.swift; sourceTree = "<group>"; };
 		1A93BAD71E8A5950009FFE04 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1AA966CC1E8DE258003271AE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Iconified/Reachability.swift; sourceTree = "<group>"; };
+		1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Iconified-Bridging-Header.h"; sourceTree = "<group>"; };
+		1AA966D51E8E5036003271AE /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = ../../../Downloads/iCarousel.h; sourceTree = "<group>"; };
+		1AA966D61E8E5036003271AE /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = ../../../Downloads/iCarousel.m; sourceTree = "<group>"; };
+		1AA966D81E8E51B6003271AE /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		1AB24FF61E7F8B77007CFD1B /* Iconified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconified.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1AB24FFB1E7F8B77007CFD1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AB24FFE1E7F8B77007CFD1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1AB250011E7F8B77007CFD1B /* Iconified.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Iconified.xcdatamodel; sourceTree = "<group>"; };
 		1AB250031E7F8B77007CFD1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +96,7 @@
 		1AB2501C1E7F8B77007CFD1B /* IconifiedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconifiedUITests.swift; sourceTree = "<group>"; };
 		1AB2501E1E7F8B77007CFD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AB2502B1E7FA760007CFD1B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		1AB2502D1E801010007CFD1B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1AB2502D1E801010007CFD1B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Iconified/HomeViewController.swift; sourceTree = "<group>"; };
 		2E1F4552E5EA655BED78E940 /* Pods-Iconified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iconified.release.xcconfig"; path = "Pods/Target Support Files/Pods-Iconified/Pods-Iconified.release.xcconfig"; sourceTree = "<group>"; };
 		74E0D9F88268A0532FB05565 /* Pods_Iconified.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iconified.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92A83969EA3FE18C2990B71A /* Pods-IconifiedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconifiedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IconifiedTests/Pods-IconifiedTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,7 +145,6 @@
 		1A1453651E86AE24001D04BC /* CustomCalloutView */ = {
 			isa = PBXGroup;
 			children = (
-				1A1453661E86AF2D001D04BC /* CustomCalloutView.xib */,
 				1A1453681E86AF48001D04BC /* CustomCalloutView.swift */,
 			);
 			name = CustomCalloutView;
@@ -142,14 +153,18 @@
 		1A14536A1E874744001D04BC /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				1A27D6011E80D86300C028C1 /* FoodViewController.swift */,
+				1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */,
+				1A50C0EA1E86444A0077CCA1 /* FoodDetailViewController.swift */,
 				1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */,
 				1A93BAD71E8A5950009FFE04 /* WebViewController.swift */,
 				1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */,
-				1A50C0E41E8494AB0077CCA1 /* Place.swift */,
 				1A50C0EE1E868FB50077CCA1 /* RestaurantAnnotation.swift */,
-				1A50C0EA1E86444A0077CCA1 /* FoodDetailViewController.swift */,
-				1A27D6011E80D86300C028C1 /* FoodViewController.swift */,
-				1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */,
+				1A50C0E41E8494AB0077CCA1 /* Place.swift */,
+				1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */,
+				1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */,
+				1AA966D81E8E51B6003271AE /* PhotoViewController.swift */,
+				1A1453651E86AE24001D04BC /* CustomCalloutView */,
 			);
 			name = Food;
 			sourceTree = "<group>";
@@ -171,11 +186,37 @@
 			path = Iconified.xcodeproj;
 			sourceTree = SOURCE_ROOT;
 		};
+		1A7AA6B31E8CF4AC0027DD34 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */,
+				1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */,
+				1AB2502D1E801010007CFD1B /* HomeViewController.swift */,
+				1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */,
+				1AA966CC1E8DE258003271AE /* Reachability.swift */,
+			);
+			name = General;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1A7AA6B41E8CFAE00027DD34 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */,
+				1A5509901E8F6F38004786B1 /* Credits */,
+				1AA966D51E8E5036003271AE /* iCarousel.h */,
+				1AA966D61E8E5036003271AE /* iCarousel.m */,
+				1A1453661E86AF2D001D04BC /* CustomCalloutView.xib */,
+				1AB250051E7F8B77007CFD1B /* LaunchScreen.storyboard */,
+				1AB250031E7F8B77007CFD1B /* Assets.xcassets */,
+				1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
 		1AB24FED1E7F8B77007CFD1B = {
 			isa = PBXGroup;
 			children = (
-				1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */,
-				1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */,
 				1AB24FF81E7F8B77007CFD1B /* Iconified */,
 				1AB250101E7F8B77007CFD1B /* IconifiedTests */,
 				1AB2501B1E7F8B77007CFD1B /* IconifiedUITests */,
@@ -198,15 +239,10 @@
 		1AB24FF81E7F8B77007CFD1B /* Iconified */ = {
 			isa = PBXGroup;
 			children = (
-				1A1453651E86AE24001D04BC /* CustomCalloutView */,
-				1AB2502D1E801010007CFD1B /* HomeViewController.swift */,
+				1A7AA6B41E8CFAE00027DD34 /* User Interface */,
+				1A7AA6B31E8CF4AC0027DD34 /* General */,
 				1A14536A1E874744001D04BC /* Food */,
 				1A14536C1E8747B7001D04BC /* Transportation */,
-				1AB24FFB1E7F8B77007CFD1B /* ViewController.swift */,
-				1AB250031E7F8B77007CFD1B /* Assets.xcassets */,
-				1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */,
-				1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */,
-				1AB250051E7F8B77007CFD1B /* LaunchScreen.storyboard */,
 				1AB250081E7F8B77007CFD1B /* Info.plist */,
 				1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */,
 				1AB250001E7F8B77007CFD1B /* Iconified.xcdatamodeld */,
@@ -334,6 +370,7 @@
 				TargetAttributes = {
 					1AB24FF51E7F8B77007CFD1B = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1AB2500C1E7F8B77007CFD1B = {
@@ -380,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A1453671E86AF2D001D04BC /* CustomCalloutView.xib in Resources */,
+				1A5509911E8F6F38004786B1 /* Credits in Resources */,
 				1AB250071E7F8B77007CFD1B /* LaunchScreen.storyboard in Resources */,
 				1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */,
 				1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */,
@@ -549,19 +587,23 @@
 				1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */,
 				1A50C0EB1E86444A0077CCA1 /* FoodDetailViewController.swift in Sources */,
 				1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */,
-				1AB24FFC1E7F8B77007CFD1B /* ViewController.swift in Sources */,
 				1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */,
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
+				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
 				1A27D6001E80D85200C028C1 /* TransportationViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
+				1AA966D71E8E5036003271AE /* iCarousel.m in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
+				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
+				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
+				1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,10 +756,13 @@
 			baseConfigurationReference = B9E9CE75970723E465043775 /* Pods-Iconified.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -727,10 +772,12 @@
 			baseConfigurationReference = 2E1F4552E5EA655BED78E940 /* Pods-Iconified.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

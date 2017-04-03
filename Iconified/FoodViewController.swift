@@ -5,21 +5,29 @@
 //  Created by Shishira Skanda on 21/3/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
+/*  The View Controller is linked to the food feature on the main screen of the application.
+    It conists of a grid of icons representing various styles(restaurant, cafe or drinks) of food facilities provided by the application
+    On selecting a specific facility, the user is redirected to the map page
+ */
 
 import UIKit
 
 class FoodViewController: UIViewController {
     
+    //Variabes representing user's location
     var latitude: Double?
     var longitude: Double?
+    //Array of places in the particular category
     var placeArray: NSMutableArray
+    //Type food style selected by the user
     var foodType: String?
     
+    //UI attributes
     @IBOutlet weak var mealIcon: UIImageView!
     @IBOutlet weak var coffeeIcon: UIImageView!
     @IBOutlet weak var drinksIcon: UIImageView!
     
-    
+    //Intilaliser
     required init?(coder aDecoder: NSCoder) {
         self.latitude = nil
         self.longitude = nil
@@ -28,6 +36,7 @@ class FoodViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    //method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +57,7 @@ class FoodViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

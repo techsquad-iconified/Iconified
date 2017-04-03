@@ -6,6 +6,9 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+//Code extracted from open source repository in Github at https://github.com/AlexLittlejohn/ALRadialMenu
+//Credit to Author: Alex Littlejohn
+
 import UIKit
 
 private typealias ALAnimationsClosure = () -> Void
@@ -19,6 +22,18 @@ private struct Angle {
 }
 
 public class ALRadialMenu: UIButton {
+    
+    //Variables
+    private var overlayView = UIView(frame: UIScreen.main.bounds)
+    
+    private var radius: Double = 130
+    private var startAngle: Angle = Angle(degrees: 270)
+    
+    private var spacingDegrees: Angle!
+    private var animationOrigin: CGPoint!
+    
+    private var dismissGesture: UITapGestureRecognizer!
+    private var animationOptions: UIViewAnimationOptions = [.curveEaseInOut, .beginFromCurrentState]
     
     // MARK: Public API
     
@@ -194,6 +209,7 @@ public class ALRadialMenu: UIButton {
         }
     }
     
+    //Method to dismiss on overlayTap
     private var dismissOnOverlayTap = true {
         didSet {
             if let gesture = dismissGesture {
@@ -201,22 +217,13 @@ public class ALRadialMenu: UIButton {
             }
         }
     }
-    
-    private var overlayView = UIView(frame: UIScreen.main.bounds)
-    
-    private var radius: Double = 130
-    private var startAngle: Angle = Angle(degrees: 270)
+   //Method to calculate spacing
     private var circumference: Angle = Angle(degrees: 360) {
         didSet {
             calculateSpacing()
         }
     }
-    
-    private var spacingDegrees: Angle!
-    private var animationOrigin: CGPoint!
-    
-    private var dismissGesture: UITapGestureRecognizer!
-    private var animationOptions: UIViewAnimationOptions = [.curveEaseInOut, .beginFromCurrentState]
+   
     
     // MARK: Private API
     private func commonInit() {
@@ -226,6 +233,7 @@ public class ALRadialMenu: UIButton {
         overlayView.addGestureRecognizer(dismissGesture)
     }
     
+    //Method to dismiss the menu at a particular index
     public func _dismiss(selectedIndex: Int) {
         
         overlayView.removeFromSuperview()
@@ -238,10 +246,8 @@ public class ALRadialMenu: UIButton {
             }
         }
     }
-    
-    
-    
-    
+
+    //Method to present the animation of the view
     private func presentAnimation(view: ALRadialMenuButton, index: Int) {
         let degrees = startAngle.degrees + spacingDegrees.degrees * Double(index)
         let newCenter = pointOnCircumference(origin: animationOrigin, radius: radius, angle: Angle(degrees: degrees))
@@ -255,6 +261,7 @@ public class ALRadialMenu: UIButton {
         }, completion: nil)
     }
     
+    //method to dismiss animation of the view
     public func dismissAnimation(view: ALRadialMenuButton, index: Int) {
         let _delay = Double(index) * delay
         UIView.animate(withDuration: 0.5, delay: _delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: animationOptions, animations: {
@@ -265,6 +272,7 @@ public class ALRadialMenu: UIButton {
         })
     }
     
+    //Method to present the selected animation
     private func selectedAnimation(view: ALRadialMenuButton) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: animationOptions, animations: {
             view.alpha = 0
@@ -275,6 +283,7 @@ public class ALRadialMenu: UIButton {
         })
     }
     
+    //Method to determine the point of circumference
     private func pointOnCircumference(origin: CGPoint, radius: Double, angle: Angle) -> CGPoint {
         
         let radians = angle.radians()
@@ -284,6 +293,7 @@ public class ALRadialMenu: UIButton {
         return CGPoint(x: x, y: y)
     }
     
+    //Method to calulcate spacing between menu buttons
     private func calculateSpacing() {
         if buttons.count > 0 {
             

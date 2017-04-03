@@ -6,23 +6,31 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ Entity class to represent the Place entity.
+ Consists of all sttribute values of teh class that is stored.
+ */
+
 import UIKit
 
 class Place: NSObject {
     
+    //Attrinutes of the place entity
     var lat: Double?
     var lng: Double?
     var placeId: String?
     var placeName: String?
-    var isOpen: Bool?
+    var isOpen: String?
     var placeAddress: String?
     var phoneNumber: String?
     var rating: Float?
     var priceLevel: Int?
     var website: String?
     var url: String?
-    var photos = [UIImage]()
+    var firstPhoto = UIImage()
+    var photoReference = [String]()
     
+    //default constructor
     override init(){
         self.lat = nil
         self.lng = nil
@@ -38,14 +46,15 @@ class Place: NSObject {
         //self.photos = [UIImage]()
     }
     
+    //Parameterized constructor using just latitue and longitude
     init(lat:Double, lng: Double)
     {
         self.lat = lat
         self.lng = lng
         
     }
-    
-    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: Bool )
+    //Parameterized constructor using just latitue, longitude, id, name, address and isOpen
+    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: String )
     {
         self.lat = lat
         self.lng = lng
@@ -55,7 +64,8 @@ class Place: NSObject {
         self.isOpen = isOpen
         
     }
-    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: Bool, phoneNumber: String, rating: Float, priceLevel: Int, website: String, url: String, photos: [UIImage])
+    //Parameterized constructor using all attrinutes
+    init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: String, phoneNumber: String, rating: Float, priceLevel: Int, website: String, url: String, firstPhoto: UIImage)
     {
         self.lat = lat
         self.lng = lng
@@ -68,7 +78,7 @@ class Place: NSObject {
         self.priceLevel = priceLevel
         self.website = website
         self.url = url
-        self.photos = photos
+        self.firstPhoto = firstPhoto
     }
 
 }

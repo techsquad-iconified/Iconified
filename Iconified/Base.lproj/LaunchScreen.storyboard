@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,25 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconifiedSpash" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-po-pWz">
-                                <rect key="frame" x="16" y="28" width="343" height="610"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iconified splash" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-po-pWz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="NmS-OY-B4S"/>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="WOc-yR-IEs"/>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gwE-Yb-rsv"/>
-                            <constraint firstItem="S8o-po-pWz" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" symbolic="YES" id="hEz-om-QiK"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="1is-ie-GGf"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OXo-Zs-f7F"/>
+                            <constraint firstItem="S8o-po-pWz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XOf-Mf-8DE"/>
+                            <constraint firstAttribute="trailing" secondItem="S8o-po-pWz" secondAttribute="trailing" id="tYd-qv-M7L"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="343.17841079460271"/>
+            <point key="canvasLocation" x="255" y="358"/>
         </scene>
     </scenes>
     <resources>
-        <image name="IconifiedSpash" width="186" height="162"/>
+        <image name="Iconified splash" width="288" height="512"/>
     </resources>
 </document>
