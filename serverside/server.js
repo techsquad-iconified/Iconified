@@ -6,6 +6,7 @@ const app = express();
 
 var db;
 
+app.set('view engine','pug');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
 
@@ -13,6 +14,14 @@ app.listen(3000, () => {
     console.log('listening on 3000')
 })
 
+/*
+async.waterfall([basicInfo,detailedInfo],function(err, result){
+    if(err){
+        console.log(err);
+    }
+	console.log(result);
+});
+*/
 function checkUnd(theValue){
 	if(typeof(theValue) ==="undefined"){
 		return "unavailable";
@@ -51,12 +60,9 @@ function basicInfo(type,location,callback){
 	var final = [];
 	var atype = type;
 	var alocation = location;
-	var g1key = "AIzaSyBN5b3i9TepTRKXV3nH7DlIWo7Hu3Vq1TU";
-	var g2key = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var s1key = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
-	var s2key = "AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4";
-	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+g1key;
-	console.log(purl);
+	var shishirakey = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
+	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+shishirakey;
 	https.get(purl, function(response) {
 		var body ="";
 		response.on('data', function(chunk) {
@@ -64,16 +70,20 @@ function basicInfo(type,location,callback){
 		})
 		response.on('end', function () {
 			places = JSON.parse(body);
-			var results = places.results;
-			for (i=0;i<10;i++){
-				var myPlace = new thePlace();
-				myPlace.name = results[i].name;
-				myPlace.location = results[i].geometry.location;
-				myPlace.open_now = checkUnd(results[i].opening_hours);
-				myPlace.place_id = results[i].place_id;
-				myPlace.price_level = results[i].price_level;
-				myPlace.rating = results[i].rating;
-				final.push(myPlace);
+			if(checkResu(places)){
+				var results = places.results;
+				for (i=0;i<10;i++){
+					var myPlace = new thePlace();
+					myPlace.name = results[i].name;
+					myPlace.location = results[i].geometry.location;
+					myPlace.open_now = checkUnd(results[i].opening_hours);
+					myPlace.place_id = results[i].place_id;
+					myPlace.price_level = results[i].price_level;
+					myPlace.rating = results[i].rating;
+					final.push(myPlace);
+				}
+			}else{
+				console.log("no results");
 			}
 			callback(null,final);
 		})
@@ -81,16 +91,11 @@ function basicInfo(type,location,callback){
 }
 
 function detailedInfo(final,callback){
-	var g1key = "AIzaSyBN5b3i9TepTRKXV3nH7DlIWo7Hu3Vq1TU";
-	var g2key = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var s1key = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
-	var s2key = "AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4";
     var count = 0;
 	for (i=0;i<10;i++){
         ++count;
 		var placeId = final[i].place_id;
-		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + g1key;
-		console.log(durl);;
+		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
         function back (durl,i){
 		https.get(durl,function(response) {
 			var body ="";
@@ -128,8 +133,86 @@ app.get("/test",function(req,res){
 	console.log("Test");
 });
 
-app.get("/apitest", function(req, res){
-	res.send("test");
+app.get("/api", function(req, res){
+	var type = req.query.searchType;
+	var location = req.query.myLocation;
+	var radius = 500;
+	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var furl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+location +"&types="+type + "&rankby=distance" + "&key="+gkey;
+	var turl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&types=food&rankby=distance&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	sendBack(furl,res);
 })
+function sendBack (url,res) {
+	var foo = [];
+	https.get(url, function(response) {
+		var body ="";
+		response.on('data', function(chunk) {
+			body += chunk;
+		})
+		response.on('end', function () {
+			places = JSON.parse(body);
+			var results = places.results;
+			console.log(results[0]);
+			for (i=0;i<5;i++){
+				foo.push(results[i].name);
+				foo.push(results[i].geometry.location);
+				foo.push(results[i].opening_hours);
+				foo.push(results[i].place_id);
+				foo.push(results[i].price_level);
+				foo.push(results[i].rating);
+				foo.push(results[i].vicinity);
+			};
+			res.send(foo);
+		});
+	})
+}
+
+app.get("/apitest", function(req, res){
+	var type = req.query.searchType;
+	var location = req.query.myLocation;
+	var placeId = "here";
+	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ location +"&types="+type + "&rankby=distance" + "&key="+gkey;
+	var examp ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&types=food&rankby=distance&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var foo = [];
+	var thePlaceId = [];
+	https.get(url, function(response) {
+		var body ="";
+		response.on('data', function(chunk) {
+			body += chunk;
+		})
+		response.on('end', function () {
+			places = JSON.parse(body);
+			var results = places.results;
+			res.send(results);
+			for (i=0;i<5;i++){
+				foo.push(results[i].name);
+				foo.push(results[i].geometry.location);
+				foo.push(results[i].opening_hours);
+				thePlaceId.push(results[i].place_id);
+				foo.push(results[i].price_level);
+				foo.push(results[i].rating);
+			}
+
+		});
+	});
+	sendBackTest(purl,res);
+});
+function sendBackTest (url,res) {
+	var foo = [];
+	https.get(url, function(response) {
+		var body ="";
+		response.on('data', function(chunk) {
+			body += chunk;
+		})
+		response.on('end', function () {
+			places = JSON.parse(body);
+			var results = places.results;
+			res.send(results);
+		});
+	})
+}
+
 
 

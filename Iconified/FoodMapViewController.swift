@@ -155,6 +155,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
             if (error != nil)    //checking if the any error message received during connection
             {
                 print("Error \(error)")
+                let alert = UIAlertController(title: "Sorry! Server Failed!", message: "Please try again later.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else
             {

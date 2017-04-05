@@ -245,26 +245,13 @@ class FoodAboutViewController: UIViewController {
     //Funtion called when call icon is selected
     func callSelected()
     {
-        print("call method called with \(self.selectedPlace?.phoneNumber!)")
-        /* if let url = NSURL(string: "tel:\(self.selectedPlace?.phoneNumber)") , UIApplication.shared.canOpenURL(url as URL) {
-            UIApplication.shared.openURL(url as URL)
-        }
- 
-        let phoneNumber = "0451783223" as? String
-        if let callNumber = phoneNumber {
-            print("call number is \(callNumber)")
-            
-            let aURL = NSURL(string: "telprompt://\(callNumber)")
-            if UIApplication.shared.canOpenURL(aURL as! URL) {
-                UIApplication.shared.openURL(aURL as! URL)
-            } else {
-                print("error")
-            }
-        }
-        else {
-            print("error")}
-        */
-        if let url = URL(string: "telprompt://0451783223") {
+        print("phone number is \((self.selectedPlace?.phoneNumber!)!)")
+        let phoneString: String = (self.selectedPlace?.phoneNumber!)!
+        let firstString = phoneString.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        let secondString = firstString.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        let finalString = secondString.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        print("final string is \(finalString)")
+        if let url = URL(string: "telprompt://\(finalString)") {
             UIApplication.shared.openURL(url)
         }
     }

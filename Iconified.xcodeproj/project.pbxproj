@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A1453671E86AF2D001D04BC /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A1453661E86AF2D001D04BC /* CustomCalloutView.xib */; };
 		1A1453691E86AF48001D04BC /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1453681E86AF48001D04BC /* CustomCalloutView.swift */; };
 		1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */; };
+		1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15C7041E9345DA002658A9 /* TranslateViewController.swift */; };
 		1A27D6001E80D85200C028C1 /* TransportationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D5FF1E80D85200C028C1 /* TransportationViewController.swift */; };
 		1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D6011E80D86300C028C1 /* FoodViewController.swift */; };
 		1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0E41E8494AB0077CCA1 /* Place.swift */; };
@@ -25,7 +25,6 @@
 		1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CC1E8DE258003271AE /* Reachability.swift */; };
 		1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */; };
 		1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */; };
-		1AA966D71E8E5036003271AE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D61E8E5036003271AE /* iCarousel.m */; };
 		1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D81E8E51B6003271AE /* PhotoViewController.swift */; };
 		1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */; };
 		1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */; };
@@ -55,13 +54,34 @@
 			remoteGlobalIDString = 1AB24FF51E7F8B77007CFD1B;
 			remoteInfo = Iconified;
 		};
+		1ACD6A5C1E94C9F8001DF141 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1AB24FF61E7F8B77007CFD1B;
+			remoteInfo = Iconified;
+		};
+		1ACD6A5E1E94C9F8001DF141 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1AB2500D1E7F8B77007CFD1B;
+			remoteInfo = IconifiedTests;
+		};
+		1ACD6A601E94C9F8001DF141 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1AB250181E7F8B77007CFD1B;
+			remoteInfo = IconifiedUITests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		19DE86583785B53C05502B91 /* Pods_IconifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IconifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A1453661E86AF2D001D04BC /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCalloutView.xib; path = "../../../Downloads/CustomCalloutView-Final Project/CustomCalloutView/CustomCalloutView.xib"; sourceTree = "<group>"; };
 		1A1453681E86AF48001D04BC /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCalloutView.swift; path = "../../../Downloads/CustomCalloutView-Final Project/CustomCalloutView/CustomCalloutView.swift"; sourceTree = "<group>"; };
 		1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAboutViewController.swift; sourceTree = "<group>"; };
+		1A15C7041E9345DA002658A9 /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		1A27D5FF1E80D85200C028C1 /* TransportationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportationViewController.swift; sourceTree = "<group>"; };
 		1A27D6011E80D86300C028C1 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		1A50C0E41E8494AB0077CCA1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -79,8 +99,6 @@
 		1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Iconified-Bridging-Header.h"; sourceTree = "<group>"; };
-		1AA966D51E8E5036003271AE /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = ../../../Downloads/iCarousel.h; sourceTree = "<group>"; };
-		1AA966D61E8E5036003271AE /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = ../../../Downloads/iCarousel.m; sourceTree = "<group>"; };
 		1AA966D81E8E51B6003271AE /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		1AB24FF61E7F8B77007CFD1B /* Iconified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconified.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +156,9 @@
 		1A1453631E86ADF3001D04BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				1ACD6A5D1E94C9F8001DF141 /* Iconified.app */,
+				1ACD6A5F1E94C9F8001DF141 /* IconifiedTests.xctest */,
+				1ACD6A611E94C9F8001DF141 /* IconifiedUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,6 +198,14 @@
 			name = Transportation;
 			sourceTree = "<group>";
 		};
+		1A15C7061E935B36002658A9 /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				1A15C7041E9345DA002658A9 /* TranslateViewController.swift */,
+			);
+			name = Translator;
+			sourceTree = "<group>";
+		};
 		1A50C0F31E86AC6C0077CCA1 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,10 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */,
+				1A15C7061E935B36002658A9 /* Translator */,
 				1A5509901E8F6F38004786B1 /* Credits */,
-				1AA966D51E8E5036003271AE /* iCarousel.h */,
-				1AA966D61E8E5036003271AE /* iCarousel.m */,
-				1A1453661E86AF2D001D04BC /* CustomCalloutView.xib */,
 				1AB250051E7F8B77007CFD1B /* LaunchScreen.storyboard */,
 				1AB250031E7F8B77007CFD1B /* Assets.xcassets */,
 				1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */,
@@ -370,6 +397,7 @@
 				TargetAttributes = {
 					1AB24FF51E7F8B77007CFD1B = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S9MRU8B4QY;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -411,12 +439,35 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		1ACD6A5D1E94C9F8001DF141 /* Iconified.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Iconified.app;
+			remoteRef = 1ACD6A5C1E94C9F8001DF141 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1ACD6A5F1E94C9F8001DF141 /* IconifiedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IconifiedTests.xctest;
+			remoteRef = 1ACD6A5E1E94C9F8001DF141 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1ACD6A611E94C9F8001DF141 /* IconifiedUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IconifiedUITests.xctest;
+			remoteRef = 1ACD6A601E94C9F8001DF141 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		1AB24FF41E7F8B77007CFD1B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A1453671E86AF2D001D04BC /* CustomCalloutView.xib in Resources */,
 				1A5509911E8F6F38004786B1 /* Credits in Resources */,
 				1AB250071E7F8B77007CFD1B /* LaunchScreen.storyboard in Resources */,
 				1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */,
@@ -590,12 +641,12 @@
 				1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */,
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
 				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
+				1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
 				1A27D6001E80D85200C028C1 /* TransportationViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
-				1AA966D71E8E5036003271AE /* iCarousel.m in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
@@ -757,9 +808,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = S9MRU8B4QY;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified.shishira;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -773,9 +825,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = S9MRU8B4QY;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified.shishira;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
