@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="353" y="-744"/>
         </scene>
-        <!--Transportation View Controller-->
+        <!--Transportation-->
         <scene sceneID="hD8-eb-B2s">
             <objects>
                 <viewController id="PIg-Pf-KVc" customClass="TransportationViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,24 +61,218 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSPORTATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DU7-1D-Qqn">
-                                <rect key="frame" x="16" y="183" width="359" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Detail Menu background" translatesAutoresizingMaskIntoConstraints="NO" id="aaB-6H-boi">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About " translatesAutoresizingMaskIntoConstraints="NO" id="r0T-bU-AkH">
+                                <rect key="frame" x="111" y="120" width="152" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="149" id="g4S-kO-T5e"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transportation" translatesAutoresizingMaskIntoConstraints="NO" id="jhn-ah-blj">
+                                <rect key="frame" x="115" y="384" width="145" height="134"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="134" id="Af8-Oa-Twf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DU7-1D-Qqn" firstAttribute="leading" secondItem="UfY-nW-Xnh" secondAttribute="leadingMargin" id="5bX-1J-Wgv"/>
-                            <constraint firstAttribute="trailing" secondItem="DU7-1D-Qqn" secondAttribute="trailing" id="Rlx-Fk-SJ2"/>
-                            <constraint firstItem="DU7-1D-Qqn" firstAttribute="top" secondItem="ukr-U2-LKk" secondAttribute="bottom" constant="119" id="fR3-D6-YSZ"/>
+                            <constraint firstItem="r0T-bU-AkH" firstAttribute="top" secondItem="ukr-U2-LKk" secondAttribute="bottom" constant="56" id="AKt-Hl-gug"/>
+                            <constraint firstItem="jhn-ah-blj" firstAttribute="leading" secondItem="UfY-nW-Xnh" secondAttribute="leadingMargin" constant="99" id="LnV-F7-Vlh"/>
+                            <constraint firstItem="aaB-6H-boi" firstAttribute="top" secondItem="ukr-U2-LKk" secondAttribute="bottom" id="X6f-49-lIB"/>
+                            <constraint firstItem="aaB-6H-boi" firstAttribute="centerX" secondItem="r0T-bU-AkH" secondAttribute="centerX" id="Zyb-Bw-XMF"/>
+                            <constraint firstAttribute="trailing" secondItem="aaB-6H-boi" secondAttribute="trailing" id="e5q-0Y-0TL"/>
+                            <constraint firstItem="aaB-6H-boi" firstAttribute="bottom" secondItem="eIk-ML-xk7" secondAttribute="top" id="htj-kT-hkx"/>
+                            <constraint firstItem="r0T-bU-AkH" firstAttribute="centerX" secondItem="jhn-ah-blj" secondAttribute="centerX" id="odT-fu-4u5"/>
+                            <constraint firstItem="r0T-bU-AkH" firstAttribute="leading" secondItem="UfY-nW-Xnh" secondAttribute="leadingMargin" constant="95" id="rl7-E5-dJe"/>
+                            <constraint firstItem="aaB-6H-boi" firstAttribute="leading" secondItem="UfY-nW-Xnh" secondAttribute="leading" id="sqQ-s5-IxS"/>
+                            <constraint firstItem="eIk-ML-xk7" firstAttribute="top" secondItem="jhn-ah-blj" secondAttribute="bottom" constant="149" id="vuh-P7-8ZP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Transportation" id="7Gz-4U-Nm7"/>
+                    <connections>
+                        <outlet property="detailsIcon" destination="r0T-bU-AkH" id="wT3-zA-BHa"/>
+                        <outlet property="typesIcon" destination="jhn-ah-blj" id="IDD-1f-4ON"/>
+                        <segue destination="xuD-lc-Vhr" kind="show" identifier="transportationInfoSegue" id="VD4-6L-JJl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0X-3u-LBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434" y="882"/>
+            <point key="canvasLocation" x="-434" y="891"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="NDV-6p-uE8">
+            <objects>
+                <viewController id="xuD-lc-Vhr" customClass="TransportationDetailsViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zxZ-Uj-SoU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Jf-cI-gwf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w5G-st-OTf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Detail Menu background" translatesAutoresizingMaskIntoConstraints="NO" id="qld-KN-nqq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transportTypes" translatesAutoresizingMaskIntoConstraints="NO" id="iNV-qJ-8C1">
+                                <rect key="frame" x="108" y="295" width="159" height="141"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FreeTramZone" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-vl-efi">
+                                <rect key="frame" x="108" y="488" width="159" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="sRq-YA-Fxf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myki" translatesAutoresizingMaskIntoConstraints="NO" id="UPS-t7-Y5b">
+                                <rect key="frame" x="108" y="94" width="159" height="141"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qld-KN-nqq" secondAttribute="trailing" id="5Ug-U5-lJv"/>
+                            <constraint firstItem="UPS-t7-Y5b" firstAttribute="leading" secondItem="iNV-qJ-8C1" secondAttribute="leading" id="6Yz-vg-ze4"/>
+                            <constraint firstItem="UPS-t7-Y5b" firstAttribute="leading" secondItem="w5G-st-OTf" secondAttribute="leadingMargin" constant="92" id="6pZ-2e-Im7"/>
+                            <constraint firstItem="qld-KN-nqq" firstAttribute="leading" secondItem="w5G-st-OTf" secondAttribute="leading" id="8LY-cQ-FfG"/>
+                            <constraint firstItem="UPS-t7-Y5b" firstAttribute="top" secondItem="zxZ-Uj-SoU" secondAttribute="bottom" constant="30" id="BqP-MS-Bet"/>
+                            <constraint firstItem="iNV-qJ-8C1" firstAttribute="leading" secondItem="2pN-vl-efi" secondAttribute="leading" id="Cq6-Wf-DrD"/>
+                            <constraint firstItem="qld-KN-nqq" firstAttribute="bottom" secondItem="7Jf-cI-gwf" secondAttribute="top" id="DDz-2x-vBg"/>
+                            <constraint firstItem="UPS-t7-Y5b" firstAttribute="trailing" secondItem="iNV-qJ-8C1" secondAttribute="trailing" id="LeQ-82-acX"/>
+                            <constraint firstItem="7Jf-cI-gwf" firstAttribute="top" secondItem="2pN-vl-efi" secondAttribute="bottom" constant="39" id="NTZ-VX-CrO"/>
+                            <constraint firstItem="iNV-qJ-8C1" firstAttribute="top" secondItem="UPS-t7-Y5b" secondAttribute="bottom" constant="60" id="SdE-Bi-vaU"/>
+                            <constraint firstItem="qld-KN-nqq" firstAttribute="centerX" secondItem="UPS-t7-Y5b" secondAttribute="centerX" id="bv4-ab-u99"/>
+                            <constraint firstItem="iNV-qJ-8C1" firstAttribute="trailing" secondItem="2pN-vl-efi" secondAttribute="trailing" id="lAM-0h-GM9"/>
+                            <constraint firstItem="qld-KN-nqq" firstAttribute="centerY" secondItem="iNV-qJ-8C1" secondAttribute="centerY" id="sOJ-t8-wBK"/>
+                            <constraint firstItem="qld-KN-nqq" firstAttribute="top" secondItem="zxZ-Uj-SoU" secondAttribute="bottom" id="vDt-rA-Jbe"/>
+                            <constraint firstItem="2pN-vl-efi" firstAttribute="top" secondItem="iNV-qJ-8C1" secondAttribute="bottom" constant="52" id="wcA-NM-wqK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Details" id="C67-Xv-prJ"/>
+                    <connections>
+                        <outlet property="mykiIcon" destination="UPS-t7-Y5b" id="HBd-mc-0Z4"/>
+                        <outlet property="offersIcon" destination="2pN-vl-efi" id="yBb-NX-4r4"/>
+                        <outlet property="typesIcon" destination="iNV-qJ-8C1" id="MGl-90-8wu"/>
+                        <segue destination="4DQ-8u-Hom" kind="show" identifier="mykiSegue" id="5VF-TU-sk5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDz-PQ-fpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="890"/>
+        </scene>
+        <!--PTV-->
+        <scene sceneID="cew-Bm-V7p">
+            <objects>
+                <viewController id="Y99-pK-SWb" customClass="PtvWebViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HLS-ZU-6ji"/>
+                        <viewControllerLayoutGuide type="bottom" id="kEn-ig-HlE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IvG-qp-Zwv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URZ-vM-mZ1">
+                                <rect key="frame" x="16" y="0.0" width="343" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="URZ-vM-mZ1" firstAttribute="leading" secondItem="IvG-qp-Zwv" secondAttribute="leadingMargin" id="3la-MH-tj2"/>
+                            <constraint firstItem="URZ-vM-mZ1" firstAttribute="trailing" secondItem="IvG-qp-Zwv" secondAttribute="trailingMargin" id="D42-RC-hOv"/>
+                            <constraint firstAttribute="bottom" secondItem="URZ-vM-mZ1" secondAttribute="bottom" constant="20" symbolic="YES" id="Lfg-0k-11J"/>
+                            <constraint firstItem="URZ-vM-mZ1" firstAttribute="top" secondItem="IvG-qp-Zwv" secondAttribute="top" id="x5h-VS-3t3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="PTV" id="QFp-3C-CNW"/>
+                    <connections>
+                        <outlet property="webView" destination="URZ-vM-mZ1" id="VVI-x2-UG7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n4w-Xz-jat" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610.4000000000001" y="888.30584707646187"/>
+        </scene>
+        <!--myki-->
+        <scene sceneID="uM5-f7-zmR">
+            <objects>
+                <viewController id="4DQ-8u-Hom" customClass="MykiViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7bK-Ev-eTw"/>
+                        <viewControllerLayoutGuide type="bottom" id="oNZ-al-xe1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T96-HQ-3JZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mykiBanner" translatesAutoresizingMaskIntoConstraints="NO" id="eb9-om-RB8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="192"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Jew-OR-KsL">
+                                <rect key="frame" x="16" y="264" width="343" height="47"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="KoY-MP-uDX"/>
+                                </constraints>
+                                <string key="text">Myki is your reusable travel card for trains, trams and buses in Melbourne and regional Victoria. 
+   
+
+        
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mykiLocation" translatesAutoresizingMaskIntoConstraints="NO" id="lVK-8e-OWa">
+                                <rect key="frame" x="263" y="319" width="96" height="89"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buy" translatesAutoresizingMaskIntoConstraints="NO" id="Wkw-gC-bsB">
+                                <rect key="frame" x="146" y="329" width="83" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="5kv-UP-CiO"/>
+                                    <constraint firstAttribute="width" constant="83" id="oDF-64-bUk"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urn-8p-TqI">
+                                <rect key="frame" x="16" y="321" width="117" height="85"/>
+                                <state key="normal" title="Button" image="student"/>
+                                <connections>
+                                    <action selector="studentOfferButton:" destination="4DQ-8u-Hom" eventType="touchUpInside" id="AZx-VC-g9a"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wkw-gC-bsB" firstAttribute="centerY" secondItem="lVK-8e-OWa" secondAttribute="centerY" id="Dgh-Ms-w9V"/>
+                            <constraint firstItem="Jew-OR-KsL" firstAttribute="trailing" secondItem="lVK-8e-OWa" secondAttribute="trailing" id="FHF-E8-xKe"/>
+                            <constraint firstAttribute="trailing" secondItem="eb9-om-RB8" secondAttribute="trailing" id="OKW-3y-fV4"/>
+                            <constraint firstItem="Urn-8p-TqI" firstAttribute="centerY" secondItem="Wkw-gC-bsB" secondAttribute="centerY" id="OzY-HC-LmP"/>
+                            <constraint firstItem="Wkw-gC-bsB" firstAttribute="top" secondItem="Jew-OR-KsL" secondAttribute="bottom" constant="18" id="Prz-G9-Dok"/>
+                            <constraint firstItem="Urn-8p-TqI" firstAttribute="top" secondItem="Jew-OR-KsL" secondAttribute="bottom" constant="10" id="Vgn-XE-sST"/>
+                            <constraint firstItem="Jew-OR-KsL" firstAttribute="top" secondItem="eb9-om-RB8" secondAttribute="bottom" constant="8" symbolic="YES" id="WO7-KP-lY0"/>
+                            <constraint firstItem="Jew-OR-KsL" firstAttribute="leading" secondItem="T96-HQ-3JZ" secondAttribute="leadingMargin" id="hFv-b3-Lrx"/>
+                            <constraint firstItem="Jew-OR-KsL" firstAttribute="centerX" secondItem="Wkw-gC-bsB" secondAttribute="centerX" id="irM-bR-5IH"/>
+                            <constraint firstItem="lVK-8e-OWa" firstAttribute="leading" secondItem="Wkw-gC-bsB" secondAttribute="trailing" constant="34" id="jZh-1w-9jM"/>
+                            <constraint firstItem="eb9-om-RB8" firstAttribute="leading" secondItem="T96-HQ-3JZ" secondAttribute="leading" id="kKo-rQ-WCr"/>
+                            <constraint firstItem="eb9-om-RB8" firstAttribute="centerX" secondItem="Jew-OR-KsL" secondAttribute="centerX" id="kaG-3G-H5d"/>
+                            <constraint firstItem="Wkw-gC-bsB" firstAttribute="leading" secondItem="Urn-8p-TqI" secondAttribute="trailing" constant="13" id="kuK-vu-lwm"/>
+                            <constraint firstItem="Jew-OR-KsL" firstAttribute="leading" secondItem="Urn-8p-TqI" secondAttribute="leading" id="kyN-K5-UiA"/>
+                            <constraint firstItem="oNZ-al-xe1" firstAttribute="top" secondItem="lVK-8e-OWa" secondAttribute="bottom" constant="259" id="uH8-Qw-Jiq"/>
+                            <constraint firstItem="lVK-8e-OWa" firstAttribute="top" secondItem="Jew-OR-KsL" secondAttribute="bottom" constant="8" symbolic="YES" id="ysp-MI-63o"/>
+                            <constraint firstItem="eb9-om-RB8" firstAttribute="top" secondItem="7bK-Ev-eTw" secondAttribute="bottom" id="zJc-hR-iAo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="myki" id="xzw-xb-Cm3"/>
+                    <connections>
+                        <outlet property="buyMyki" destination="Wkw-gC-bsB" id="SkG-lG-XZl"/>
+                        <outlet property="mykiStoreLocations" destination="lVK-8e-OWa" id="4YT-dl-59s"/>
+                        <segue destination="Y99-pK-SWb" kind="show" identifier="mykiWebViewSegue" id="TAg-UF-uCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bPJ-yY-gln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="888.30584707646187"/>
         </scene>
         <!--Translator-->
         <scene sceneID="LOl-6D-6Du">
@@ -166,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhN-r5-yc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352.80000000000001" y="868.51574212893559"/>
+            <point key="canvasLocation" x="1079" y="-744"/>
         </scene>
         <!--Iconified-->
         <scene sceneID="AOW-O6-G4h">
@@ -802,6 +996,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="About " width="25" height="25"/>
         <image name="About-48 (1)" width="24" height="24"/>
         <image name="Accommodation" width="1089" height="1089"/>
         <image name="Banking" width="1089" height="1089"/>
@@ -812,6 +1007,7 @@
         <image name="Drinks" width="1089" height="1089"/>
         <image name="Emergency" width="181" height="181"/>
         <image name="Food" width="1089" height="1089"/>
+        <image name="FreeTramZone" width="98" height="98"/>
         <image name="Marker-48" width="48" height="48"/>
         <image name="Near Me-48" width="48" height="48"/>
         <image name="Phone-26" width="26" height="26"/>
@@ -823,7 +1019,13 @@
         <image name="Xlarge Icons-26" width="13" height="13"/>
         <image name="arrow" width="128" height="128"/>
         <image name="background Main Menu" width="1080" height="1920"/>
+        <image name="buy" width="800" height="800"/>
         <image name="coffeeCafe" width="1089" height="1089"/>
+        <image name="myki" width="109" height="102"/>
+        <image name="mykiBanner" width="295" height="130"/>
+        <image name="mykiLocation" width="48" height="48"/>
+        <image name="student" width="195" height="195"/>
+        <image name="transportTypes" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CrS-TS-TiU"/>

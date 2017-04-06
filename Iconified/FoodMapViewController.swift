@@ -361,7 +361,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         let restaurantAnnotation = view.annotation as! RestaurantAnnotation
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
         //get the callout view
-        let calloutView = views?[0] as! CustomCalloutView
+        let calloutView = views?[0] as! CallViewCustom
         //Add Image, name, open status and a details icon
         calloutView.restaurantName.text = restaurantAnnotation.name
         if(restaurantAnnotation.isOpen != nil)
