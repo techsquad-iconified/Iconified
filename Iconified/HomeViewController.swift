@@ -103,7 +103,7 @@ class HomeViewController: UIViewController {
         //Segue directing to the Transportation facilities 
         if(segue.identifier == "TransportationSegue")
         {
-            let destinationTransportationVC:TransportationViewController = segue.destination as! TransportationViewController
+            let destinationTransportationVC:TransportationDetailsViewController = segue.destination as! TransportationDetailsViewController
         }
        
     }

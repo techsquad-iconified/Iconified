@@ -1,16 +1,15 @@
 //
-//  PtvWebViewController.swift
+//  TranslationWebViewController.swift
 //  Iconified
 //
-//  Created by Shishira Skanda on 5/4/17.
+//  Created by Shishira Skanda on 9/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
 import UIKit
 
-class PtvWebViewController: UIViewController {
-    
-   
+class TranslationWebViewController: UIViewController {
+
     @IBOutlet var webView: UIWebView!
     var selectedUrl: String?
     
@@ -22,7 +21,7 @@ class PtvWebViewController: UIViewController {
         
         // setting up the progress view
         setProgressView()
-        self.webView.addSubview(self.progressView)
+        self.view.addSubview(self.progressView)
         
         DispatchQueue.main.async(){
         var url: NSURL
@@ -32,18 +31,14 @@ class PtvWebViewController: UIViewController {
         self.webView.loadRequest(requestObj as URLRequest)
         self.stopProgressView()
         }
-        
-       
- 
-  //  self.stopProgressView()
+        //  self.stopProgressView()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     
     /*
@@ -85,7 +80,7 @@ class PtvWebViewController: UIViewController {
      */
     func stopProgressView()
     {
-        let subviews = self.webView.subviews
+        let subviews = self.view.subviews
         for subview in subviews
         {
             if subview.tag == 1000
@@ -94,6 +89,8 @@ class PtvWebViewController: UIViewController {
             }
         }
     }
+    
+
     
 
     /*

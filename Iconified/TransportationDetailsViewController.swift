@@ -43,14 +43,14 @@ class TransportationDetailsViewController: UIViewController {
     func mykiSelected()
     {
         performSegue(withIdentifier: "mykiSegue", sender: nil)
-        
     }
     func typesSelected()
     {
-        
+        performSegue(withIdentifier: "publicTransportSegue", sender: nil)
     }
     func offersSelected()
     {
+        performSegue(withIdentifier: "freeTramZoneSegue", sender: nil)
         
     }
 
@@ -63,6 +63,11 @@ class TransportationDetailsViewController: UIViewController {
         {
             let destinationVC: MykiViewController = segue.destination as! MykiViewController
         }
+        if(segue.identifier == "publicTransportSegue")
+        {
+            let destinationVC: PtvMapViewController = segue.destination as! PtvMapViewController
+        }
+        
     }
     
 

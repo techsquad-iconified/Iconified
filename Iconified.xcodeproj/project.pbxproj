@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1A03CE521E94E7FD001E68A8 /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A03CE501E94E7FD001E68A8 /* CustomCalloutView.xib */; };
+		1A0C78E01E972A4B00C1FFD5 /* PtvVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78DF1E972A4B00C1FFD5 /* PtvVideoViewController.swift */; };
+		1A0C78E51E9765C600C1FFD5 /* userData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A0C78E41E9765C600C1FFD5 /* userData.plist */; };
+		1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */; };
+		1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */; };
+		1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */; };
 		1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */; };
 		1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15C7041E9345DA002658A9 /* TranslateViewController.swift */; };
-		1A27D6001E80D85200C028C1 /* TransportationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D5FF1E80D85200C028C1 /* TransportationViewController.swift */; };
 		1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D6011E80D86300C028C1 /* FoodViewController.swift */; };
 		1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0E41E8494AB0077CCA1 /* Place.swift */; };
 		1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */; };
@@ -85,9 +89,13 @@
 /* Begin PBXFileReference section */
 		19DE86583785B53C05502B91 /* Pods_IconifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IconifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A03CE501E94E7FD001E68A8 /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = SOURCE_ROOT; };
+		1A0C78DF1E972A4B00C1FFD5 /* PtvVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvVideoViewController.swift; sourceTree = "<group>"; };
+		1A0C78E41E9765C600C1FFD5 /* userData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userData.plist; sourceTree = "<group>"; };
+		1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationWebViewController.swift; sourceTree = "<group>"; };
+		1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvMapViewController.swift; sourceTree = "<group>"; };
 		1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAboutViewController.swift; sourceTree = "<group>"; };
 		1A15C7041E9345DA002658A9 /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
-		1A27D5FF1E80D85200C028C1 /* TransportationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportationViewController.swift; sourceTree = "<group>"; };
 		1A27D6011E80D86300C028C1 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		1A50C0E41E8494AB0077CCA1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodMapViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +103,7 @@
 		1A50C0EE1E868FB50077CCA1 /* RestaurantAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantAnnotation.swift; path = ../RestaurantAnnotation.swift; sourceTree = "<group>"; };
 		1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Iconified.xcodeproj; path = /Users/shishiraskanda/Desktop/Iconified/Iconified.xcodeproj; sourceTree = "<absolute>"; };
-		1A5509901E8F6F38004786B1 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits; sourceTree = "<group>"; };
+		1A5509901E8F6F38004786B1 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Credits; path = Iconified/Credits; sourceTree = "<group>"; };
 		1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Iconified/MenuViewController.swift; sourceTree = "<group>"; };
 		1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenu.swift; sourceTree = "<group>"; };
 		1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenuButtonAction.swift; sourceTree = "<group>"; };
@@ -121,7 +129,7 @@
 		1AB2501E1E7F8B77007CFD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AB2502B1E7FA760007CFD1B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1AB2502D1E801010007CFD1B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Iconified/HomeViewController.swift; sourceTree = "<group>"; };
-		1AC243F41E95D355007AC863 /* CallViewCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewCustom.swift; sourceTree = "<group>"; };
+		1AC243F41E95D355007AC863 /* CallViewCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallViewCustom.swift; path = ../CallViewCustom.swift; sourceTree = "<group>"; };
 		1AE38CF71E94F65D0003EF52 /* TransportationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportationDetailsViewController.swift; sourceTree = "<group>"; };
 		1AE38CF91E94FB2A0003EF52 /* PtvWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvWebViewController.swift; sourceTree = "<group>"; };
 		1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				1A03CE501E94E7FD001E68A8 /* CustomCalloutView.xib */,
+				1AC243F41E95D355007AC863 /* CallViewCustom.swift */,
 			);
 			name = CustomCalloutView;
 			sourceTree = "<group>";
@@ -204,10 +213,12 @@
 		1A14536C1E8747B7001D04BC /* Transportation */ = {
 			isa = PBXGroup;
 			children = (
-				1A27D5FF1E80D85200C028C1 /* TransportationViewController.swift */,
 				1AE38CF71E94F65D0003EF52 /* TransportationDetailsViewController.swift */,
 				1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */,
 				1AE38CF91E94FB2A0003EF52 /* PtvWebViewController.swift */,
+				1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */,
+				1A0C78DF1E972A4B00C1FFD5 /* PtvVideoViewController.swift */,
+				1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */,
 			);
 			name = Transportation;
 			sourceTree = "<group>";
@@ -232,6 +243,7 @@
 		1A7AA6B31E8CF4AC0027DD34 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				1A5509901E8F6F38004786B1 /* Credits */,
 				1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */,
 				1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */,
 				1AB2502D1E801010007CFD1B /* HomeViewController.swift */,
@@ -246,7 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */,
-				1A5509901E8F6F38004786B1 /* Credits */,
+				1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */,
 				1AB250051E7F8B77007CFD1B /* LaunchScreen.storyboard */,
 				1AB250031E7F8B77007CFD1B /* Assets.xcassets */,
 				1AE38CF61E94F5A10003EF52 /* Carousel */,
@@ -257,7 +269,6 @@
 		1AB24FED1E7F8B77007CFD1B = {
 			isa = PBXGroup;
 			children = (
-				1AC243F41E95D355007AC863 /* CallViewCustom.swift */,
 				1AB24FF81E7F8B77007CFD1B /* Iconified */,
 				1AB250101E7F8B77007CFD1B /* IconifiedTests */,
 				1AB2501B1E7F8B77007CFD1B /* IconifiedUITests */,
@@ -287,6 +298,7 @@
 				1A14536C1E8747B7001D04BC /* Transportation */,
 				1AB250081E7F8B77007CFD1B /* Info.plist */,
 				1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */,
+				1A0C78E41E9765C600C1FFD5 /* userData.plist */,
 				1AB250001E7F8B77007CFD1B /* Iconified.xcdatamodeld */,
 				1A50C0F31E86AC6C0077CCA1 /* IconifiedProject */,
 			);
@@ -494,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5509911E8F6F38004786B1 /* Credits in Resources */,
+				1A0C78E51E9765C600C1FFD5 /* userData.plist in Resources */,
 				1AB250071E7F8B77007CFD1B /* LaunchScreen.storyboard in Resources */,
 				1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */,
 				1A03CE521E94E7FD001E68A8 /* CustomCalloutView.xib in Resources */,
@@ -665,13 +678,13 @@
 				1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */,
 				1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */,
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
+				1A0C78E01E972A4B00C1FFD5 /* PtvVideoViewController.swift in Sources */,
 				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
 				1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */,
 				1AC243F51E95D355007AC863 /* CallViewCustom.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
-				1A27D6001E80D85200C028C1 /* TransportationViewController.swift in Sources */,
 				1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
@@ -680,11 +693,14 @@
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
 				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
+				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
+				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,
 				1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */,
+				1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
