@@ -38,6 +38,9 @@ class FoodPhotoAlbumViewController: UIViewController, UICollectionViewDataSource
         super.viewDidLoad()
         self.photoReferenceArray = (self.selectedPlace?.photoReference)!
         
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         // setting up the progress view
         setProgressView()
         self.view.addSubview(self.progressView)
@@ -48,6 +51,11 @@ class FoodPhotoAlbumViewController: UIViewController, UICollectionViewDataSource
         //}
         
    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

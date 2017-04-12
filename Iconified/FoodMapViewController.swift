@@ -54,6 +54,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         // setting up the progress view
         setProgressView()
         self.view.addSubview(self.progressView)
@@ -69,6 +72,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         }
     }
 
+    override open var shouldAutorotate: Bool {
+        return false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,7 +105,6 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
-        print("Users Current location \(self.longitude) and \(self.longitude)")
         self.latitude = (locationManager.location?.coordinate.latitude)!
         self.longitude = (locationManager.location?.coordinate.longitude)!
     }

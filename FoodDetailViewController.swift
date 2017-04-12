@@ -43,6 +43,8 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         aboutContainer.isHidden = false
         photosContainer.isHidden = true
         
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         
         //set page title
         self.title = self.selectedPlace.placeName
@@ -52,6 +54,10 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         print("In detail view \(selectedPlace.placeName!)")
         
         
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
     }
 
     override func didReceiveMemoryWarning() {

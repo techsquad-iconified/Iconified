@@ -26,8 +26,12 @@ class MykiViewController: UIViewController {
         getDefaultBrowsingLanguage()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
      
         //Adding gesture recognition for About icon
         let tapGestureRecogniserForAboutMyki = UITapGestureRecognizer(target: self, action:#selector(MykiViewController.aboutMykiSelected))
@@ -51,6 +55,10 @@ class MykiViewController: UIViewController {
         mykiStoreLocations.addGestureRecognizer(tapGestureRecogniserForMykiStore)
        
        
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
     }
     
     required init?(coder aDecoder: NSCoder) {

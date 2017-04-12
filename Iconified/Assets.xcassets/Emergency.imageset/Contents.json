@@ -7,10 +7,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "Emergency-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Emergency-2.png",
       "scale" : "3x"
     }
   ],

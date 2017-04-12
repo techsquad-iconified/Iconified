@@ -17,23 +17,33 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var longitude: Double?
     // declaring the global variable for location manager
     let locationManager: CLLocationManager
+    var ptvUrl: String?
+    //Array of place details retrieved from the user
+    var stopsArray: NSMutableArray
+    // creating a view to display a progress spinner while data is being loaded from the server
+    var progressView = UIView()
 
     required init?(coder aDecoder: NSCoder) {
         self.latitude = nil
         self.longitude = nil
+        self.stopsArray = NSMutableArray()
         self.locationManager = CLLocationManager()
         super.init(coder: aDecoder)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ptvMapView.delegate = self
+        
+        // setting up the progress view
+        setProgressView()
+        self.view.addSubview(self.progressView)
+        
         //call method to get users current location
         self.getUsersCurrentLocation()
         
         //Method to create the API call from the server
         DispatchQueue.main.async(){
-            self.downloadLocationDataFromServer()
-            //self.downloadLocationData()
+            self.getSignatureFromServer()
         }
     }
 
@@ -72,13 +82,56 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         print("Lat and lng of the user is \(self.latitude) and \(self.longitude)")
     }
     
+    func getSignatureFromServer()
+    {
+        var url: URL
+        url = URL(string: "http://23.83.248.221/testpy?myLocation=\(self.latitude!),\(self.longitude!)")!
+        print(url)
+        let urlRequest = URLRequest(url: url)
+        
+        //setting up session
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            if (error != nil)    //checking if the any error message received during connection
+            {
+                print("Error \(error)")
+                let alert = UIAlertController(title: "Sorry! Server Failed!", message: "Please try again later.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                DispatchQueue.main.async()
+                {
+                    do{
+                        let jsonData = try JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
+                        for urlData in jsonData
+                        {
+                            self.ptvUrl = urlData as! String
+                            print("Json Data is \(urlData)")
+                        }
+                    }
+                    catch{
+                        print("JSON Serialization error")
+                    }
+                
+                }
+                DispatchQueue.main.async(){
+                    self.downloadLocationDataFromServer()
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
+    
     //Function makes a API call to the server to fetch the required place details
     func downloadLocationDataFromServer()
     {
         print("Lat and lng of the user is \(self.latitude!) and \(self.longitude!)")
         var url: URL
-       // url = URL(string:"http://23.83.248.221/test?searchType=\(self.foodType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
-        url = URL(string:"http://timetableapi.ptv.vic.gov.au/v3/stops/location/\(self.latitude!),\(self.longitude!)?devid=3000212&signature=74723B0324AADE37AA87D3B45A888509F525170A")!
+        url = URL(string: self.ptvUrl!)!
         print(url)
         let urlRequest = URLRequest(url: url)
         
@@ -100,7 +153,7 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 // Do any additional setup after loading the view.
                 DispatchQueue.main.async(){
-                  //  self.addLocationAnnotations()
+                  self.addLocationAnnotations()
                 }
             }
         })
@@ -111,85 +164,234 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     //Method to parse the JSON response from the server
     func parseServerJSON(articleJSON:NSData)
     {
-        //Local variables to store place details
+        //Local variables to store stop details
+        var routeType: Int
+        var stopDistance: Double
+        var stopId: Int
+        var stopLatitude: Double
+        var stopLongitude: Double
+        var stopName: String
         
         
         do{
             let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
             
-            print("Json Data is \(jsonData)")
-            /*for eachPlace in jsonData
+            let dataArray = jsonData.object(forKey: "stops") as! NSArray
+            
+            for jdata in dataArray
             {
-                firstOneDone = false    // Flag to get the forst image in the photo list
-                let place = eachPlace as! NSDictionary
-                if let location = place["location"] as? NSDictionary
-                {
-                    //get location details of the place
-                    placeLat = location.object(forKey: "lat")! as! Double
-                    placeLng = location.object(forKey: "lng")! as! Double
-                    print("location is \(placeLat) and \(placeLng)")
-                }
-                //get address, name, open status and id of the place
-                placeAddress = place.object(forKey: "address") as! String
-                placeName = place.object(forKey: "name") as! String
-                placeId = place.object(forKey: "place_id") as! String
-                isOpen = place.object(forKey: "open_now") as! String
+                //print("Stop Data is \(jdata)")
                 
-                //create a object of place for the details obtained
-                let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
-                //addtional details for the place
-                newPlace.phoneNumber = place.object(forKey: "numbers") as? String
-                newPlace.priceLevel = place.object(forKey: "price_level") as? Int
-                newPlace.rating = place.object(forKey: "rating") as? Float
-                newPlace.website = place.object(forKey: "website") as? String
-                newPlace.url = place.object(forKey: "url") as? String
+                let stop = jdata as! NSDictionary
                 
-                //If photo exists get the first photo and an array of photo reference string.
-                if let photos = place["photos"] as? NSArray
-                {
-                    for photo in photos
-                    {
-                        let eachPhoto = photo as? NSDictionary
-                        let reference: String = (eachPhoto?.object(forKey: "photo_reference") as? String)!
-                        print("reference is \(reference)")
-                        newPlace.photoReference.append(reference)
-                        if(firstOneDone == false)
-                        {
-                            // retrieve images for each place.
-                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
-                            print(url)
-                            let data = NSData(contentsOf:url as URL)
-                            if(data != nil)
-                            {
-                                print("Photo was not nil")
-                                newPlace.firstPhoto = UIImage(data:data! as Data)!
-                                // newPlace.photos.append(UIImage(data:data! as Data)!)
-                            }
-                        }
-                        firstOneDone = true
-                    }
-                }
+                routeType = (stop.object(forKey: "route_type") as? Int)!
+                stopDistance = (stop.object(forKey: "stop_distance") as? Double)!
+                stopId = (stop.object(forKey: "stop_id") as? Int)!
+                stopLatitude = (stop.object(forKey: "stop_latitude") as? Double)!
+                stopLongitude = (stop.object(forKey: "stop_longitude") as? Double)!
+                stopName = (stop.object(forKey: "stop_name") as? String)!
+                
+                let newPtvStop = PtvStops(routeType: routeType, stopDistance: stopDistance, stopId: stopId, stopLatitude: stopLatitude, stopLongitude: stopLongitude, stopName: stopName)
+                
                 //Add the place to the placeArray
-                self.placeArray.add(newPlace)
+                self.stopsArray.add(newPtvStop)
                 
                 //printing the details in console for testing purpose
-                print("PLace name is \(newPlace.placeName)")
-                print("open now is \(newPlace.isOpen)")
-                print("place id is \(newPlace.placeId)")
-                print("place address is \(newPlace.placeAddress)")
-                print("latitude is \(newPlace.lat)")
-                print("price level is\(newPlace.priceLevel)")
-                print("rating is \(newPlace.rating)")
-                print("Webisite is \(newPlace.website)")
-                print("url is \(newPlace.url)")
-                print("no of photo reference is \(newPlace.photoReference.count)")
-            }*/
-            
+                print("RouteType is \(newPtvStop.routeType)")
+                print("stop distance is \(newPtvStop.stopDistance)")
+                print("stopId is \(newPtvStop.stopId)")
+                print("stopLatitude is \(newPtvStop.stopLatitude))")
+                print("stopLongitude is \(newPtvStop.stopLongitude))")
+                print("stopName is\(newPtvStop.stopName))")
+            }
         }
         catch{
             print("JSON Serialization error")
         }
     }
+    
+    /*
+     Function adds annotations on the map for the selected category
+     */
+    func addLocationAnnotations()
+    {
+        //remove all annotations already existing
+        let allAnnotations = self.ptvMapView.annotations
+        self.ptvMapView.removeAnnotations(allAnnotations)
+        
+        if(self.stopsArray.count != 0 )
+        {
+            for case let stop as PtvStops in stopsArray
+            {
+                if (stop.stopLatitude != nil)     // if it has a previous latitude
+                {
+                    let loc = CLLocationCoordinate2D(latitude: Double((stop.stopLatitude)!) , longitude: Double((stop.stopLongitude)!))
+                    let center = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
+                    let point = RestaurantAnnotation(coordinate: loc)
+                    point.name = stop.stopName
+                    
+                    if((stop.routeType)! == 0 )
+                    {
+                        point.image = UIImage(named: "Train")
+                    }
+                    else if((stop.routeType)! == 1 )
+                    {
+                        point.image = UIImage(named: "Tram")    //drinks annotation
+                    }
+                    else if((stop.routeType)! == 2 )
+                    {
+                        point.image = UIImage(named: "Bus")     //Restaurant annotation
+                    }
+                    else
+                    {
+                      //  point.image = UIImage(named: "Beer")
+                    }
+                   
+                    
+                    /*point.image = place.firstPhoto
+                    if(place.isOpen == "true" || place.isOpen == "false")
+                    {
+                        point.isOpen = place.isOpen
+                    }
+                    point.place = place
+                    */
+                    
+                    ptvMapView.addAnnotation(point)
+                    
+                    let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.008,longitudeDelta: 0.008))
+                    ptvMapView.setRegion(area, animated: true)
+                }
+            }
+        }
+        self.stopProgressView()
+        
+    }
+    
+    /*
+     Setting up the progress view that displays a spinner while the serer data is being downloaded.
+     The view uses an activity indicator (a spinner) and a simple text to convey the information.
+     Source: YouTube
+     Tutorial: Swift - How to Create Loading Bar (Spinners)
+     Author: Melih Şimşek
+     URL: https://www.youtube.com/watch?v=iPTuhyU5HkI
+     */
+    func setProgressView()
+    {
+        self.progressView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        self.progressView.backgroundColor = UIColor.darkGray
+        self.progressView.layer.cornerRadius = 10
+        let wait = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        wait.color = UIColor.white
+        //UIColor(red: 254/255, green: 218/255, blue: 2/255, alpha: 1)
+        wait.hidesWhenStopped = false
+        wait.startAnimating()
+        
+        let message = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        message.text = "Finding stops ..."
+        message.textColor = UIColor.white
+        
+        self.progressView.addSubview(wait)
+        self.progressView.addSubview(message)
+        self.progressView.center = self.view.center
+        self.progressView.tag = 1000
+        
+    }
+    
+    /*
+     This method is invoked to remove the progress spinner from the view.
+     Source: YouTube
+     Tutorial: Swift - How to Create Loading Bar (Spinners)
+     Author: Melih Şimşek
+     URL: https://www.youtube.com/watch?v=iPTuhyU5HkI
+     */
+    func stopProgressView()
+    {
+        let subviews = self.view.subviews
+        for subview in subviews
+        {
+            if subview.tag == 1000
+            {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    //MARK: MKMapViewDelegate
+    //Method to create a view for the annotations - annotations represent the category selected
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation
+        {
+            return nil
+        }
+        var annotationView = self.ptvMapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+            annotationView?.canShowCallout = false
+        }
+        else{
+            annotationView?.annotation = annotation
+        }
+        let res = annotation as! RestaurantAnnotation
+        annotationView?.image = res.image
+        /*for case let stop as PtvStops in stopsArray
+        {
+            if((stop.routeType)! == 0 )
+            {
+                annotationView?.image = UIImage(named: "Cafe Filled")
+            }
+            else if((stop.routeType)! == 1 )
+            {
+                annotationView?.image = UIImage(named: "Wine")    //drinks annotation
+            }
+            else if((stop.routeType)! == 2 )
+            {
+                annotationView?.image = UIImage(named: "Meal")     //Restaurant annotation
+            }
+            else
+            {
+                annotationView?.image = UIImage(named: "Beer")
+            }
+            
+        }*/
+        return annotationView
+    }
+    
+    //method is called when a particular annotation is selected
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView)
+    {
+        // if users location annotation is selected
+        if view.annotation is MKUserLocation
+        {
+            // Don't proceed with custom callout
+            return
+        }
+        
+        // if other anotations selected
+        let restaurantAnnotation = view.annotation as! RestaurantAnnotation
+        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        //get the callout view
+        let calloutView = views?[0] as! CallViewCustom
+        //Add Image, name, open status and a details icon
+        calloutView.restaurantName.text = restaurantAnnotation.name
+        
+        calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
+        view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    //Method is called when annotation is deselected or clicked outside the location
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: AnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+
 
     /*
     // MARK: - Navigation

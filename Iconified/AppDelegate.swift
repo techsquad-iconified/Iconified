@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-       let navBar: UIImage = UIImage(named: "orange-pattern")!
+       let navBar: UIImage = UIImage(named: "black-pattern")!
         UINavigationBar.appearance().setBackgroundImage(navBar, for: .default)
        // UINavigationBar.appearance().tintColor = UIColor(red: 177/255, green: 56/255, blue: 53/255, alpha: 1)
         

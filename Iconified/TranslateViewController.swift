@@ -49,11 +49,18 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         sourceLangPicker.delegate = self
         sourceLangPicker.dataSource = self
         targetLangPicker.delegate = self
         targetLangPicker.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    override open var shouldAutorotate: Bool {
+        return false
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,6 +22,9 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         //setting display type of slide show
         self.displayView.type = iCarouselType.invertedCylinder
         //Setting index to the selected item
@@ -34,6 +37,9 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override open var shouldAutorotate: Bool {
+        return false
     }
     
     

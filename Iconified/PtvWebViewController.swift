@@ -20,6 +20,9 @@ class PtvWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         // setting up the progress view
         setProgressView()
         self.webView.addSubview(self.progressView)
@@ -30,6 +33,7 @@ class PtvWebViewController: UIViewController {
         url = NSURL (string: "\(self.selectedUrl!)")! //if website was selected
         let requestObj = NSURLRequest(url: url as URL);
         self.webView.loadRequest(requestObj as URLRequest)
+        //getSettings().setBuiltInZoomControls(true);
         self.stopProgressView()
         }
         
@@ -39,6 +43,10 @@ class PtvWebViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

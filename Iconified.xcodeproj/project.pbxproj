@@ -13,6 +13,7 @@
 		1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */; };
 		1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */; };
 		1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */; };
+		1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */; };
 		1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */; };
 		1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15C7041E9345DA002658A9 /* TranslateViewController.swift */; };
 		1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D6011E80D86300C028C1 /* FoodViewController.swift */; };
@@ -94,6 +95,7 @@
 		1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationWebViewController.swift; sourceTree = "<group>"; };
 		1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvMapViewController.swift; sourceTree = "<group>"; };
+		1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PtvStops.swift; path = ../PtvStops.swift; sourceTree = "<group>"; };
 		1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAboutViewController.swift; sourceTree = "<group>"; };
 		1A15C7041E9345DA002658A9 /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		1A27D6011E80D86300C028C1 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				1A0C78E81E9A699500C1FFD5 /* TranslationWebViewController.swift */,
 				1A0C78DF1E972A4B00C1FFD5 /* PtvVideoViewController.swift */,
 				1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */,
+				1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */,
 			);
 			name = Transportation;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
+				1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,

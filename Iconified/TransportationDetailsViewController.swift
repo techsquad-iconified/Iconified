@@ -17,6 +17,9 @@ class TransportationDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         //Adding gesture recognition for myki icon
         let tapGestureRecogniserForMyki = UITapGestureRecognizer(target: self, action:#selector(TransportationDetailsViewController.mykiSelected))
         mykiIcon.isUserInteractionEnabled = true
@@ -33,6 +36,10 @@ class TransportationDetailsViewController: UIViewController {
         offersIcon.addGestureRecognizer(tapGestureRecogniserForOffers)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +72,12 @@ class TransportationDetailsViewController: UIViewController {
         }
         if(segue.identifier == "publicTransportSegue")
         {
-            let destinationVC: PtvMapViewController = segue.destination as! PtvMapViewController
+            let destinationMapVC: PtvMapViewController = segue.destination as! PtvMapViewController
+        }
+        if(segue.identifier == "freeTramZoneSegue")
+        {
+            let destinationFreeTramVC: PtvWebViewController = segue.destination as! PtvWebViewController
+            destinationFreeTramVC.selectedUrl = "https://static.ptv.vic.gov.au/siteassets/PDFs/Maps/Network-maps/PTV-Free-Tram-Zone-Map.pdf"
         }
         
     }

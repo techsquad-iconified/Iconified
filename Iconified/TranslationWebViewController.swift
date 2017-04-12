@@ -16,6 +16,7 @@ class TranslationWebViewController: UIViewController {
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +34,10 @@ class TranslationWebViewController: UIViewController {
         }
         //  self.stopProgressView()
         // Do any additional setup after loading the view.
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
     }
     
     override func didReceiveMemoryWarning() {
