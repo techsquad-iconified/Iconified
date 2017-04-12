@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomCalloutView" customModule="Iconified" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbucks-2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="08t-aW-Ig0">
+                    <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbz-X3-0mT">
+                    <rect key="frame" x="173" y="50" width="119" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="6pR-Zv-wRw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About " translatesAutoresizingMaskIntoConstraints="NO" id="E8u-6d-9Oe">
+                    <rect key="frame" x="193" y="93" width="78" height="59"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="UtU-eL-uTD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF6-1M-H5a">
+                    <rect key="frame" x="173" y="11" width="119" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="Xyi-QL-CNZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="HF6-1M-H5a" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="CNy-al-6eW"/>
+                <constraint firstItem="E8u-6d-9Oe" firstAttribute="leading" secondItem="08t-aW-Ig0" secondAttribute="trailing" constant="28" id="CpM-L3-dgC"/>
+                <constraint firstItem="HF6-1M-H5a" firstAttribute="leading" secondItem="08t-aW-Ig0" secondAttribute="trailing" constant="8" symbolic="YES" id="FQP-SR-EM9"/>
+                <constraint firstItem="vbz-X3-0mT" firstAttribute="centerX" secondItem="E8u-6d-9Oe" secondAttribute="centerX" id="GNh-qk-FQv"/>
+                <constraint firstItem="HF6-1M-H5a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="QwI-Gb-Zke"/>
+                <constraint firstItem="08t-aW-Ig0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RGb-DW-ear"/>
+                <constraint firstItem="08t-aW-Ig0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RNO-qf-tHD"/>
+                <constraint firstItem="HF6-1M-H5a" firstAttribute="trailing" secondItem="vbz-X3-0mT" secondAttribute="trailing" id="Xal-U9-NS4"/>
+                <constraint firstItem="vbz-X3-0mT" firstAttribute="top" secondItem="HF6-1M-H5a" secondAttribute="bottom" constant="8" symbolic="YES" id="cV7-jk-CTJ"/>
+                <constraint firstAttribute="bottom" secondItem="08t-aW-Ig0" secondAttribute="bottom" id="cWH-6N-qSv"/>
+                <constraint firstItem="E8u-6d-9Oe" firstAttribute="top" secondItem="vbz-X3-0mT" secondAttribute="bottom" constant="8" symbolic="YES" id="exI-Lt-Jol"/>
+                <constraint firstItem="HF6-1M-H5a" firstAttribute="leading" secondItem="vbz-X3-0mT" secondAttribute="leading" id="hZ5-pG-YtK"/>
+                <constraint firstAttribute="bottom" secondItem="E8u-6d-9Oe" secondAttribute="bottom" constant="13" id="tbV-Dc-jy3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="detailsIcon" destination="E8u-6d-9Oe" id="hBW-an-lyI"/>
+                <outlet property="restaurantImage" destination="08t-aW-Ig0" id="6Fl-xX-NaJ"/>
+                <outlet property="restaurantIsOpen" destination="vbz-X3-0mT" id="ety-ds-eH6"/>
+                <outlet property="restaurantName" destination="HF6-1M-H5a" id="ydi-81-OmT"/>
+            </connections>
+            <point key="canvasLocation" x="573" y="267.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="About " width="25" height="25"/>
+        <image name="starbucks-2.jpg" width="259" height="194"/>
+    </resources>
+</document>
