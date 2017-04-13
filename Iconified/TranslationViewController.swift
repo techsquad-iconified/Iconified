@@ -1,16 +1,15 @@
 //
-//  TranslateViewController.swift
+//  TranslationViewController.swift
 //  Iconified
 //
-//  Created by Shishira Skanda on 4/4/17.
+//  Created by Shishira Skanda on 13/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
-
 import UIKit
 
-class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     @IBOutlet var tranalateText: UITextField!
     @IBOutlet var translatedLabel: UILabel!
     
@@ -27,7 +26,7 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     let languageArray : [String] = ["Arabic", "Chinese", "English", "French", "German", "Greek", "Italian",  "Japanese" , "Spanish", "Vietnamese"]
     
     //let languageDictionary: [String : String] = ["Arabic" : "ar", "Chinese" : "zh-CN", "English" : "en", "French" : "fr", "German" : "de", "Greek" :  "el", "Italian" : "it",  "Japanese" : "ja", "Spanish" : "es", "Vietnamese" : "vi"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +43,7 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override open var shouldAutorotate: Bool {
         return false
     }
-
+    
     func checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: String) -> Bool
     {
         // let langStr = Locale.current.languageCode
@@ -57,55 +56,55 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         switch(selectedLanguageCode)
         {
         case "en" : if(lang.contains("en"))
-                    {
-                        print("sucess with English")
-                        return true
-                    }
+        {
+            print("sucess with English")
+            return true
+            }
         case "ar" : if(lang.contains("en"))
-                    {
-                        print("sucess with Arabic")
-                        return true
-                    }
+        {
+            print("sucess with Arabic")
+            return true
+            }
         case "zh-CN": if(lang.contains("zh-Hans-US"))
-                    {
-                        print("sucess with Chinese")
-                        return true
-                    }
+        {
+            print("sucess with Chinese")
+            return true
+            }
         case "fr": if(lang.contains("fr"))
-                    {
-                        print("sucess with French")
-                        return true
-                    }
+        {
+            print("sucess with French")
+            return true
+            }
         case "de" : if(lang.contains("de"))
-                    {
-                        print("sucess with german")
-                        return true
-                    }
+        {
+            print("sucess with german")
+            return true
+            }
         case "el" : if(lang.contains("el"))
-                    {
-                        print("sucess with greek")
-                        return true
-                    }
+        {
+            print("sucess with greek")
+            return true
+            }
         case "it" : if(lang.contains("it"))
-                    {
-                        print("sucess with Italian")
-                        return true
-                    }
+        {
+            print("sucess with Italian")
+            return true
+            }
         case "ja" : if(lang.contains("ja"))
-                    {
-                        print("sucess with Japanese")
-                        return true
-                    }
+        {
+            print("sucess with Japanese")
+            return true
+            }
         case "es" : if(lang.contains("es-MX"))
-                    {
-                        print("sucess with spanish")
-                        return true
-                    }
+        {
+            print("sucess with spanish")
+            return true
+            }
         case "vi" : if(lang.contains("vi"))
-                    {
-                        print("sucess with vietnamese")
-                        return true
-                    }
+        {
+            print("sucess with vietnamese")
+            return true
+            }
         default: return false
         }
         return false
@@ -113,11 +112,12 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     
-  
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func translateButton(_ sender: Any) {
         if(self.checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: self.sourceCode!))
         {
@@ -129,7 +129,6 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         {
             
         }
-        
     }
     
     func loadPreferredLanguagefromPlistData()
@@ -152,24 +151,24 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
     }
     
-   
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     
     // method to establish connection and download JSON data from the API
     func translate(toTranslate: String) {
-      
+        
         var url: URL
         print("Finally source is \(self.sourceCode!)")
         print("Finally target is \(self.targetCode!)")
         print("Finally msg is \(toTranslate)")
         print("urls is https://translation.googleapis.com/language/translate/v2?key=AIzaSyAdaFAS__rtr1U2kmJgapmQ1A4je0iWQwc&source=\(self.sourceCode!)&target=\(self.targetCode!)&q=\(toTranslate)")
-       // url = URL(string:"https://translation.googleapis.com/language/translate/v2?key=AIzaSyAdaFAS__rtr1U2kmJgapmQ1A4je0iWQwc&source=\(self.sourceCode!)&target=\(self.targetCode!)&q=\(toTranslate)")!
-       // print(url)
-       
+        // url = URL(string:"https://translation.googleapis.com/language/translate/v2?key=AIzaSyAdaFAS__rtr1U2kmJgapmQ1A4je0iWQwc&source=\(self.sourceCode!)&target=\(self.targetCode!)&q=\(toTranslate)")!
+        // print(url)
+        
         
         let original = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyAdaFAS__rtr1U2kmJgapmQ1A4je0iWQwc&source=\(self.sourceCode!)&target=\(self.targetCode!)&q=\(toTranslate)"
         if let encoded = original.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
@@ -177,25 +176,25 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         {
             print(url)
             let urlRequest = URLRequest(url: url)
-        
-        
-        //set up session
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            if (error != nil)    //checking if the any error message received during connection
-            {
-                print("Error \(error)")
-            }
-            else
-            {
-                DispatchQueue.main.async(){
-                self.parseJSON(articleJSON: data! as NSData)
+            
+            
+            //set up session
+            let session = URLSession.shared
+            let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                if (error != nil)    //checking if the any error message received during connection
+                {
+                    print("Error \(error)")
                 }
-               // print("data is \(data)")
-            }
-        })
-        
-        task.resume()
+                else
+                {
+                    DispatchQueue.main.async(){
+                        self.parseJSON(articleJSON: data! as NSData)
+                    }
+                    // print("data is \(data)")
+                }
+            })
+            
+            task.resume()
         }
         
     }
@@ -211,13 +210,13 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         do{
             
-           
-             //  When the json data is from TIM api
-             
-             let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-             
+            
+            //  When the json data is from TIM api
+            
+            let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+            
             // print(jsonData)
- 
+            
             if let data = jsonData["data"] as? NSDictionary
             {
                 if let translations = data["translations"] as? NSArray
@@ -271,10 +270,10 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView.tag == 1)
         {
-        self.sourceLanguage =  languageArray[row]
-        self.sourceCode = self.getCodeForLanguage(language: self.sourceLanguage!)
-        print("Seleted language is \(self.sourceLanguage!)")
-        print("Seleted code is \(self.sourceCode!)")
+            self.sourceLanguage =  languageArray[row]
+            self.sourceCode = self.getCodeForLanguage(language: self.sourceLanguage!)
+            print("Seleted language is \(self.sourceLanguage!)")
+            print("Seleted code is \(self.sourceCode!)")
         }
         else
         {
@@ -304,16 +303,16 @@ class TranslateViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
     }
     
-   
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

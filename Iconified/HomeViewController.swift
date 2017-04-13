@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
+       
         //Adding gesture recognition for transportation icon
         let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.transportationSelected))
         TransportationIcon.isUserInteractionEnabled = true

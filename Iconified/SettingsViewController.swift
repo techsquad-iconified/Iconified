@@ -15,7 +15,8 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     var plistPath: String!
     var selectedLanguage: String?
     var selectedCode: String?
-    var languageDictionary: [String : String] = ["Arabic" : "ar", "Italian" : "it","Chinese" : "zh-CN","Greek" :  "el","English" : "en","Spanish" : "es", "Vietnamese" : "vi", "Japanese" : "ja", "French" : "fr", "German" : "de"]
+ //  let languageDictionary: [String : String] = ["Arabic" : "ar", "Chinese" : "zh-CN", "English" : "en", "French" : "fr", "German" : "de", "Greek" :  "el", "Italian" : "it",  "Japanese" : "ja", "Spanish" : "es", "Vietnamese" : "vi"]
+    let languageArray : [String] = ["Arabic", "Chinese", "English", "French", "German", "Greek", "Italian",  "Japanese" , "Spanish", "Vietnamese"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,9 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         do{
             let loadString = try String(contentsOfFile: plistPath)
-            var value = (Array(languageDictionary.keys)).index(of: loadString)
-            languagePicker.selectRow(value!, inComponent: 0, animated: true)
+            //var value = (Array(languageDictionary.keys)).index(of: loadString)
+          var value = languageArray.index(of: loadString)
+          languagePicker.selectRow(value!, inComponent: 0, animated: true)
         } catch {
             print("Error")
         }
@@ -62,22 +64,20 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return languageDictionary.count
+      return languageArray.count
         
     }
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Array(languageDictionary.keys)[row]
+        return languageArray[row]
        
     }
   
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      self.selectedLanguage =  Array(languageDictionary.keys)[row]
-      self.selectedCode = Array(languageDictionary.values)[row]
-       print("Seleted language is \(self.selectedCode!)")
-       print("Seleted code is \(self.selectedLanguage!)")
-        self.savePlistData(selectedLanguage: self.selectedLanguage!)
+      self.selectedLanguage =  languageArray[row]
+       print("Seleted language is \(self.selectedLanguage!)")
+       self.savePlistData(selectedLanguage: self.selectedLanguage!)
        
     }
     

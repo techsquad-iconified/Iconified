@@ -15,7 +15,8 @@
 		1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */; };
 		1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */; };
 		1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */; };
-		1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15C7041E9345DA002658A9 /* TranslateViewController.swift */; };
+		1A2153481E9F3E46004F28EE /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2153471E9F3E46004F28EE /* TranslateViewController.swift */; };
+		1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2153491E9F3EE2004F28EE /* TranslationViewController.swift */; };
 		1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A27D6011E80D86300C028C1 /* FoodViewController.swift */; };
 		1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0E41E8494AB0077CCA1 /* Place.swift */; };
 		1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */; };
@@ -97,7 +98,8 @@
 		1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvMapViewController.swift; sourceTree = "<group>"; };
 		1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PtvStops.swift; path = ../PtvStops.swift; sourceTree = "<group>"; };
 		1A1453711E8900DF001D04BC /* FoodAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAboutViewController.swift; sourceTree = "<group>"; };
-		1A15C7041E9345DA002658A9 /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		1A2153471E9F3E46004F28EE /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		1A2153491E9F3EE2004F28EE /* TranslationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		1A27D6011E80D86300C028C1 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		1A50C0E41E8494AB0077CCA1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1A50C0E61E85F5270077CCA1 /* FoodMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodMapViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +231,8 @@
 		1A15C7061E935B36002658A9 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
-				1A15C7041E9345DA002658A9 /* TranslateViewController.swift */,
+				1A2153471E9F3E46004F28EE /* TranslateViewController.swift */,
+				1A2153491E9F3EE2004F28EE /* TranslationViewController.swift */,
 			);
 			name = Translator;
 			sourceTree = "<group>";
@@ -683,7 +686,6 @@
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
 				1A0C78E01E972A4B00C1FFD5 /* PtvVideoViewController.swift in Sources */,
 				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
-				1A15C7051E9345DA002658A9 /* TranslateViewController.swift in Sources */,
 				1AC243F51E95D355007AC863 /* CallViewCustom.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
@@ -691,6 +693,7 @@
 				1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
+				1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
 				1A7B70941E94EE1E00411FC1 /* iCarousel.m in Sources */,
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
@@ -703,6 +706,7 @@
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,
+				1A2153481E9F3E46004F28EE /* TranslateViewController.swift in Sources */,
 				1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */,
 				1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */,
 			);

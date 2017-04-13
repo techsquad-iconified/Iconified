@@ -15,8 +15,8 @@ class MykiViewController: UIViewController {
     
     let langugeKey = "Default Language"
     var defaultLangugeCode: String?
-    var languageDictionary: [String : String] = ["Arabic" : "ar", "Italian" : "it","Chinese" : "zh-CN","Greek" :  "el","English" : "en","Spanish" : "es", "Vietnamese" : "vi", "Japanese" : "ja", "French" : "fr", "German" : "de"]    
-
+    let languageDictionary: [String : String] = ["Arabic" : "ar", "Chinese" : "zh-CN", "English" : "en", "French" : "fr", "German" : "de", "Greek" :  "el", "Italian" : "it",  "Japanese" : "ja", "Spanish" : "es", "Vietnamese" : "vi"]
+    
     @IBOutlet var aboutMyki: UIImageView!
     @IBOutlet var videoMyki: UIImageView!
     @IBOutlet var studentOffer: UIImageView!
