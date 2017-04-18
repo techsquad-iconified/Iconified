@@ -5,18 +5,22 @@
 //  Created by Shishira Skanda on 9/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
+/*
+ PtvWebViewController is a view comtroller that displays a web view
+ The web view displays the websites translated to a requested language
+ */
 import UIKit
 
 class TranslationWebViewController: UIViewController {
 
+    //UI control
     @IBOutlet var webView: UIWebView!
     var selectedUrl: String?
     
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
-    
+    //Method when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         

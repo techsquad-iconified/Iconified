@@ -6,6 +6,9 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ The view cnotroller diaplays a list of couuntry flags to allow the user to select a cuisine of their choice.
+ */
 import UIKit
 
 protocol cuisineDelegate
@@ -16,12 +19,13 @@ protocol cuisineDelegate
 
 class CuisineTableViewController: UITableViewController {
     
+    //Global variables
     var cuisieTypes = ["Australia", "China", "India", "Italy", "Japan", "Mexico", "Vietnam"]
     var currentCuisine = "Australia"
     
     var delegate: cuisineDelegate?
     
-
+    //method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -39,18 +43,20 @@ class CuisineTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
+    //Method returns the number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
+    //Method returns the number of rows in the table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return cuisieTypes.count
     }
 
-    
+    //Method to set values to tableview cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CuisineCell", for: indexPath) as! CuisineTableViewCell
         cell.flagImageView.image = UIImage(named: self.cuisieTypes[indexPath.row])
@@ -61,7 +67,7 @@ class CuisineTableViewController: UITableViewController {
         return cell
     }
     
-
+    //Method to return the selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Rowww selected")
         self.delegate?.cuisineSelected(cuisine: self.cuisieTypes[indexPath.row])

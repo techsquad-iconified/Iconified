@@ -5,11 +5,14 @@
 //  Created by Shishira Skanda on 10/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
+/*
+ Entity Class user to store details regarding stops around the user.
+ */
 import UIKit
 
 class PtvStops: NSObject {
     
+    //Attributes of the stop
     var routeType: Int?
     var stopDistance: Double?
     var stopId: Int?
