@@ -60,7 +60,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             print("sucess with English")
             return true
             }
-        case "ar" : if(lang.contains("en"))
+        case "ar" : if(lang.contains("ar"))
         {
             print("sucess with Arabic")
             return true
@@ -314,5 +314,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
      // Pass the selected object to the new view controller.
      }
      */
+    
+    
     
 }

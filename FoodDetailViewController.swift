@@ -14,13 +14,14 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
     
     //The place selected by the user
     var selectedPlace: Place
+    var cuisineSelected: Bool?
+    var selectedUrl: String?
  
     //UI variables
     @IBOutlet var detailSegment: UISegmentedControl!
     @IBOutlet var aboutContainer: UIView!
     @IBOutlet var photosContainer: UIView!
     @IBOutlet var bannerImage: UIImageView!
-   
     
     //Image selected from the gallery
     var selectedImageIndex: Int?
@@ -33,6 +34,10 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
     required init?(coder aDecoder: NSCoder) {
         self.selectedPlace = Place()
         self.browseType = nil
+        if(cuisineSelected == nil)
+        {
+            cuisineSelected = false
+        }
         super.init(coder: aDecoder)
     }
 
@@ -42,14 +47,25 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         //About container is displayed by default
         aboutContainer.isHidden = false
         photosContainer.isHidden = true
-        
+        if(self.cuisineSelected! == true)
+        {
+            self.detailSegment.selectedSegmentIndex = 0
+            self.detailSegment.removeSegment(at: 1, animated: true)
+        }
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
         //set page title
         self.title = self.selectedPlace.placeName
         //set banner image
-        self.bannerImage.image = self.selectedPlace.firstPhoto
+        if(self.selectedPlace.firstPhoto != nil)
+        {
+            self.bannerImage.image = self.selectedPlace.firstPhoto
+        }
+        else
+        {
+            self.bannerImage.image = UIImage(named: "Image")
+        }
         
         print("In detail view \(selectedPlace.placeName!)")
         
@@ -69,6 +85,7 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
     //Funtioned called when an change in segment is performed
     @IBAction func segmentAction(_ sender: UISegmentedControl)
     {
+        
         switch sender.selectedSegmentIndex
         {
         case 0 : aboutContainer.isHidden = false    //view details
@@ -88,6 +105,7 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         print("segue returned \(type)")
         self.browseType = type
         performSegue(withIdentifier: "webViewSegue", sender: nil)
+      
     }
     
     //Segue for viewing photos
@@ -97,6 +115,8 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         self.photoArray = photoArray
         performSegue(withIdentifier: "photoViewSegue", sender: nil)
     }
+    
+
     
     // MARK: - Navigation
 
@@ -122,6 +142,7 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
             webView.type = self.browseType
             // containerViewController!.containerToMaster = self
         }
+       
        //segue for photo slide show
         if(segue.identifier == "photoViewSegue")
         {

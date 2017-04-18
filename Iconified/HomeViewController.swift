@@ -21,7 +21,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var FoodIcon: UIImageView!
     @IBOutlet weak var TransportationIcon: UIImageView!
     
+    @IBOutlet var AccommodationIcon: UIImageView!
+
+    @IBOutlet var BankIcon: UIImageView!
    
+    @IBOutlet var shoppingIcon: UIImageView!
+    
+    @IBOutlet var emergencyIcon: UIImageView!
+    
     // Setup method when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +43,27 @@ class HomeViewController: UIViewController {
         TransportationIcon.isUserInteractionEnabled = true
         TransportationIcon.addGestureRecognizer(tapGestureRecogniserForTransportation)
         
-        //Adding gesture recognition for transportation icon
+        //Adding gesture recognition for Food icon
         let tapGestureRecogniserForFood = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.foodSelected))
         FoodIcon.isUserInteractionEnabled = true
         FoodIcon.addGestureRecognizer(tapGestureRecogniserForFood)
+        
+       
+        
+        //Adding gesture recognition for Bank icon
+        let tapGestureRecogniserForBank = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.bankSelected))
+        BankIcon.isUserInteractionEnabled = true
+        BankIcon.addGestureRecognizer(tapGestureRecogniserForBank)
+        
+        //Adding gesture recognition for Shopping icon
+        let tapGestureRecogniserForShopping = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.shoppingSelected))
+        shoppingIcon.isUserInteractionEnabled = true
+        shoppingIcon.addGestureRecognizer(tapGestureRecogniserForShopping)
+        
+        //Adding gesture recognition for emergency icon
+        let tapGestureRecogniserForEmergency = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.emergencySelected))
+        emergencyIcon.isUserInteractionEnabled = true
+        emergencyIcon.addGestureRecognizer(tapGestureRecogniserForEmergency)
         
     }
     
@@ -97,7 +121,37 @@ class HomeViewController: UIViewController {
             performSegue(withIdentifier: "FoodSegue", sender: nil)
         }
     }
+  
+    
+    //This method is called when the Bank icon is clicked (using gesture control feature)
+    func bankSelected()
+    {
+        print("Image clicked")
+        if(self.checkInternetConnection())
+        {
+            performSegue(withIdentifier: "bankSegue", sender: nil)
+        }
+    }
+    //This method is called when the Bank icon is clicked (using gesture control feature)
+    func shoppingSelected()
+    {
+        print("Image clicked")
+        if(self.checkInternetConnection())
+        {
+            performSegue(withIdentifier: "shoppingSegue", sender: nil)
+        }
+    }
+    //This method is called when the Bank icon is clicked (using gesture control feature)
+    func emergencySelected()
+    {
+        print("Image clicked")
+        if(self.checkInternetConnection())
+        {
+            performSegue(withIdentifier: "emergencySegue", sender: nil)
+        }
+    }
  
+  
     // MARK: - Navigation
 
     //In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -16,7 +16,7 @@ import MapKit
     The selected type and user location is sent to the server to fetch required information
     The Place details is recorded and annotations are placed on the map
  */
-class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, cuisineDelegate {
 
     //UI Mapview
     @IBOutlet var mapView: MKMapView!
@@ -38,6 +38,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
+    let cuiseButton = UIButton.init(type: .custom)
+    var selectedcuisine: String?
+    
     //Initialiser
     required init?(coder aDecoder: NSCoder) {
         self.placeArray = NSMutableArray()
@@ -46,9 +49,11 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         self.longitude = nil
         self.selectedPlace = Place()
         self.photoArray = [String]()
+        self.selectedcuisine = "Australia"
         self.locationManager = CLLocationManager()
         super.init(coder: aDecoder)
     }
+    
     
     //Method called when view loads
     override func viewDidLoad() {
@@ -61,17 +66,93 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         setProgressView()
         self.view.addSubview(self.progressView)
         
+        if(self.foodType == "restaurant")
+        {
+            cuiseButton.setImage(UIImage.init(named: "Australia"), for: UIControlState.normal)
+            cuiseButton.addTarget(self, action:#selector(FoodMapViewController.cuisineSelector), for: UIControlEvents.touchUpInside)
+            cuiseButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+            let barButton = UIBarButtonItem.init(customView: cuiseButton)
+            self.navigationItem.rightBarButtonItem = barButton
+        }
         self.mapView.delegate = self
         //call method to get users current location
         self.getUsersCurrentLocation()
     
         //Method to create the API call from the server
         DispatchQueue.main.async(){
-           self.downloadLocationDataFromServer()
            //self.downloadLocationData()
+         self.downloadLocationDataFromServer()
         }
     }
 
+    func cuisineSelector()
+    {
+        performSegue(withIdentifier: "cuisineSelectorSegue", sender: nil)
+    }
+    
+    func generateURL() -> String
+    {
+       switch(self.selectedcuisine!)
+       {
+            case "China": return "https://developers.zomato.com/api/v2.1/search?q=chinese&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            case "India": return "https://developers.zomato.com/api/v2.1/search?q=indian&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            case "Italy": return "https://developers.zomato.com/api/v2.1/search?q=italian&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            case "Japan": return "https://developers.zomato.com/api/v2.1/search?q=japanese&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            case "Mexico": return "https://developers.zomato.com/api/v2.1/search?q=mexican&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            case "Vietnam": return "https://developers.zomato.com/api/v2.1/search?q=vietnamese&count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+            default: return "https://developers.zomato.com/api/v2.1/search?count=10&lat=\(self.latitude!)&lon=\(self.longitude!)"
+        }
+    }
+    
+    func apiCallToZomato()
+    {
+        
+        if(self.selectedcuisine! == "Australia")
+        {
+            self.downloadLocationDataFromServer()
+        }
+        else
+        {
+            let url = NSURL(string: self.generateURL())!
+            let config = URLSessionConfiguration.default
+            config.httpAdditionalHeaders = [
+                "Accept": "application/json",
+                "user-key": "d0ac60fde3f2f228f9a3bc089e64f66a"
+            ]
+            let urlSession = URLSession(configuration: config)
+            let myQuery = urlSession.dataTask(with: url as URL, completionHandler: {
+                data, response, error -> Void in
+                DispatchQueue.main.async(){
+                    self.parseJSON(articleJSON: data! as NSData)
+                }
+            
+                // Do any additional setup after loading the view.
+                DispatchQueue.main.async(){
+                self.addLocationAnnotations()
+                }
+            })
+            myQuery.resume()
+        }
+    }
+    
+    func cuisineSelected(cuisine: String) {
+        
+        // setting up the progress view
+        setProgressView()
+        self.view.addSubview(self.progressView)
+        
+        cuiseButton.setImage(UIImage.init(named: cuisine), for: UIControlState.normal)
+        self.selectedcuisine = cuisine
+        self.placeArray = NSMutableArray()
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        self.apiCallToZomato()
+    }
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        let sourceController = segue.source as! CuisineTableViewController
+       // self.title = sourceController.currentItem
+    }
     override open var shouldAutorotate: Bool {
         return false
     }
@@ -138,8 +219,9 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                     point.place = place
                     mapView.addAnnotation(point)
                    
-                    let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.005,longitudeDelta: 0.005))
+                    let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.009,longitudeDelta: 0.009))
                     mapView.setRegion(area, animated: true)
+                    mapView.showAnnotations(mapView.annotations, animated: true)
                 }
             }
         }
@@ -369,18 +451,23 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         let calloutView = views?[0] as! CallViewCustom
         //Add Image, name, open status and a details icon
         calloutView.restaurantName.text = restaurantAnnotation.name
-        if(restaurantAnnotation.isOpen != nil)
+       /* if(restaurantAnnotation.isOpen != nil)
         {
             calloutView.restaurantIsOpen.text = (restaurantAnnotation.isOpen == "true") ? "Open" : "Close"
         }
-        
+      */  
         calloutView.restaurantImage.image = restaurantAnnotation.image
         self.selectedPlace = restaurantAnnotation.place
       
         //Adding gesture recognition for details icon
-        let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
+        let tapGestureRecogniserForDetailIcon = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
         calloutView.detailsIcon.isUserInteractionEnabled = true
-        calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForTransportation)
+        calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForDetailIcon)
+        
+        //Adding gesture recognition for image icon
+        let tapGestureRecogniserForImageIcon = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
+        calloutView.restaurantImage.isUserInteractionEnabled = true
+        calloutView.restaurantImage.addGestureRecognizer(tapGestureRecogniserForImageIcon)
 
         calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
@@ -411,18 +498,113 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         {
            let destinationVC: FoodDetailViewController = segue.destination as! FoodDetailViewController
            destinationVC.selectedPlace = self.selectedPlace
+            if(self.selectedcuisine! == "Australia")
+            {
+                destinationVC.cuisineSelected = false
+            }
+            else
+            {
+                destinationVC.cuisineSelected = true
+            }
+            
+        }
+        
+        if(segue.identifier == "cuisineSelectorSegue")
+        {
+            let destinationCuisineVC: CuisineTableViewController = segue.destination as! CuisineTableViewController
+            destinationCuisineVC.delegate = self
+            
+            
         }
     }
+
     
+
+//Method to parse the JSON response from the server
+func parseJSON(articleJSON:NSData)
+{
+    //Local variables to store place details
+    var placeLat: Double = 0.0
+    var placeLng: Double = 0.0
+    var placeId: String = "unknown"
+    var placeName: String = "unknown"
+    var isOpen: String = "unavailable"
+    var placeAddress: String = "unknown"
+    var firstOneDone : Bool = false
+    
+    do{
+        let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+        
+        let reataurantsArray = jsonData.object(forKey: "restaurants") as! NSArray
+        
+        for eachRestaurant in reataurantsArray
+        {
+            //firstOneDone = false    // Flag to get the forst image in the photo list
+            let res = eachRestaurant as! NSDictionary
+            let restaurant = res.object(forKey: "restaurant") as! NSDictionary
+            let result = restaurant.object(forKey: "R") as! NSDictionary
+            placeId = String(result.object(forKey: "res_id") as! Double)
+            let location = restaurant.object(forKey: "location") as! NSDictionary
+            placeLat = Double(location.object(forKey: "latitude") as! String)!
+            placeLng = Double(location.object(forKey: "longitude") as! String)!
+            placeAddress = location.object(forKey: "address") as! String
+            placeName = restaurant.object(forKey: "name") as! String
+            
+            //create a object of place for the details obtained
+            let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
+            
+            newPlace.priceLevel = restaurant.object(forKey: "price_range") as! Int
+            let photourl = restaurant.object(forKey: "thumb") as! String
+                
+            let url = NSURL(string: photourl)!
+            print(url)
+            let data = NSData(contentsOf:url as URL)
+            if(data != nil)
+            {
+                print("Photo was not nil")
+                newPlace.firstPhoto = UIImage(data:data! as Data)!
+            }
+            let userRating = restaurant.object(forKey: "user_rating") as! NSDictionary
+            newPlace.rating = Float(userRating.object(forKey: "aggregate_rating") as! String)
+            newPlace.website = restaurant.object(forKey: "url") as! String
+            newPlace.url = "https://www.google.co.in/maps/dir//\(newPlace.lat!),\(newPlace.lng!)"
+            
+            self.placeArray.add(newPlace)
+         
+            //printing the details in console for testing purpose
+            print("PLace name is \(newPlace.placeName)")
+            print("open now is \(newPlace.isOpen)")
+            print("place id is \(newPlace.placeId)")
+            print("place address is \(newPlace.placeAddress)")
+            print("latitude is \(newPlace.lat)")
+            print("price level is\(newPlace.priceLevel)")
+            print("rating is \(newPlace.rating)")
+            print("Webisite is \(newPlace.website)")
+            print("url is \(newPlace.url)")
+            print("no of photo reference is \(newPlace.photoReference.count)")
+        }
+ 
+    }
+    catch{
+        print("JSON Serialization error")
+    }
+  }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+
+
+
     //---------------------------------------------------------------------------------------------------
     //                                  FOR TEST PURPOSE ONLY
     //---------------------------------------------------------------------------------------------------
     // CODE FOR DIRECT GOOGLE API CALL
     /*
-     
+ 
      // method to establish connection and download JSON data from the API
      func downloadLocationData() {
-     
+ 
      var url: URL
      print("lat is \(self.latitude)")
      print("lat is \(self.longitude)")

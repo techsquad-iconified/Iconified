@@ -64,9 +64,16 @@ class WebViewController: UIViewController {
             
         }
         print("In webview url is \(url)")
-        let requestObj = NSURLRequest(url: url as URL);
-        webView.loadRequest(requestObj as URLRequest)
-        self.stopProgressView()
+        DispatchQueue.main.async(){
+            let requestObj = NSURLRequest(url: url as URL);
+            self.webView.loadRequest(requestObj as URLRequest)
+            self.stopProgressView()
+        }
+        DispatchQueue.main.async(){
+           // self.stopProgressView()
+        }
+        
+        
         
     }
     
@@ -111,8 +118,7 @@ class WebViewController: UIViewController {
      */
     func stopProgressView()
     {
-        self.progressView.removeFromSuperview()
-       /* let subviews = self.webView.subviews
+        let subviews = self.webView.subviews
         for subview in subviews
         {
             if subview.tag == 1000
@@ -120,7 +126,9 @@ class WebViewController: UIViewController {
                 subview.removeFromSuperview()
             }
         }
- */
     }
+ 
+    
+    
 
 }
