@@ -3,8 +3,10 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const async = require("async");
 const app = express();
+const MongoClient = require("mongodb").MongoClient;
+var PythonShell = require('python-shell');
 
-var db;
+var mdb;
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
@@ -55,7 +57,7 @@ function basicInfo(type,location,callback){
 	var g2key = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
 	var s1key = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
 	var s2key = "AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4";
-	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+g1key;
+	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+s1key;
 	console.log(purl);
 	https.get(purl, function(response) {
 		var body ="";
@@ -89,7 +91,7 @@ function detailedInfo(final,callback){
 	for (i=0;i<10;i++){
         ++count;
 		var placeId = final[i].place_id;
-		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + g1key;
+		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + s1key;
 		console.log(durl);;
         function back (durl,i){
 		https.get(durl,function(response) {
@@ -115,6 +117,81 @@ function detailedInfo(final,callback){
 	}   
 }
 
+function mlabConnect(callback){
+    MongoClient.connect('mongodb://admin:fit5120@ds149700.mlab.com:49700/hospitallocs', (err, database) => {
+    if (err) return console.log(err);
+    mdb = database;
+    console.log("success");
+	callback(null);
+    })
+}
+
+function findHospital(thelocation,callback){
+	var hospitalResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	console.log(location);
+	var doc = mdb.collection('hosp').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 10000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,hospitalResult);
+		}
+		hospitalResult.push(result);
+	});
+}
+
+function findPolice(thelocation,callback){
+	var policeResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	var doc = mdb.collection('police').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 10000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,policeResult);
+		}
+		policeResult.push(result);
+	});
+}
+
+function findGP(thelocation,callback){
+	var GPResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	var doc = mdb.collection('gp').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 10000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,GPResult);
+		}
+		GPResult.push(result);
+	});
+}
+
+app.get("/emergency",function(req,res){
+	var type = req.query.searchType;
+	var location = req.query.myLocation;
+	switch(type){
+		case "hospital":
+		async.waterfall([mlabConnect,async.apply(findHospital,location)],function(err,result){
+			console.log(result);
+			res.send(result);
+		});
+		break;
+		case "police":
+		async.waterfall([mlabConnect,async.apply(findPolice,location)],function(err,result){
+			res.send(result);
+		});
+		break;
+		case "gp":
+		async.waterfall([mlabConnect,async.apply(findGP,location)],function(err,result){
+			res.send(result);
+		});
+		break;
+
+	}
+})
 app.get("/test",function(req,res){
 	var type = req.query.searchType;
 	var location = req.query.myLocation;
@@ -131,5 +208,18 @@ app.get("/test",function(req,res){
 app.get("/apitest", function(req, res){
 	res.send("test");
 })
+
+app.get("/testpy", function(req, res){
+	var loc = req.query.myLocation;
+	var options = {
+		args:[loc]
+	};
+	PythonShell.run('try.py', options, function (err,results) {
+		if (err) throw err;
+		res.send(results);
+	});
+})
+
+
 
 
