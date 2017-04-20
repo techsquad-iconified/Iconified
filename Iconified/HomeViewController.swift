@@ -19,10 +19,10 @@ class HomeViewController: UIViewController {
 
     //Initial icons representing th various facilities provided by the application
     @IBOutlet weak var FoodIcon: UIImageView!
+
     @IBOutlet weak var AccommodationIcon: UIImageView!
     @IBOutlet weak var TransportationIcon: UIImageView!
     
-    @IBOutlet var AccommodationIcon: UIImageView!
 
     @IBOutlet var BankIcon: UIImageView!
    
@@ -49,12 +49,11 @@ class HomeViewController: UIViewController {
         FoodIcon.isUserInteractionEnabled = true
         FoodIcon.addGestureRecognizer(tapGestureRecogniserForFood)
         
-<<<<<<< HEAD
-        //Adding gesture recognition for Accommodation icon
+   //Adding gesture recognition for Accommodation icon
         let tapGestureRecogniserForAccommodation = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.AccommodationSelected))
         AccommodationIcon.isUserInteractionEnabled = true
         AccommodationIcon.addGestureRecognizer(tapGestureRecogniserForAccommodation)
-=======
+/*
        
         
         //Adding gesture recognition for Bank icon
@@ -73,6 +72,7 @@ class HomeViewController: UIViewController {
         emergencyIcon.addGestureRecognizer(tapGestureRecogniserForEmergency)
 >>>>>>> 8b3443fb5a14eaec2ec957cff512cf8780d0a0f5
         
+ */
     }
     
     override open var shouldAutorotate: Bool {
@@ -159,7 +159,7 @@ class HomeViewController: UIViewController {
         }
     }
  
-<<<<<<< HEAD
+
     //This method is called when the Accommodation icon is clicked (using gesture control feature)
     func AccommodationSelected()
     {
@@ -170,9 +170,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-=======
-  
->>>>>>> 8b3443fb5a14eaec2ec957cff512cf8780d0a0f5
+
     // MARK: - Navigation
 
     //In a storyboard-based application, you will often want to do a little preparation before navigation

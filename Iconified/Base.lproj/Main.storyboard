@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJj-d3-POi">
-                                <rect key="frame" x="16" y="162" width="343" height="78"/>
+                                <rect key="frame" x="16" y="162" width="343" height="34"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDz-PQ-fpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="336"/>
+            <point key="canvasLocation" x="-210" y="404"/>
         </scene>
         <!--Myki -->
         <scene sceneID="D5V-RW-ev4">
@@ -731,7 +731,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="AccommodationIcon" destination="Hsf-gd-Zdf" id="bcJ-i3-oiV"/>
+                        <outlet property="AccommodationIcon" destination="Hsf-gd-Zdf" id="4fu-cJ-21z"/>
                         <outlet property="BankIcon" destination="PmY-VS-Ovx" id="8dU-44-JAQ"/>
                         <outlet property="FoodIcon" destination="VQy-i2-60p" id="0uI-jP-1qW"/>
                         <outlet property="TransportationIcon" destination="883-cm-lL5" id="y1B-sa-EPz"/>
@@ -742,6 +742,7 @@
                         <segue destination="PMQ-9K-glU" kind="show" identifier="bankSegue" id="AFG-zF-Eq7"/>
                         <segue destination="CxT-WX-UWF" kind="show" identifier="shoppingSegue" id="Nf2-PA-3OS"/>
                         <segue destination="m7x-nL-CEo" kind="show" identifier="emergencySegue" id="Wxl-ur-b8O"/>
+                        <segue destination="RHT-L7-Ejp" kind="show" identifier="AccommodationSegue" id="OhQ-Fi-3vf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yT-E6-rzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -819,7 +820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbL-2Y-Y8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-682.39999999999998" y="-942.27886056971522"/>
+            <point key="canvasLocation" x="-1110" y="-942"/>
         </scene>
         <!--Map-->
         <scene sceneID="ALc-Cs-ViZ">
@@ -926,7 +927,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNh-jA-AlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="-942.27886056971522"/>
+            <point key="canvasLocation" x="862" y="-942"/>
         </scene>
         <!--Food About View Controller-->
         <scene sceneID="BCI-C9-Vcq">
@@ -1285,7 +1286,7 @@
             </objects>
             <point key="canvasLocation" x="1686" y="-1633"/>
         </scene>
-		<!--Accommodation View Controller-->
+        <!--Accommodation View Controller-->
         <scene sceneID="He2-Hy-eub">
             <objects>
                 <viewController id="RHT-L7-Ejp" customClass="AccommodationViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
@@ -1298,16 +1299,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kh7-C5-Lwc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
                                 <items>
                                     <navigationItem title="Food" id="lVl-wL-Moz"/>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Detail Menu background" translatesAutoresizingMaskIntoConstraints="NO" id="ZIb-b1-IL3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hotel_3" translatesAutoresizingMaskIntoConstraints="NO" id="BBw-Pe-MqG">
-                                <rect key="frame" x="113" y="170" width="148" height="140"/>
+                                <rect key="frame" x="113" y="126" width="148" height="140"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="zMf-qO-aIr"/>
@@ -1341,12 +1342,12 @@
                     <connections>
                         <outlet property="HotelIcon" destination="BBw-Pe-MqG" id="XYc-f3-q27"/>
                         <outlet property="MotelIcon" destination="IOx-36-hDE" id="HDq-wC-1sN"/>
-                        <segue destination="Nl2-kZ-Oxz" kind="show" identifier="AccommodationMapSegue" id="5lj-87-UgC"/>
+                        <segue destination="8qv-1t-BuR" kind="show" identifier="AccommodationMapSegue" id="6FY-kP-eDU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUj-QM-nLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="932.38380809595208"/>
+            <point key="canvasLocation" x="-1321" y="-206"/>
         </scene>
         <!--Cuisine Table View Controller-->
         <scene sceneID="tod-bi-EdF">
@@ -1434,6 +1435,35 @@
             </objects>
             <point key="canvasLocation" x="2481" y="-643"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="WAI-Fo-yGU">
+            <objects>
+                <viewController id="8qv-1t-BuR" customClass="AccommodationMapViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U81-fY-yrC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qqv-qR-48w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JSs-Nt-ffm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCV-IT-R1w">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99144381280000005" green="0.96543306110000005" blue="0.83802491430000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="VLg-XE-Hen"/>
+                    <connections>
+                        <outlet property="mapView" destination="jCV-IT-R1w" id="o1V-Kd-DoT"/>
+                        <segue destination="qcu-9w-lx3" kind="show" identifier="AccommodationDetailSegue" id="d4w-Qo-6NF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rG-gr-Wo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-438" y="-292"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Accommodation" width="530" height="530"/>
@@ -1448,6 +1478,7 @@
         <image name="Food" width="530" height="530"/>
         <image name="Free" width="24" height="24"/>
         <image name="Hostipal" width="530" height="530"/>
+        <image name="Hotel_3" width="1089" height="1089"/>
         <image name="Image" width="25" height="25"/>
         <image name="Info" width="48" height="48"/>
         <image name="Info-about" width="32" height="32"/>
@@ -1472,6 +1503,7 @@
         <image name="transportTypes" width="530" height="530"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lbd-lx-0rf"/>
+        <segue reference="JC9-01-y9h"/>
+        <segue reference="d4w-Qo-6NF"/>
     </inferredMetricsTieBreakers>
 </document>
