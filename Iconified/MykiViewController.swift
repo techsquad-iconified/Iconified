@@ -5,11 +5,15 @@
 //  Created by Shishira Skanda on 6/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
+/*
+ MykiViewController is a view controller that introduces myki as a ticket to public transport 
+ It also displays various options regarding Myki
+ */
 import UIKit
 
 class MykiViewController: UIViewController {
 
+    //Global variables
     var selectedUrl: String?
     var plistPath: String?
     
@@ -17,6 +21,7 @@ class MykiViewController: UIViewController {
     var defaultLangugeCode: String?
     let languageDictionary: [String : String] = ["Arabic" : "ar", "Chinese" : "zh-CN", "English" : "en", "French" : "fr", "German" : "de", "Greek" :  "el", "Italian" : "it",  "Japanese" : "ja", "Spanish" : "es", "Vietnamese" : "vi"]
     
+    //UI Controls
     @IBOutlet var aboutMyki: UIImageView!
     @IBOutlet var videoMyki: UIImageView!
     @IBOutlet var studentOffer: UIImageView!
@@ -26,7 +31,7 @@ class MykiViewController: UIViewController {
         getDefaultBrowsingLanguage()
     }
     
-    
+    //Metho called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,34 +61,32 @@ class MykiViewController: UIViewController {
        
        
     }
-    
     override open var shouldAutorotate: Bool {
         return false
     }
-    
+    //Method as initialiser
     required init?(coder aDecoder: NSCoder) {
-        
-        
         super.init(coder: aDecoder)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
  
+    //Method called when myki details selected
     func aboutMykiSelected()
     {
-       if(self.checkDefaultLangugeSet())
+       if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
        {
-         if(self.defaultLangugeCode! == "en")
+         if(self.defaultLangugeCode! == "en")  // If languaage is English
          {
             self.selectedUrl = "https://www.ptv.vic.gov.au/tickets/myki/"
             performSegue(withIdentifier: "translationWebSegue", sender: nil)
          }
          else
          {
-            switch(self.defaultLangugeCode!)
+            switch(self.defaultLangugeCode!) //Set URL based in the language
             {
                 case "ar":self.selectedUrl = "https://static.ptv.vic.gov.au/PDFs/Ticketing/1483075660/PTV_2017_myki-Quick-Guide_Arabic.pdf"
                 case "it": self.selectedUrl = "https://static.ptv.vic.gov.au/PDFs/Ticketing/1483075662/PTV_2017_myki-Quick-Guide_Italian.pdf"
@@ -103,12 +106,14 @@ class MykiViewController: UIViewController {
        }
     }
     
+    //Method called when video selected
     func videoMykiSelected()
     {
-        if(self.checkDefaultLangugeSet())
+        if(self.checkDefaultLangugeSet()) //check if langueg is set
         {
             if(self.defaultLangugeCode! == "it" || self.defaultLangugeCode! == "el" || self.defaultLangugeCode! == "ja" || self.defaultLangugeCode! == "fr" || self.defaultLangugeCode! == "de" || self.defaultLangugeCode! == "en" )
             {
+                //Pop up to direct user to set default browsing language
                 let alert = UIAlertController(title: "Video Information", message: "Sorry! There is no video information for the selected default language", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -120,6 +125,7 @@ class MykiViewController: UIViewController {
         }
     }
     
+    //Method called if student offer is selected
     func studentOfferSelected()
     {
         if(self.checkDefaultLangugeSet())
@@ -136,6 +142,7 @@ class MykiViewController: UIViewController {
         }
     }
     
+    //Method called when myki stores are selected
     func findMykiStoreSelected()
     {
         if(self.checkDefaultLangugeSet())
@@ -145,7 +152,7 @@ class MykiViewController: UIViewController {
         }
         
     }
-    
+    //Method o check if defaut language is set
     func checkDefaultLangugeSet() -> Bool
     {
         if(self.defaultLangugeCode == nil)
@@ -157,16 +164,17 @@ class MykiViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return false
         }
-        else{
+        else
+        {
             return true
         }
         
     }
-    
+    //Method to get the defaultbrowsing languaage set in the plist
     func getDefaultBrowsingLanguage()
     {
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        plistPath = delegate.plistPathInDocument
+        plistPath = delegate.plistPathInDocument  //Path of the plist file
         
         do{
             let loadString = try String(contentsOfFile: plistPath!)
@@ -178,7 +186,6 @@ class MykiViewController: UIViewController {
                     self.defaultLangugeCode = value
                 }
             }
-            
         } catch {
             print("Error")
         }
@@ -189,26 +196,31 @@ class MykiViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Segue to Myki web view
         if (segue.identifier == "mykiWebViewSegue")
         {
             let destinationWebVC : PtvWebViewController = segue.destination as! PtvWebViewController
             destinationWebVC.selectedUrl = self.selectedUrl!
         }
+        //Segue to Translation web view
         if (segue.identifier == "translationWebSegue")
         {
             let destinationWebVC : TranslationWebViewController = segue.destination as! TranslationWebViewController
             destinationWebVC.selectedUrl = self.selectedUrl!
         }
+        //Segue to Myki video view
         if (segue.identifier == "mykiVideoViewSegue")
         {
             let destinationVideoVC : PtvVideoViewController = segue.destination as! PtvVideoViewController
             destinationVideoVC.languageCode = self.defaultLangugeCode
         }
+        //Segue to Settings
         if (segue.identifier == "settingsFromMykiSegue")
         {
             let destinationSettingsVC : SettingsViewController = segue.destination as! SettingsViewController
             
         }
+        //Segue to transport types
         if(segue.identifier == "publicTransportSegue")
         {
             let destinationMapView: PtvMapViewController = segue.destination as! PtvMapViewController

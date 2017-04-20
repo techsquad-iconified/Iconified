@@ -8,9 +8,13 @@
 
 import UIKit
 import MapKit
-
+/*
+ PtvMapViewController is a view comtroller that displays a map view
+ The map view displays the stops around users current location
+ */
 class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
 
+    //UI Controls
     @IBOutlet var ptvMapView: MKMapView!
     //users location
     var latitude: Double?
@@ -23,6 +27,7 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
 
+    //Initialiser
     required init?(coder aDecoder: NSCoder) {
         self.latitude = nil
         self.longitude = nil
@@ -30,6 +35,7 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         self.locationManager = CLLocationManager()
         super.init(coder: aDecoder)
     }
+    //method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ptvMapView.delegate = self
@@ -81,7 +87,7 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         self.longitude = (locationManager.location?.coordinate.longitude)!
         print("Lat and lng of the user is \(self.latitude) and \(self.longitude)")
     }
-    
+    //Method getting PTV API signature from server
     func getSignatureFromServer()
     {
         var url: URL

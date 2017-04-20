@@ -7,10 +7,14 @@
 //
 
 import UIKit
+/*
+ PtvWebViewController is a view comtroller that displays a web view 
+ The web view displays the websites requested
+ */
 
 class PtvWebViewController: UIViewController {
     
-   
+   //UI controls
     @IBOutlet var webView: UIWebView!
     var selectedUrl: String?
     
@@ -20,6 +24,7 @@ class PtvWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setting screen orientation
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         

@@ -69,7 +69,6 @@ class FoodAboutViewController: UIViewController {
     //method called when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
@@ -83,11 +82,16 @@ class FoodAboutViewController: UIViewController {
         websiteLabel.isUserInteractionEnabled = true
         websiteLabel.addGestureRecognizer(tapGestureRecogniserForWebsite)
         
-        //Adding gesture recognition for call icon
-        let tapGestureRecogniserForCall = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.callSelected))
-        callIcon.isUserInteractionEnabled = true
-        callIcon.addGestureRecognizer(tapGestureRecogniserForCall)
-        
+        if(self.selectedPlace?.phoneNumber == nil)
+        {
+            self.callIcon.isHidden = true
+        }
+        else{
+            //Adding gesture recognition for call icon
+            let tapGestureRecogniserForCall = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.callSelected))
+            callIcon.isUserInteractionEnabled = true
+            callIcon.addGestureRecognizer(tapGestureRecogniserForCall)
+        }
         //Update values for the labels
         self.updateLabels()
 
