@@ -33,6 +33,8 @@
 		1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */; };
 		1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D81E8E51B6003271AE /* PhotoViewController.swift */; };
 		1AAD80471EA5C6B20090D192 /*  TranslationFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAD80461EA5C6B20090D192 /*  TranslationFoodViewController.swift */; };
+		1AAD80491EA711770090D192 /* MykiLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAD80481EA711770090D192 /* MykiLocationViewController.swift */; };
+		1AAD80511EA76FC90090D192 /* MykiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAD80501EA76FC90090D192 /* MykiInfoViewController.swift */; };
 		1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */; };
 		1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB24FFD1E7F8B77007CFD1B /* Main.storyboard */; };
 		1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AB250001E7F8B77007CFD1B /* Iconified.xcdatamodeld */; };
@@ -120,6 +122,8 @@
 		1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Iconified-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AA966D81E8E51B6003271AE /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		1AAD80461EA5C6B20090D192 /*  TranslationFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " TranslationFoodViewController.swift"; sourceTree = "<group>"; };
+		1AAD80481EA711770090D192 /* MykiLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiLocationViewController.swift; sourceTree = "<group>"; };
+		1AAD80501EA76FC90090D192 /* MykiInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiInfoViewController.swift; sourceTree = "<group>"; };
 		1AB24FF61E7F8B77007CFD1B /* Iconified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconified.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB24FF91E7F8B77007CFD1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB24FFE1E7F8B77007CFD1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				1A0C78DF1E972A4B00C1FFD5 /* PtvVideoViewController.swift */,
 				1A0C78EA1E9B281900C1FFD5 /* PtvMapViewController.swift */,
 				1A0C78EC1E9BAA0500C1FFD5 /* PtvStops.swift */,
+				1AAD80481EA711770090D192 /* MykiLocationViewController.swift */,
+				1AAD80501EA76FC90090D192 /* MykiInfoViewController.swift */,
 			);
 			name = Transportation;
 			sourceTree = "<group>";
@@ -707,11 +713,13 @@
 				1ABCE4F41EA4CC7500FFFB84 /* CuisineTableViewCell.swift in Sources */,
 				1ABCE4F21EA4CC2000FFFB84 /* CuisineTableViewController.swift in Sources */,
 				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
+				1AAD80491EA711770090D192 /* MykiLocationViewController.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
 				1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */,
+				1AAD80511EA76FC90090D192 /* MykiInfoViewController.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,

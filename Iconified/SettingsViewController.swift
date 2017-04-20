@@ -20,6 +20,8 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        languagePicker.transform = CGAffineTransform.init(scaleX: 2.5, y: 2.5)
+            //CGAffineTransformMakeScale(.5, 0.5);
         languagePicker.delegate = self
         languagePicker.dataSource = self
         self.loadData()
@@ -67,6 +69,73 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
       return languageArray.count
         
     }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+      /*
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 10, height: 160))
+            //CGRectMake(0, 0, pickerView.bounds.width - 30, 60))
+        
+        let myImageView = UIImageView(frame: CGRect(x: 60, y: 0, width: 80, height: 80))
+        
+        var rowString = String()
+        switch row
+        {
+            case 0: //rowString = "Australia"
+                    myImageView.image = UIImage(named:"Australia")
+            case 1: //rowString = "India"
+                    myImageView.image = UIImage(named:"China")
+            case 2:// rowString = "Italy"
+                    myImageView.image = UIImage(named:"Australia")
+            case 3: myImageView.image = UIImage(named:"Australia")
+            case 4: myImageView.image = UIImage(named:"Australia")
+            case 5: myImageView.image = UIImage(named:"Australia")
+            case 6: myImageView.image = UIImage(named:"Italy")
+            case 7: myImageView.image = UIImage(named:"Japan")
+            case 8: myImageView.image = UIImage(named:"Mexico")
+            case 9: myImageView.image = UIImage(named:"Vietnam")
+            
+        default:
+                //rowString = "Error: too many rows"
+                myImageView.image = nil
+        }
+        let myLabel = UILabel(frame: CGRect(x: 60, y: 0, width: pickerView.bounds.width - 90, height: 60))
+        myLabel.font = UIFont(name: "some font", size: 18)
+        myLabel.text = rowString
+        
+       // myView.addSubview(myLabel)
+        myView.addSubview(myImageView)
+    
+        return myView
+ */
+        var myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        
+        switch row {
+        case 0:
+            myImageView = UIImageView(image: UIImage(named:"Arab"))
+        case 1:
+            myImageView = UIImageView(image: UIImage(named:"China"))
+        case 2:
+            myImageView = UIImageView(image: UIImage(named:"Australia"))
+        case 3:
+            myImageView = UIImageView(image: UIImage(named:"France"))
+        case 4:
+            myImageView = UIImageView(image: UIImage(named:"Germany"))
+        case 5:
+            myImageView = UIImageView(image: UIImage(named:"Greece"))
+        case 6:
+            myImageView = UIImageView(image: UIImage(named:"Italy"))
+        case 7:
+            myImageView = UIImageView(image: UIImage(named:"Japan"))
+        case 8:
+            myImageView = UIImageView(image: UIImage(named:"Mexico"))
+        case 9:
+            myImageView = UIImageView(image: UIImage(named:"Vietnam"))
+        default:
+            myImageView.image = nil
+            return myImageView
+        }
+        return myImageView
+
+    }
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -75,8 +144,8 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
   
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      self.selectedLanguage =  languageArray[row]
-       print("Seleted language is \(self.selectedLanguage!)")
+       self.selectedLanguage =  languageArray[row]
+       print("Selected language is \(self.selectedLanguage!)")
        self.savePlistData(selectedLanguage: self.selectedLanguage!)
        
     }

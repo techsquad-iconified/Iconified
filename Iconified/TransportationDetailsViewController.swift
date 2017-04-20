@@ -17,7 +17,6 @@ class TransportationDetailsViewController: UIViewController {
     //UI Variables
     @IBOutlet var mykiIcon: UIImageView!
     @IBOutlet var typesIcon: UIImageView!
-    @IBOutlet var offersIcon: UIImageView!
     
     //Method called when the view first loads
     override func viewDidLoad() {
@@ -35,11 +34,7 @@ class TransportationDetailsViewController: UIViewController {
         let tapGestureRecogniserForTypes = UITapGestureRecognizer(target: self, action:#selector(TransportationDetailsViewController.typesSelected))
         typesIcon.isUserInteractionEnabled = true
         typesIcon.addGestureRecognizer(tapGestureRecogniserForTypes)
-        
-        //Adding gesture recognition for offers icon
-        let tapGestureRecogniserForOffers = UITapGestureRecognizer(target: self, action:#selector(TransportationDetailsViewController.offersSelected))
-        offersIcon.isUserInteractionEnabled = true
-        offersIcon.addGestureRecognizer(tapGestureRecogniserForOffers)
+       
         
         // Do any additional setup after loading the view.
     }
@@ -56,19 +51,16 @@ class TransportationDetailsViewController: UIViewController {
     //Method called when Myki icon is selected
     func mykiSelected()
     {
-        performSegue(withIdentifier: "mykiSegue", sender: nil)
+        //performSegue(withIdentifier: "mykiSegue", sender: nil)
+        performSegue(withIdentifier: "mykiLocationSegue", sender: nil)
     }
+    
     //Method called when public transport types is selected
     func typesSelected()
     {
         performSegue(withIdentifier: "publicTransportSegue", sender: nil)
     }
-    //Method called when offers icon selected
-    func offersSelected()
-    {
-        performSegue(withIdentifier: "freeTramZoneSegue", sender: nil)
-        
-    }
+    
 
     
     // MARK: - Navigation
@@ -86,12 +78,14 @@ class TransportationDetailsViewController: UIViewController {
         {
             let destinationMapVC: PtvMapViewController = segue.destination as! PtvMapViewController
         }
-        //Segue to free tram zone
+        /*
+         //Segue to free tram zone
         if(segue.identifier == "freeTramZoneSegue")
         {
             let destinationFreeTramVC: PtvWebViewController = segue.destination as! PtvWebViewController
             destinationFreeTramVC.selectedUrl = "https://static.ptv.vic.gov.au/siteassets/PDFs/Maps/Network-maps/PTV-Free-Tram-Zone-Map.pdf"
         }
+         */
         
     }
     
