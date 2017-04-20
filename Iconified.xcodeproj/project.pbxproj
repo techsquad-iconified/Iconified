@@ -48,6 +48,10 @@
 		1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */; };
 		356D928F162B3AE3E2BB10D3 /* Pods_IconifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A1199F9F3AD70DEB31F39A /* Pods_IconifiedTests.framework */; };
 		545483FF935FD8218052B1D0 /* Pods_IconifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DE86583785B53C05502B91 /* Pods_IconifiedUITests.framework */; };
+		549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577411EA63A95003E127E /* AccommodationDetailViewController.swift */; };
+		549577451EA63A95003E127E /* AccommodationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577421EA63A95003E127E /* AccommodationMapViewController.swift */; };
+		549577461EA63A95003E127E /* AccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577431EA63A95003E127E /* AccommodationViewController.swift */; };
+		549577491EA66352003E127E /* HotelAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577481EA66352003E127E /* HotelAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +143,10 @@
 		1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiViewController.swift; sourceTree = "<group>"; };
 		1AF0E8AE1E94E44E00816054 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = SOURCE_ROOT; };
 		2E1F4552E5EA655BED78E940 /* Pods-Iconified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iconified.release.xcconfig"; path = "Pods/Target Support Files/Pods-Iconified/Pods-Iconified.release.xcconfig"; sourceTree = "<group>"; };
+		549577411EA63A95003E127E /* AccommodationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationDetailViewController.swift; sourceTree = "<group>"; };
+		549577421EA63A95003E127E /* AccommodationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationMapViewController.swift; sourceTree = "<group>"; };
+		549577431EA63A95003E127E /* AccommodationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationViewController.swift; sourceTree = "<group>"; };
+		549577481EA66352003E127E /* HotelAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelAnnotation.swift; sourceTree = "<group>"; };
 		74E0D9F88268A0532FB05565 /* Pods_Iconified.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iconified.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92A83969EA3FE18C2990B71A /* Pods-IconifiedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconifiedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IconifiedTests/Pods-IconifiedTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD71392850B55F68E56CC765 /* Pods-IconifiedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconifiedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IconifiedUITests/Pods-IconifiedUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -297,6 +305,7 @@
 		1AB24FF81E7F8B77007CFD1B /* Iconified */ = {
 			isa = PBXGroup;
 			children = (
+				549577401EA63A7F003E127E /* Accommodation */,
 				1A7AA6B41E8CFAE00027DD34 /* User Interface */,
 				1A15C7061E935B36002658A9 /* Translator */,
 				1A7AA6B31E8CF4AC0027DD34 /* General */,
@@ -348,6 +357,17 @@
 				1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */,
 			);
 			name = Carousel;
+			sourceTree = "<group>";
+		};
+		549577401EA63A7F003E127E /* Accommodation */ = {
+			isa = PBXGroup;
+			children = (
+				549577411EA63A95003E127E /* AccommodationDetailViewController.swift */,
+				549577421EA63A95003E127E /* AccommodationMapViewController.swift */,
+				549577431EA63A95003E127E /* AccommodationViewController.swift */,
+				549577481EA66352003E127E /* HotelAnnotation.swift */,
+			);
+			name = Accommodation;
 			sourceTree = "<group>";
 		};
 		FD20F8C9290C3B88DE7CA125 /* Pods */ = {
@@ -691,6 +711,7 @@
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
 				1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */,
+				549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
 				1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */,
@@ -701,9 +722,12 @@
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
+				549577491EA66352003E127E /* HotelAnnotation.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
 				1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
+				549577451EA63A95003E127E /* AccommodationMapViewController.swift in Sources */,
+				549577461EA63A95003E127E /* AccommodationViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,
 				1A2153481E9F3E46004F28EE /* TranslateViewController.swift in Sources */,

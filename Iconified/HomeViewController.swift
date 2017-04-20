@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
 
     //Initial icons representing th various facilities provided by the application
     @IBOutlet weak var FoodIcon: UIImageView!
+    @IBOutlet weak var AccommodationIcon: UIImageView!
     @IBOutlet weak var TransportationIcon: UIImageView!
     
    
@@ -40,6 +41,11 @@ class HomeViewController: UIViewController {
         let tapGestureRecogniserForFood = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.foodSelected))
         FoodIcon.isUserInteractionEnabled = true
         FoodIcon.addGestureRecognizer(tapGestureRecogniserForFood)
+        
+        //Adding gesture recognition for Accommodation icon
+        let tapGestureRecogniserForAccommodation = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.AccommodationSelected))
+        AccommodationIcon.isUserInteractionEnabled = true
+        AccommodationIcon.addGestureRecognizer(tapGestureRecogniserForAccommodation)
         
     }
     
@@ -98,6 +104,16 @@ class HomeViewController: UIViewController {
         }
     }
  
+    //This method is called when the Accommodation icon is clicked (using gesture control feature)
+    func AccommodationSelected()
+    {
+        print("Image clicked")
+        if(self.checkInternetConnection())
+        {
+            performSegue(withIdentifier: "AccommodationSegue", sender: nil)
+        }
+    }
+    
     // MARK: - Navigation
 
     //In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -112,6 +128,12 @@ class HomeViewController: UIViewController {
         {
             let destinationTransportationVC:TransportationDetailsViewController = segue.destination as! TransportationDetailsViewController
         }
+        //Segue directing to the Accommodation facilities
+        if(segue.identifier == "AccommodationSegue")
+        {
+            let destinationAccommodationVC:AccommodationViewController = segue.destination as! AccommodationViewController
+        }
+
        
     }
     

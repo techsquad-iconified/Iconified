@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EDs-HX-b0i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EDs-HX-b0i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkY-sh-diZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1140" y="139"/>
+            <point key="canvasLocation" x="-1750" y="107"/>
         </scene>
         <!--Settings-->
         <scene sceneID="agn-1y-EcX">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDz-PQ-fpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="890"/>
+            <point key="canvasLocation" x="-932" y="1370"/>
         </scene>
         <!--Ptv Map View Controller-->
         <scene sceneID="1LU-yZ-xl3">
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsX-ia-TL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="1738"/>
+            <point key="canvasLocation" x="-977" y="2245"/>
         </scene>
         <!--PTV-->
         <scene sceneID="cew-Bm-V7p">
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eba-7l-jGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="888"/>
+            <point key="canvasLocation" x="1247" y="2621"/>
         </scene>
         <!--Title-->
         <scene sceneID="2oK-SY-RHf">
@@ -386,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPJ-yY-gln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904.79999999999995" y="888.30584707646187"/>
+            <point key="canvasLocation" x="-350" y="2245"/>
         </scene>
         <!--Translator-->
         <scene sceneID="LOl-6D-6Du">
@@ -473,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhN-r5-yc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434.39999999999998" y="-601.34932533733138"/>
+            <point key="canvasLocation" x="-404" y="-730"/>
         </scene>
         <!--Iconified-->
         <scene sceneID="AOW-O6-G4h">
@@ -560,15 +560,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AccommodationIcon" destination="Hsf-gd-Zdf" id="onQ-dB-IS5"/>
                         <outlet property="FoodIcon" destination="VQy-i2-60p" id="0uI-jP-1qW"/>
                         <outlet property="TransportationIcon" destination="883-cm-lL5" id="y1B-sa-EPz"/>
                         <segue destination="L73-FF-aY9" kind="show" identifier="FoodSegue" id="CrS-TS-TiU"/>
                         <segue destination="xuD-lc-Vhr" kind="show" identifier="TransportationSegue" id="2w0-li-VVx"/>
+                        <segue destination="RHT-L7-Ejp" kind="show" identifier="AccommodationSegue" id="3Fl-VS-oL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yT-E6-rzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434.39999999999998" y="136.28185907046478"/>
+            <point key="canvasLocation" x="-465" y="107"/>
         </scene>
         <!--Food-->
         <scene sceneID="EPB-ml-0hH">
@@ -670,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zod-ar-e1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="136.28185907046478"/>
+            <point key="canvasLocation" x="1092" y="135"/>
         </scene>
         <!--Details-->
         <scene sceneID="IE1-gl-NHr">
@@ -745,7 +747,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNh-jA-AlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1918" y="169"/>
         </scene>
         <!--Food About View Controller-->
         <scene sceneID="BCI-C9-Vcq">
@@ -1104,6 +1106,98 @@
             </objects>
             <point key="canvasLocation" x="2670" y="711"/>
         </scene>
+        <!--Accommodation View Controller-->
+        <scene sceneID="He2-Hy-eub">
+            <objects>
+                <viewController id="RHT-L7-Ejp" customClass="AccommodationViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rw1-JT-tDd"/>
+                        <viewControllerLayoutGuide type="bottom" id="7OZ-mP-vrF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q3e-vZ-ehR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kh7-C5-Lwc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                                <items>
+                                    <navigationItem title="Food" id="lVl-wL-Moz"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Detail Menu background" translatesAutoresizingMaskIntoConstraints="NO" id="ZIb-b1-IL3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hotel_3" translatesAutoresizingMaskIntoConstraints="NO" id="BBw-Pe-MqG">
+                                <rect key="frame" x="113" y="170" width="148" height="140"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="zMf-qO-aIr"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Real_estate" translatesAutoresizingMaskIntoConstraints="NO" id="IOx-36-hDE">
+                                <rect key="frame" x="113" y="373" width="148" height="139"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99144381280000005" green="0.96543306110000005" blue="0.83802491430000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ZIb-b1-IL3" firstAttribute="top" secondItem="Kh7-C5-Lwc" secondAttribute="bottom" id="0Od-Jp-TYs"/>
+                            <constraint firstItem="IOx-36-hDE" firstAttribute="top" secondItem="BBw-Pe-MqG" secondAttribute="bottom" constant="76" id="MM3-Ou-rjq"/>
+                            <constraint firstItem="BBw-Pe-MqG" firstAttribute="leading" secondItem="Q3e-vZ-ehR" secondAttribute="leadingMargin" constant="97" id="Peh-2g-iJH"/>
+                            <constraint firstItem="IOx-36-hDE" firstAttribute="trailing" secondItem="BBw-Pe-MqG" secondAttribute="trailing" id="TNi-EF-daE"/>
+                            <constraint firstItem="BBw-Pe-MqG" firstAttribute="top" secondItem="rw1-JT-tDd" secondAttribute="bottom" constant="106" id="TdY-FL-kKc"/>
+                            <constraint firstAttribute="trailing" secondItem="Kh7-C5-Lwc" secondAttribute="trailing" id="UzP-gi-qYj"/>
+                            <constraint firstItem="Kh7-C5-Lwc" firstAttribute="top" secondItem="rw1-JT-tDd" secondAttribute="bottom" id="Yht-OZ-G4B"/>
+                            <constraint firstItem="ZIb-b1-IL3" firstAttribute="top" secondItem="Kh7-C5-Lwc" secondAttribute="top" id="Zyk-M8-i6X"/>
+                            <constraint firstItem="IOx-36-hDE" firstAttribute="leading" secondItem="BBw-Pe-MqG" secondAttribute="leading" id="afQ-Q1-2N5"/>
+                            <constraint firstItem="ZIb-b1-IL3" firstAttribute="trailing" secondItem="Kh7-C5-Lwc" secondAttribute="trailing" id="eU1-xQ-Luo"/>
+                            <constraint firstItem="BBw-Pe-MqG" firstAttribute="centerX" secondItem="Kh7-C5-Lwc" secondAttribute="centerX" id="ffN-kd-w2l"/>
+                            <constraint firstItem="ZIb-b1-IL3" firstAttribute="bottom" secondItem="7OZ-mP-vrF" secondAttribute="top" id="n92-kK-GoQ"/>
+                            <constraint firstItem="ZIb-b1-IL3" firstAttribute="leading" secondItem="Kh7-C5-Lwc" secondAttribute="leading" id="tc0-ji-98I"/>
+                            <constraint firstItem="Kh7-C5-Lwc" firstAttribute="leading" secondItem="Q3e-vZ-ehR" secondAttribute="leading" id="tzu-7V-6IR"/>
+                            <constraint firstItem="7OZ-mP-vrF" firstAttribute="top" secondItem="IOx-36-hDE" secondAttribute="bottom" constant="155" id="vi4-7r-Qkl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="HotelIcon" destination="BBw-Pe-MqG" id="XYc-f3-q27"/>
+                        <outlet property="MotelIcon" destination="IOx-36-hDE" id="HDq-wC-1sN"/>
+                        <segue destination="Nl2-kZ-Oxz" kind="show" identifier="AccommodationMapSegue" id="5lj-87-UgC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUj-QM-nLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="376.80000000000001" y="932.38380809595208"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="0IC-Gy-5Ia">
+            <objects>
+                <viewController id="Nl2-kZ-Oxz" customClass="AccommodationMapViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yon-Nl-DiV"/>
+                        <viewControllerLayoutGuide type="bottom" id="uWj-AH-X22"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aub-nL-Jgr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vos-zP-5rt">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99144381280000005" green="0.96543306110000005" blue="0.83802491430000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="HK3-05-aCD"/>
+                    <connections>
+                        <outlet property="mapView" destination="Vos-zP-5rt" id="q1O-xz-Gqz"/>
+                        <segue destination="qcu-9w-lx3" kind="show" identifier="AccommodationDetailSegue" id="qcJ-Of-hxX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oTk-tQ-gAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="932"/>
+        </scene>
     </scenes>
     <resources>
         <image name="About Myki" width="50" height="50"/>
@@ -1119,10 +1213,12 @@
         <image name="Emergency" width="530" height="530"/>
         <image name="Food" width="530" height="530"/>
         <image name="FreeTramZone" width="98" height="98"/>
+        <image name="Hotel_3" width="1089" height="1089"/>
         <image name="Marker-48" width="48" height="48"/>
         <image name="Near Me-48" width="48" height="48"/>
         <image name="Phone-26" width="26" height="26"/>
         <image name="Rating-48" width="48" height="48"/>
+        <image name="Real_estate" width="1089" height="1089"/>
         <image name="Ringing Phone Filled-50" width="50" height="50"/>
         <image name="Settings" width="25" height="25"/>
         <image name="Shopping" width="530" height="530"/>
@@ -1140,8 +1236,9 @@
         <image name="transportTypes" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CrS-TS-TiU"/>
+        <segue reference="qcJ-Of-hxX"/>
         <segue reference="JC9-01-y9h"/>
+        <segue reference="CrS-TS-TiU"/>
         <segue reference="TAg-UF-uCo"/>
     </inferredMetricsTieBreakers>
 </document>
