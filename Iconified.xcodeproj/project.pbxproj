@@ -27,6 +27,21 @@
 		1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */; };
 		1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */; };
 		1A7B70941E94EE1E00411FC1 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B70931E94EE1E00411FC1 /* iCarousel.m */; };
+		1A873A181EAA308600464EB3 /* EmergencyAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A091EAA308600464EB3 /* EmergencyAboutViewController.swift */; };
+		1A873A191EAA308600464EB3 /* EmergencyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0A1EAA308600464EB3 /* EmergencyAnnotation.swift */; };
+		1A873A1A1EAA308600464EB3 /* EmergencyCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0B1EAA308600464EB3 /* EmergencyCallout.swift */; };
+		1A873A1B1EAA308600464EB3 /* EmergencyCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A873A0C1EAA308600464EB3 /* EmergencyCalloutView.xib */; };
+		1A873A1C1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0D1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift */; };
+		1A873A1D1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0E1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift */; };
+		1A873A1E1EAA308600464EB3 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */; };
+		1A873A1F1EAA308600464EB3 /* EmergencyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */; };
+		1A873A201EAA308600464EB3 /* EmergenyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */; };
+		1A873A211EAA308600464EB3 /* FoodDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */; };
+		1A873A221EAA308600464EB3 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A131EAA308600464EB3 /* Hospital.swift */; };
+		1A873A231EAA308600464EB3 /* HospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */; };
+		1A873A241EAA308600464EB3 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */; };
+		1A873A251EAA308600464EB3 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */; };
+		1A873A261EAA308600464EB3 /* PoliceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A171EAA308600464EB3 /* PoliceMapViewController.swift */; };
 		1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93BAD71E8A5950009FFE04 /* WebViewController.swift */; };
 		1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CC1E8DE258003271AE /* Reachability.swift */; };
 		1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */; };
@@ -119,6 +134,21 @@
 		1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenu.swift; sourceTree = "<group>"; };
 		1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenuButtonAction.swift; sourceTree = "<group>"; };
 		1A7B70931E94EE1E00411FC1 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = SOURCE_ROOT; };
+		1A873A091EAA308600464EB3 /* EmergencyAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyAboutViewController.swift; path = Iconified/EmergencyAboutViewController.swift; sourceTree = "<group>"; };
+		1A873A0A1EAA308600464EB3 /* EmergencyAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyAnnotation.swift; path = Iconified/EmergencyAnnotation.swift; sourceTree = "<group>"; };
+		1A873A0B1EAA308600464EB3 /* EmergencyCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyCallout.swift; path = Iconified/EmergencyCallout.swift; sourceTree = "<group>"; };
+		1A873A0C1EAA308600464EB3 /* EmergencyCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmergencyCalloutView.xib; path = Iconified/EmergencyCalloutView.xib; sourceTree = "<group>"; };
+		1A873A0D1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyPhotoAlbumViewController.swift; path = Iconified/EmergencyPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		1A873A0E1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyPhotoCollectionViewCell.swift; path = Iconified/EmergencyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyViewController.swift; path = Iconified/EmergencyViewController.swift; sourceTree = "<group>"; };
+		1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyWebViewController.swift; path = Iconified/EmergencyWebViewController.swift; sourceTree = "<group>"; };
+		1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergenyDetailViewController.swift; path = Iconified/EmergenyDetailViewController.swift; sourceTree = "<group>"; };
+		1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoodDescriptionViewController.swift; path = Iconified/FoodDescriptionViewController.swift; sourceTree = "<group>"; };
+		1A873A131EAA308600464EB3 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hospital.swift; path = Iconified/Hospital.swift; sourceTree = "<group>"; };
+		1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalMapViewController.swift; path = Iconified/HospitalMapViewController.swift; sourceTree = "<group>"; };
+		1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = Iconified/LanguageTableViewCell.swift; sourceTree = "<group>"; };
+		1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Iconified/LanguageTableViewController.swift; sourceTree = "<group>"; };
+		1A873A171EAA308600464EB3 /* PoliceMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoliceMapViewController.swift; path = Iconified/PoliceMapViewController.swift; sourceTree = "<group>"; };
 		1A93BAD71E8A5950009FFE04 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1AA966CC1E8DE258003271AE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Iconified/Reachability.swift; sourceTree = "<group>"; };
 		1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoAlbumViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +322,29 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
+		1A873A2A1EAA309800464EB3 /* Emergency */ = {
+			isa = PBXGroup;
+			children = (
+				1A873A171EAA308600464EB3 /* PoliceMapViewController.swift */,
+				1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */,
+				1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */,
+				1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */,
+				1A873A131EAA308600464EB3 /* Hospital.swift */,
+				1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */,
+				1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */,
+				1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */,
+				1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */,
+				1A873A0E1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift */,
+				1A873A0D1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift */,
+				1A873A0C1EAA308600464EB3 /* EmergencyCalloutView.xib */,
+				1A873A0B1EAA308600464EB3 /* EmergencyCallout.swift */,
+				1A873A0A1EAA308600464EB3 /* EmergencyAnnotation.swift */,
+				1A873A091EAA308600464EB3 /* EmergencyAboutViewController.swift */,
+			);
+			name = Emergency;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		1AB24FED1E7F8B77007CFD1B = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +370,7 @@
 		1AB24FF81E7F8B77007CFD1B /* Iconified */ = {
 			isa = PBXGroup;
 			children = (
+				1A873A2A1EAA309800464EB3 /* Emergency */,
 				549577401EA63A7F003E127E /* Accommodation */,
 				1A7AA6B41E8CFAE00027DD34 /* User Interface */,
 				1A15C7061E935B36002658A9 /* Translator */,
@@ -547,6 +601,7 @@
 				1A0C78E51E9765C600C1FFD5 /* userData.plist in Resources */,
 				1AB250071E7F8B77007CFD1B /* LaunchScreen.storyboard in Resources */,
 				1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */,
+				1A873A1B1EAA308600464EB3 /* EmergencyCalloutView.xib in Resources */,
 				1A03CE521E94E7FD001E68A8 /* CustomCalloutView.xib in Resources */,
 				1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */,
 			);
@@ -717,38 +772,52 @@
 				1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */,
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
 				1AAD80471EA5C6B20090D192 /*  TranslationFoodViewController.swift in Sources */,
+				1A873A191EAA308600464EB3 /* EmergencyAnnotation.swift in Sources */,
+				1A873A1C1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift in Sources */,
 				1A0C78E01E972A4B00C1FFD5 /* PtvVideoViewController.swift in Sources */,
+				1A873A251EAA308600464EB3 /* LanguageTableViewController.swift in Sources */,
 				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
+				1A873A1E1EAA308600464EB3 /* EmergencyViewController.swift in Sources */,
 				1AC243F51E95D355007AC863 /* CallViewCustom.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
+				1A873A241EAA308600464EB3 /* LanguageTableViewCell.swift in Sources */,
 				1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */,
 				549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
 				1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
+				1A873A211EAA308600464EB3 /* FoodDescriptionViewController.swift in Sources */,
 				1A7B70941E94EE1E00411FC1 /* iCarousel.m in Sources */,
+				1A873A1D1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift in Sources */,
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
 				1ABCE4F41EA4CC7500FFFB84 /* CuisineTableViewCell.swift in Sources */,
+				1A873A181EAA308600464EB3 /* EmergencyAboutViewController.swift in Sources */,
+				1A873A1F1EAA308600464EB3 /* EmergencyWebViewController.swift in Sources */,
 				1ABCE4F21EA4CC2000FFFB84 /* CuisineTableViewController.swift in Sources */,
+				1A873A221EAA308600464EB3 /* Hospital.swift in Sources */,
 				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
 				1AAD80491EA711770090D192 /* MykiLocationViewController.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
+				1A873A201EAA308600464EB3 /* EmergenyDetailViewController.swift in Sources */,
 				549577491EA66352003E127E /* HotelAnnotation.swift in Sources */,
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
 				1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */,
+				1A873A261EAA308600464EB3 /* PoliceMapViewController.swift in Sources */,
 				1AAD80511EA76FC90090D192 /* MykiInfoViewController.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
 				549577451EA63A95003E127E /* AccommodationMapViewController.swift in Sources */,
 				549577461EA63A95003E127E /* AccommodationViewController.swift in Sources */,
 				1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */,
 				1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */,
+				1A873A231EAA308600464EB3 /* HospitalMapViewController.swift in Sources */,
 				1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */,
 				1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */,
+				1A873A1A1EAA308600464EB3 /* EmergencyCallout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

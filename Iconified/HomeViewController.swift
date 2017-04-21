@@ -53,8 +53,7 @@ class HomeViewController: UIViewController {
         let tapGestureRecogniserForAccommodation = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.AccommodationSelected))
         AccommodationIcon.isUserInteractionEnabled = true
         AccommodationIcon.addGestureRecognizer(tapGestureRecogniserForAccommodation)
-/*
-       
+    
         
         //Adding gesture recognition for Bank icon
         let tapGestureRecogniserForBank = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.bankSelected))
@@ -70,9 +69,7 @@ class HomeViewController: UIViewController {
         let tapGestureRecogniserForEmergency = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.emergencySelected))
         emergencyIcon.isUserInteractionEnabled = true
         emergencyIcon.addGestureRecognizer(tapGestureRecogniserForEmergency)
->>>>>>> 8b3443fb5a14eaec2ec957cff512cf8780d0a0f5
         
- */
     }
     
     override open var shouldAutorotate: Bool {

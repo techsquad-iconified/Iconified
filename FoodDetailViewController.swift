@@ -52,15 +52,19 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)
         }
+        if(self.selectedPlace.photoReference.count == 0)
+        {
+            self.detailSegment.selectedSegmentIndex = 0
+            self.detailSegment.removeSegment(at: 1, animated: true)
+        }
+        
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
         //set page title
         self.title = self.selectedPlace.placeName
         //set banner image
-        if(self.selectedPlace.firstPhoto != nil)
         {
-            self.bannerImage.image = self.selectedPlace.firstPhoto
         }
         else
         {
