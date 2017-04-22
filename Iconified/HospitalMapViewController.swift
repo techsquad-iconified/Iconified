@@ -594,7 +594,7 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
                         if(firstOneDone == false)
                         {
                             // retrieve images for each place.
-                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
+                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
                             print(url)
                             let data = NSData(contentsOf:url as URL)
                             if(data != nil)

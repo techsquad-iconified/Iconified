@@ -63,7 +63,7 @@ class EmergencyPhotoAlbumViewController: UIViewController, UICollectionViewDataS
         DispatchQueue.main.async(){
             for reference in self.photoReferenceArray
             {
-                let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=350&maxheight=350&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
+                let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=350&maxheight=350&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
                 print(url)
                 let data = NSData(contentsOf:url as URL)
                 if(data != nil)

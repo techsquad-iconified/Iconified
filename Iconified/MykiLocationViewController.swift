@@ -35,6 +35,16 @@ class MykiLocationViewController: UIViewController {
             let requestObj = NSURLRequest(url: url as URL);
             self.webView.loadRequest(requestObj as URLRequest)
             //getSettings().setBuiltInZoomControls(true);
+            
+            let contentSize:CGSize = self.webView.scrollView.contentSize
+            let viewSize:CGSize = self.view.bounds.size
+            
+            let rw: Float = 1.35
+            
+            self.webView.scrollView.minimumZoomScale = CGFloat(rw)
+            self.webView.scrollView.maximumZoomScale = CGFloat(rw)
+            self.webView.scrollView.zoomScale = CGFloat(rw)
+            
             self.stopProgressView()
         }
         

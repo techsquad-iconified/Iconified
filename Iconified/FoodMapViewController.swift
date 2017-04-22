@@ -68,11 +68,20 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         
         if(self.foodType == "restaurant")
         {
+            self.title = "Restaurants"
             cuiseButton.setImage(UIImage.init(named: "Australia"), for: UIControlState.normal)
             cuiseButton.addTarget(self, action:#selector(FoodMapViewController.cuisineSelector), for: UIControlEvents.touchUpInside)
             cuiseButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
             let barButton = UIBarButtonItem.init(customView: cuiseButton)
             self.navigationItem.rightBarButtonItem = barButton
+        }
+        else if(self.foodType == "cafe")
+        {
+            self.title == "Cafes"
+        }
+        else
+        {
+            self.title == "Bars/Pubs"
         }
         self.mapView.delegate = self
         //call method to get users current location
@@ -316,7 +325,7 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                         if(firstOneDone == false)
                         {
                             // retrieve images for each place.
-                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
+                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
                             print(url)
                             let data = NSData(contentsOf:url as URL)
                             if(data != nil)

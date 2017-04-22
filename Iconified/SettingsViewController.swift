@@ -39,9 +39,8 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         do{
             let loadString = try String(contentsOfFile: plistPath)
-            //var value = (Array(languageDictionary.keys)).index(of: loadString)
-          var value = languageArray.index(of: loadString)
-          languagePicker.selectRow(value!, inComponent: 0, animated: true)
+            var value = languageArray.index(of: loadString)
+            languagePicker.selectRow(value!, inComponent: 0, animated: true)
         } catch {
             print("Error")
         }

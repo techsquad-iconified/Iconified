@@ -42,6 +42,7 @@
 		1A873A241EAA308600464EB3 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */; };
 		1A873A251EAA308600464EB3 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */; };
 		1A873A261EAA308600464EB3 /* PoliceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A171EAA308600464EB3 /* PoliceMapViewController.swift */; };
+		1A873A2C1EAAD77700464EB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A873A2B1EAAD77700464EB3 /* AVFoundation.framework */; };
 		1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93BAD71E8A5950009FFE04 /* WebViewController.swift */; };
 		1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CC1E8DE258003271AE /* Reachability.swift */; };
 		1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */; };
@@ -149,6 +150,7 @@
 		1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = Iconified/LanguageTableViewCell.swift; sourceTree = "<group>"; };
 		1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Iconified/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		1A873A171EAA308600464EB3 /* PoliceMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoliceMapViewController.swift; path = Iconified/PoliceMapViewController.swift; sourceTree = "<group>"; };
+		1A873A2B1EAAD77700464EB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1A93BAD71E8A5950009FFE04 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1AA966CC1E8DE258003271AE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Iconified/Reachability.swift; sourceTree = "<group>"; };
 		1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoAlbumViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A873A2C1EAAD77700464EB3 /* AVFoundation.framework in Frameworks */,
 				1AB2502C1E7FA761007CFD1B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +410,7 @@
 		1AB2502A1E7FA760007CFD1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A873A2B1EAAD77700464EB3 /* AVFoundation.framework */,
 				1AB2502B1E7FA760007CFD1B /* MapKit.framework */,
 				74E0D9F88268A0532FB05565 /* Pods_Iconified.framework */,
 				B4A1199F9F3AD70DEB31F39A /* Pods_IconifiedTests.framework */,
@@ -526,7 +530,7 @@
 				TargetAttributes = {
 					1AB24FF51E7F8B77007CFD1B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Q7D4UJ9WS5;
+						DevelopmentTeam = S9MRU8B4QY;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -971,10 +975,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q7D4UJ9WS5;
+				DEVELOPMENT_TEAM = S9MRU8B4QY;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified.Shishira;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -988,10 +992,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q7D4UJ9WS5;
+				DEVELOPMENT_TEAM = S9MRU8B4QY;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified;
+				PRODUCT_BUNDLE_IDENTIFIER = Monash.Iconified.Shishira;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Iconified/Iconified-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -16,12 +17,18 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet var targetLangPicker: UIPickerView!
     @IBOutlet var sourceLangPicker: UIPickerView!
     
+    @IBOutlet var translateButton: UIButton!
+    @IBOutlet var speakerButton: UIButton!
+    
     var sourceLanguage:String?
     var sourceCode:String?
     
     var targetLanguage:String?
     var targetCode:String?
     var plistPath: String!
+    
+    let synth = AVSpeechSynthesizer()
+    var myUtterance = AVSpeechUtterance(string: "")
     
     let languageArray : [String] = ["Arabic", "Chinese", "English", "French", "German", "Greek", "Italian",  "Japanese" , "Spanish", "Vietnamese"]
     
@@ -33,11 +40,21 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
+        sourceLangPicker.transform = CGAffineTransform.init(scaleX: 2.0, y: 2.5)
+        targetLangPicker.transform = CGAffineTransform.init(scaleX: 2.0, y: 2.5)
+        
         sourceLangPicker.delegate = self
         sourceLangPicker.dataSource = self
         targetLangPicker.delegate = self
         targetLangPicker.dataSource = self
+        
+        self.speakerButton.isHidden = true
+        /*
+        self.translateButton.isHidden = true
+        self.tranalateText.isHidden = true
+         */
         self.loadPreferredLanguagefromPlistData()
+ 
         // Do any additional setup after loading the view.
     }
     override open var shouldAutorotate: Bool {
@@ -119,16 +136,21 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func translateButton(_ sender: Any) {
-        if(self.checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: self.sourceCode!))
-        {
-            DispatchQueue.main.async(){
+       DispatchQueue.main.async(){
                 self.translate(toTranslate: self.tranalateText.text!)
             }
-        }
-        else
-        {
+        DispatchQueue.main.async(){
+            self.checkSpeakerOptionForTargetLanguageSelected()
             
         }
+        
+      
+    }
+
+    @IBAction func speakerAction(_ sender: Any) {
+        myUtterance = AVSpeechUtterance(string: self.translatedLabel.text!)
+        myUtterance.rate = 0.3
+        synth.speak(myUtterance)
     }
     
     func loadPreferredLanguagefromPlistData()
@@ -199,24 +221,13 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
-    func parseJSON(articleJSON:NSData){
-        
-        var placeLat: Double?
-        var placeLng: Double?
-        var placeId: String?
-        var placeName: String?
-        var placeAddress: String?
-        var isOpen: Bool?
-        
+    func parseJSON(articleJSON:NSData)
+    {
         do{
-            
-            
-            //  When the json data is from TIM api
-            
+            // making an API Request
             let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
             
             // print(jsonData)
-            
             if let data = jsonData["data"] as? NSDictionary
             {
                 if let translations = data["translations"] as? NSArray
@@ -230,7 +241,6 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     }
                 }
             }
-            
         }
         catch{
             print("JSON Serialization error")
@@ -244,7 +254,8 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
         if(pickerView.tag == 1)
         {
             return languageArray.count
@@ -272,6 +283,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         {
             self.sourceLanguage =  languageArray[row]
             self.sourceCode = self.getCodeForLanguage(language: self.sourceLanguage!)
+            self.checkSourceLanguageSelected()
             print("Seleted language is \(self.sourceLanguage!)")
             print("Seleted code is \(self.sourceCode!)")
         }
@@ -303,7 +315,139 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    func checkSourceLanguageSelected()
+    {
+        if(self.checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: self.sourceCode!))
+        {
+            self.translateButton.isHidden = false
+            self.tranalateText.isHidden = false
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Missing Language Keyboard", message: "Please select the language keyboard in your settings", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            self.translateButton.isHidden = true
+            self.tranalateText.isHidden = true
+        }
+    }
     
+    func checkSpeakerOptionForTargetLanguageSelected()
+    {
+        if(self.targetCode != "en")
+        {
+            self.speakerButton.isHidden = true
+        }
+        else
+        {
+            self.speakerButton.isHidden = false
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        /*
+         let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 10, height: 160))
+         //CGRectMake(0, 0, pickerView.bounds.width - 30, 60))
+         
+         let myImageView = UIImageView(frame: CGRect(x: 60, y: 0, width: 80, height: 80))
+         
+         var rowString = String()
+         switch row
+         {
+         case 0: //rowString = "Australia"
+         myImageView.image = UIImage(named:"Australia")
+         case 1: //rowString = "India"
+         myImageView.image = UIImage(named:"China")
+         case 2:// rowString = "Italy"
+         myImageView.image = UIImage(named:"Australia")
+         case 3: myImageView.image = UIImage(named:"Australia")
+         case 4: myImageView.image = UIImage(named:"Australia")
+         case 5: myImageView.image = UIImage(named:"Australia")
+         case 6: myImageView.image = UIImage(named:"Italy")
+         case 7: myImageView.image = UIImage(named:"Japan")
+         case 8: myImageView.image = UIImage(named:"Mexico")
+         case 9: myImageView.image = UIImage(named:"Vietnam")
+         
+         default:
+         //rowString = "Error: too many rows"
+         myImageView.image = nil
+         }
+         let myLabel = UILabel(frame: CGRect(x: 60, y: 0, width: pickerView.bounds.width - 90, height: 60))
+         myLabel.font = UIFont(name: "some font", size: 18)
+         myLabel.text = rowString
+         
+         // myView.addSubview(myLabel)
+         myView.addSubview(myImageView)
+         
+         return myView
+         */
+        
+        var myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        
+        if(pickerView.tag == 1)
+        {
+            
+            switch row
+            {
+                case 0:
+                    myImageView = UIImageView(image: UIImage(named:"Arab"))
+                case 1:
+                    myImageView = UIImageView(image: UIImage(named:"China"))
+                case 2:
+                    myImageView = UIImageView(image: UIImage(named:"Australia"))
+                case 3:
+                    myImageView = UIImageView(image: UIImage(named:"France"))
+                case 4:
+                    myImageView = UIImageView(image: UIImage(named:"Germany"))
+                case 5:
+                    myImageView = UIImageView(image: UIImage(named:"Greece"))
+                case 6:
+                    myImageView = UIImageView(image: UIImage(named:"Italy"))
+                case 7:
+                    myImageView = UIImageView(image: UIImage(named:"Japan"))
+                case 8:
+                    myImageView = UIImageView(image: UIImage(named:"Mexico"))
+                case 9:
+                    myImageView = UIImageView(image: UIImage(named:"Vietnam"))
+                default:
+                    myImageView.image = nil
+                    return myImageView
+            }
+        }
+        else
+        {
+            
+            switch row {
+                case 0:
+                    myImageView = UIImageView(image: UIImage(named:"Arab"))
+                case 1:
+                    myImageView = UIImageView(image: UIImage(named:"China"))
+                case 2:
+                    myImageView = UIImageView(image: UIImage(named:"Australia"))
+                case 3:
+                    myImageView = UIImageView(image: UIImage(named:"France"))
+                case 4:
+                    myImageView = UIImageView(image: UIImage(named:"Germany"))
+                case 5:
+                    myImageView = UIImageView(image: UIImage(named:"Greece"))
+                case 6:
+                    myImageView = UIImageView(image: UIImage(named:"Italy"))
+                case 7:
+                    myImageView = UIImageView(image: UIImage(named:"Japan"))
+                case 8:
+                    myImageView = UIImageView(image: UIImage(named:"Mexico"))
+                case 9:
+                    myImageView = UIImageView(image: UIImage(named:"Vietnam"))
+                default:
+                    myImageView.image = nil
+                    return myImageView
+            }
+            
+        }
+        return myImageView
+        
+    }
+
     
     /*
      // MARK: - Navigation

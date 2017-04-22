@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Free Tram Zone 50x50.png",
+      "filename" : "Speaker.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Free Tram Zone 50x50-1.png",
+      "filename" : "Speaker-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Free Tram Zone 50x50-2.png",
+      "filename" : "Speaker-2.png",
       "scale" : "3x"
     }
   ],

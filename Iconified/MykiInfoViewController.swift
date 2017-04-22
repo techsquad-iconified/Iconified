@@ -42,6 +42,7 @@ class MykiInfoViewController: UIViewController {
         studentOffer.addGestureRecognizer(tapGestureRecogniserForStudentOffer)
         
         
+        
         // Do any additional setup after loading the view.
     }
 
@@ -52,6 +53,13 @@ class MykiInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getDefaultBrowsingLanguage()
+        if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
+        {
+            if(self.defaultLangugeCode! == "it" || self.defaultLangugeCode! == "el" || self.defaultLangugeCode! == "ja" || self.defaultLangugeCode! == "fr" || self.defaultLangugeCode! == "de" || self.defaultLangugeCode! == "en" )
+            {
+                self.videoInfo.isHidden = true
+            }
+        }
     }
 
     //Method called when myki details selected
@@ -101,7 +109,6 @@ class MykiInfoViewController: UIViewController {
             }
             else
             {
- 
                 performSegue(withIdentifier: "mykiVideoSegue", sender: nil)
             }
         }
@@ -128,13 +135,11 @@ class MykiInfoViewController: UIViewController {
     {
         if(self.defaultLangugeCode == nil)
         {
-            let alert = UIAlertController(title: "Select a browsing language", message: "Please select a language in you wish to  view further detils in", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Select a browsing language", message: "Please select a language tobrowse further details", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title:"Select Language", style: .default, handler:
                 { action in self.performSegue(withIdentifier: "settingsFromMykiSegue", sender: self) }))
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
- 
             return false
         }
         else

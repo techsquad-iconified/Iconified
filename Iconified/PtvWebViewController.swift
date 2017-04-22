@@ -39,14 +39,20 @@ class PtvWebViewController: UIViewController {
         let requestObj = NSURLRequest(url: url as URL);
         self.webView.loadRequest(requestObj as URLRequest)
         //getSettings().setBuiltInZoomControls(true);
+        
+
         self.stopProgressView()
         }
+        
+        
+        
         
        
  
   //  self.stopProgressView()
         // Do any additional setup after loading the view.
     }
+
 
     override open var shouldAutorotate: Bool {
         return false
