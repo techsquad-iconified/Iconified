@@ -18,6 +18,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Image" translatesAutoresizingMaskIntoConstraints="NO" id="08t-aW-Ig0">
                     <rect key="frame" x="0.0" y="0.0" width="147" height="169"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About" translatesAutoresizingMaskIntoConstraints="NO" id="FbZ-OE-rXe">
                     <rect key="frame" x="184" y="95" width="71" height="54"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="71" id="PSm-MS-hJ1"/>
@@ -72,6 +73,7 @@
         </view>
     </objects>
     <resources>
+        <image name="About" width="104" height="104"/>
         <image name="Default Image" width="25" height="25"/>
     </resources>
 </document>

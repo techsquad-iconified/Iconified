@@ -57,18 +57,18 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)
         }
-        
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+
         
         //set page title
         self.title = self.selectedPlace.placeName
         //set banner image
+        if(self.selectedPlace.firstPhoto.size == CGSize(width: 0.0, height: 0.0))
         {
+            self.bannerImage.image = UIImage(named: "Default")
         }
         else
         {
-            self.bannerImage.image = UIImage(named: "Image")
+            self.bannerImage.image = self.selectedPlace.firstPhoto
         }
         
         print("In detail view \(selectedPlace.placeName!)")
@@ -76,9 +76,7 @@ class FoodDetailViewController: UIViewController, aboutViewDelegate, photoViewDe
         
     }
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
