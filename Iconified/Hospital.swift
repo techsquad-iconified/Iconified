@@ -6,11 +6,15 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ Entity class Hospital to hold the details of the emergency entities.
+ */
+
 import UIKit
 
 class Hospital: NSObject {
     
-    
+    //Attributed of a Hospital or GP to be saved
     var name : String?
     var address: String?
     var type: String?
@@ -19,7 +23,6 @@ class Hospital: NSObject {
     var languageSpoken: String?
     var lat: Double?
     var lng: Double?
-   
     var rating: Float?
     var priceLevel: Int?
     var website: String?

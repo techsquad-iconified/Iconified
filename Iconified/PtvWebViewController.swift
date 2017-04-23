@@ -23,11 +23,7 @@ class PtvWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setting screen orientation
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
+
         // setting up the progress view
         setProgressView()
         self.webView.addSubview(self.progressView)
@@ -43,19 +39,22 @@ class PtvWebViewController: UIViewController {
 
         self.stopProgressView()
         }
-        
-        
-        
-        
-       
- 
-  //  self.stopProgressView()
-        // Do any additional setup after loading the view.
     }
 
-
-    override open var shouldAutorotate: Bool {
-        return false
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeLeft)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.portrait)
     }
     
     override func didReceiveMemoryWarning() {

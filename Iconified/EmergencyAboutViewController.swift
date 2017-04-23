@@ -6,7 +6,7 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
-
+//EmergencyAboutViewController is a view controller when the details segment is slelected
 import UIKit
 
 protocol emegencyAboutViewDelegate {
@@ -66,8 +66,6 @@ class EmergencyAboutViewController: UIViewController {
     //method called when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         //Adding gesture recognition for navigation icon
         let tapGestureRecogniserForNavigation = UITapGestureRecognizer(target: self, action:#selector(FoodAboutViewController.navigationIconSelected))
@@ -95,9 +93,7 @@ class EmergencyAboutViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

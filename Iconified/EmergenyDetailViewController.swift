@@ -5,6 +5,9 @@
 //  Created by Shishira Skanda on 21/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
+/*
+ EmergenyDetailViewController is a view controller that is linked to the screen displaying the details.
+ */
 
 import UIKit
 
@@ -55,8 +58,6 @@ class EmergenyDetailViewController: UIViewController, emegencyAboutViewDelegate,
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)
         }
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         //set page title
         self.title = self.selectedPlace.name
@@ -71,9 +72,6 @@ class EmergenyDetailViewController: UIViewController, emegencyAboutViewDelegate,
         }
     }
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

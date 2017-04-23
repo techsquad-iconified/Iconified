@@ -11,6 +11,7 @@
  */
 import UIKit
 
+//Delegate to return the selected cuisine
 protocol cuisineDelegate
 {
     func cuisineSelected(cuisine: String)

@@ -58,9 +58,6 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     //Method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         // setting up the progress view
         setProgressView()
@@ -161,9 +158,6 @@ class FoodMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         let sourceController = segue.source as! CuisineTableViewController
        // self.title = sourceController.currentItem
-    }
-    override open var shouldAutorotate: Bool {
-        return false
     }
 
     override func didReceiveMemoryWarning() {

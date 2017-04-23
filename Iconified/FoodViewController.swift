@@ -40,9 +40,6 @@ class FoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         //Adding gesture recognition for meal icon
         let tapGestureRecogniserForMeal = UITapGestureRecognizer(target: self, action:#selector(FoodViewController.mealSelected))
         mealIcon.isUserInteractionEnabled = true
@@ -59,10 +56,6 @@ class FoodViewController: UIViewController {
         drinksIcon.addGestureRecognizer(tapGestureRecogniserForDrinks)
 
         // Do any additional setup after loading the view.
-    }
-    
-    override open var shouldAutorotate: Bool {
-        return false
     }
     
     override func didReceiveMemoryWarning() {

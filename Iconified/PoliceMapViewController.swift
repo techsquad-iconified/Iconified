@@ -58,6 +58,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -255,6 +256,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         }
     }
     
+    //method called wheh details button in the callout view is called
     func detailsSelected()
     {
         performSegue(withIdentifier: "PoliceDetailSegue", sender: nil)
@@ -312,7 +314,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             print("Json Data is \(jsonData)")
             for eachItem in jsonData
             {
-                firstOneDone = false    // Flag to get the forst image in the photo list
+                firstOneDone = false    // Flag to get the first image in the photo list
                 let hospital = eachItem as! NSDictionary
                 if let location = hospital["location"] as? NSDictionary
                 {
@@ -387,7 +389,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "PoliceDetailSegue")
+        if(segue.identifier == "PoliceDetailSegue") //Preparing variables for police detail segue
         {
             let destinationDetailVC: EmergenyDetailViewController = segue.destination as! EmergenyDetailViewController
             destinationDetailVC.selectedPlace = self.selectedPolice

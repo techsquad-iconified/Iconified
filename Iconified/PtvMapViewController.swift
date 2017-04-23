@@ -53,6 +53,22 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.portrait)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -233,7 +249,7 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 {
                     let loc = CLLocationCoordinate2D(latitude: Double((stop.stopLatitude)!) , longitude: Double((stop.stopLongitude)!))
                     let center = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
-                    let point = RestaurantAnnotation(coordinate: loc)
+                    let point = StopsAnnotation(coordinate: loc)
                     point.name = stop.stopName
                     
                     if((stop.routeType)! == 0 )
@@ -252,15 +268,6 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                     {
                       //  point.image = UIImage(named: "Beer")
                     }
-                   
-                    
-                    /*point.image = place.firstPhoto
-                    if(place.isOpen == "true" || place.isOpen == "false")
-                    {
-                        point.isOpen = place.isOpen
-                    }
-                    point.place = place
-                    */
                     
                     ptvMapView.addAnnotation(point)
                     
@@ -338,28 +345,8 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         else{
             annotationView?.annotation = annotation
         }
-        let res = annotation as! RestaurantAnnotation
+        let res = annotation as! StopsAnnotation
         annotationView?.image = res.image
-        /*for case let stop as PtvStops in stopsArray
-        {
-            if((stop.routeType)! == 0 )
-            {
-                annotationView?.image = UIImage(named: "Cafe Filled")
-            }
-            else if((stop.routeType)! == 1 )
-            {
-                annotationView?.image = UIImage(named: "Wine")    //drinks annotation
-            }
-            else if((stop.routeType)! == 2 )
-            {
-                annotationView?.image = UIImage(named: "Meal")     //Restaurant annotation
-            }
-            else
-            {
-                annotationView?.image = UIImage(named: "Beer")
-            }
-            
-        }*/
         return annotationView
     }
     
@@ -375,12 +362,13 @@ class PtvMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
         
         // if other anotations selected
-        let restaurantAnnotation = view.annotation as! RestaurantAnnotation
-        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        let stopAnnotation = view.annotation as! StopsAnnotation
+        let views = Bundle.main.loadNibNamed("PtvCalloutView", owner: nil, options: nil)
         //get the callout view
-        let calloutView = views?[0] as! CallViewCustom
+        let calloutView = views?[0] as! PtvCalloutView
         //Add Image, name, open status and a details icon
-        calloutView.restaurantName.text = restaurantAnnotation.name
+        calloutView.stopName.text = stopAnnotation.name
+        calloutView.stopImage.image = stopAnnotation.image
         
         calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)

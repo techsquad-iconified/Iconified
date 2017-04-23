@@ -21,9 +21,6 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
     //Function called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         //setting display type of slide show
         self.displayView.type = iCarouselType.invertedCylinder
@@ -38,9 +35,7 @@ class PhotoViewController: UIViewController, iCarouselDataSource, iCarouselDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override open var shouldAutorotate: Bool {
-        return false
-    }
+
     
     
     func reArrangeArray()

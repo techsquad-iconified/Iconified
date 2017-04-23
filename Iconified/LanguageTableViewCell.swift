@@ -6,6 +6,9 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+LanguageTableViewCell is a Table view cell class that is used to store the image of the flags to represent different languages
+ */
 import UIKit
 
 class LanguageTableViewCell: UITableViewCell {

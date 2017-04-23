@@ -69,6 +69,7 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
         // Do any additional setup after loading the view.
     }
 
+    
     func languageSelector()
     {
         performSegue(withIdentifier: "languageSelectorSegue", sender: nil)
@@ -421,10 +422,12 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
         }
     }
     
+    //Method called when details icon is selected
     func detailsSelected()
     {
         performSegue(withIdentifier: "HospitalDetailSegue", sender: nil)
     }
+    
     //Function makes a API call to the server to fetch the hospital details
     func downloadLocationDataFromServerOpendata()
     {
@@ -507,7 +510,6 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
         catch{
             print("JSON Serialization error")
         }
-       // print("while parsing count is \(self.placeArray.count)")
     }
     
     //Function makes a API call to the server to fetch the required place details
@@ -530,13 +532,12 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
             }
             else
             {
-                DispatchQueue.main.async(){
+                DispatchQueue.main.async(){  //Parse the data received
                     self.parseServerJSON(articleJSON: data! as NSData)
                 }
-                DispatchQueue.main.async(){
+                DispatchQueue.main.async(){    //Call to Add annotations method
                     self.addLocationAnnotations()
                 }
-                
             }
         })
         
@@ -635,6 +636,7 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //if a particular GP or hospital is selected
         if(segue.identifier == "HospitalDetailSegue")
         {
             let destinationDetailVC: EmergenyDetailViewController = segue.destination as! EmergenyDetailViewController
@@ -648,6 +650,7 @@ class HospitalMapViewController: UIViewController, CLLocationManagerDelegate, MK
                 destinationDetailVC.gpSelected = false
             }
         }
+        //If the language selector is selected
         if(segue.identifier == "languageSelectorSegue")
         {
             let destinationLanguageVC: LanguageTableViewController = segue.destination as! LanguageTableViewController

@@ -5,7 +5,9 @@
 //  Created by Shishira Skanda on 20/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
+/*
+ EmergencyViewController is a view controller to the view controller displaying the options for emergency services
+ */
 import UIKit
 
 class EmergencyViewController: UIViewController {
@@ -41,12 +43,14 @@ class EmergencyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+   
+    
+    //Method called when hospital selected
     func hospitalSelected()
     {
         performSegue(withIdentifier: "hospitalSegue", sender: nil)
     }
-    
+    //Method called when police selected
     func policeSelected()
     {
         performSegue(withIdentifier: "policeSegue", sender: nil)

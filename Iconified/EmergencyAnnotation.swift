@@ -6,6 +6,7 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+//EmergencyAnnotation class consisting of the details to be displayed in the annotation call out view
 import UIKit
 import MapKit
 

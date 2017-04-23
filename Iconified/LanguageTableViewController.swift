@@ -6,8 +6,12 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ LanguageTableViewController is a table view controller linked to the table view representing the list of languages.
+ */
 import UIKit
 
+//Protocol for delegate to return the language selected for doctors
 protocol languageDelegate
 {
     func languageSelected(language: String)
@@ -17,22 +21,18 @@ class LanguageTableViewController: UITableViewController {
 
     //Global variables
     var languageTypes = ["Arab", "Australia", "China", "India", "Italy", "France", "Greece", "Germany", "Vietnam"]
+    //Setting default to English
     var currentLanguage = "Australia"
     
+    //Delegate variable
     var delegate: languageDelegate?
     
     //method called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,10 +56,6 @@ class LanguageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LanguageCell", for: indexPath) as! LanguageTableViewCell
         cell.flagImageView.image = UIImage(named: self.languageTypes[indexPath.row])
-        
-        
-        //unwindToHome
-        
         return cell
     }
     

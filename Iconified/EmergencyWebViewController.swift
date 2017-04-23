@@ -6,6 +6,9 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ EmergencyWebViewController is the view controller to the web view.
+ */
 import UIKit
 
 class EmergencyWebViewController: UIViewController {
@@ -24,9 +27,6 @@ class EmergencyWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         // setting up the progress view
         setProgressView()
         self.webView.addSubview(self.progressView)
@@ -38,9 +38,6 @@ class EmergencyWebViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -35,9 +35,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         print("View Loaded")
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
        
         //Adding gesture recognition for transportation icon
         let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(HomeViewController.transportationSelected))
@@ -71,10 +68,8 @@ class HomeViewController: UIViewController {
         emergencyIcon.addGestureRecognizer(tapGestureRecogniserForEmergency)
         
     }
+
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
 
     //Initialiser method
     required init?(coder aDecoder: NSCoder) {

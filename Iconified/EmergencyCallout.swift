@@ -6,21 +6,16 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+//Emerency call out view when an annotation is clicked
 import UIKit
 
 class EmergencyCallout: UIView {
 
+    //UI Controls
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var typelabel: UILabel!
     @IBOutlet var detailsIcon: UIImageView!
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+   
 
 }

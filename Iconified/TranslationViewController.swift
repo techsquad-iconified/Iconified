@@ -6,11 +6,16 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
+/*
+ TranslationViewController is a view controller linked to the translate screen.
+ */
+
 import UIKit
 import AVFoundation
 
-class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
+    //UI Controls
     @IBOutlet var tranalateText: UITextField!
     @IBOutlet var translatedLabel: UILabel!
     
@@ -20,6 +25,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet var translateButton: UIButton!
     @IBOutlet var speakerButton: UIButton!
     
+    //Globle variables
     var sourceLanguage:String?
     var sourceCode:String?
     
@@ -30,15 +36,13 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let synth = AVSpeechSynthesizer()
     var myUtterance = AVSpeechUtterance(string: "")
     
+    //Arary of langauges
     let languageArray : [String] = ["Arabic", "Chinese", "English", "French", "German", "Greek", "Italian",  "Japanese" , "Spanish", "Vietnamese"]
     
     //let languageDictionary: [String : String] = ["Arabic" : "ar", "Chinese" : "zh-CN", "English" : "en", "French" : "fr", "German" : "de", "Greek" :  "el", "Italian" : "it",  "Japanese" : "ja", "Spanish" : "es", "Vietnamese" : "vi"]
-    
+    //Methos called when view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         sourceLangPicker.transform = CGAffineTransform.init(scaleX: 2.0, y: 2.5)
         targetLangPicker.transform = CGAffineTransform.init(scaleX: 2.0, y: 2.5)
@@ -47,7 +51,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         sourceLangPicker.dataSource = self
         targetLangPicker.delegate = self
         targetLangPicker.dataSource = self
-        
+        tranalateText.delegate = self
         self.speakerButton.isHidden = true
         /*
         self.translateButton.isHidden = true
@@ -57,10 +61,18 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
  
         // Do any additional setup after loading the view.
     }
-    override open var shouldAutorotate: Bool {
-        return false
+    
+    //Method to check if the translate text view was cleared and accordingly clear the translated label
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if(textField.text == "")
+        {
+            self.translatedLabel.text = ""
+            self.speakerButton.isHidden = true
+        }
     }
     
+    //Method to check if preferred language keyboard is configured in the Settings
     func checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: String) -> Bool
     {
         // let langStr = Locale.current.languageCode
@@ -134,7 +146,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    //Action for translate button
     @IBAction func translateButton(_ sender: Any) {
        DispatchQueue.main.async(){
                 self.translate(toTranslate: self.tranalateText.text!)
@@ -146,13 +158,14 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
       
     }
-
+    //Action for speaker Method
     @IBAction func speakerAction(_ sender: Any) {
         myUtterance = AVSpeechUtterance(string: self.translatedLabel.text!)
         myUtterance.rate = 0.3
         synth.speak(myUtterance)
     }
     
+    //Method to retrieved the languge preferrence saved on plist
     func loadPreferredLanguagefromPlistData()
     {
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -174,7 +187,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     
-    
+    //Method to hide keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -221,6 +234,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    //Parsing JSON retrieved to get the translated text
     func parseJSON(articleJSON:NSData)
     {
         do{
@@ -277,7 +291,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             return languageArray[row]
         }
     }
-    
+    //Method called when a picker row iss selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView.tag == 1)
         {
@@ -296,6 +310,8 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
         }
     }
+    
+    //Method to return the code for a specific language
     func getCodeForLanguage(language: String) -> String
     {
         switch(language)
@@ -315,12 +331,15 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    //Method to check source language selected
     func checkSourceLanguageSelected()
     {
         if(self.checkPreferredLanguageKeyboardInSetings(selectedLanguageCode: self.sourceCode!))
         {
             self.translateButton.isHidden = false
             self.tranalateText.isHidden = false
+            self.translatedLabel.isHidden = false
+            self.speakerButton.isHidden = false
         }
         else
         {
@@ -329,9 +348,12 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.present(alert, animated: true, completion: nil)
             self.translateButton.isHidden = true
             self.tranalateText.isHidden = true
+            self.translatedLabel.isHidden = true
+            self.speakerButton.isHidden = true
         }
     }
     
+    //Method to check Speaker Option ForTarget Language Selected
     func checkSpeakerOptionForTargetLanguageSelected()
     {
         if(self.targetCode != "en")
@@ -344,6 +366,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
+    //Method to load flags to picker view
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         /*
          let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 10, height: 160))

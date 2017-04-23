@@ -20,10 +20,6 @@ class MykiLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setting screen orientation
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         // setting up the progress view
         setProgressView()
         self.webView.addSubview(self.progressView)
@@ -54,9 +50,6 @@ class MykiLocationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override open var shouldAutorotate: Bool {
-        return false
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

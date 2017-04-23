@@ -9,9 +9,7 @@
 import UIKit
 import MapKit
 
-/* The View Controller is linked to the Map view which represnts the various locations of the selected category
- around the user.
- The user location is checked.
+/* The View Controller is linked to the Map view which represnts the various locations of the selected category around the user. The user location is checked.
  The selected type and user location is sent to the server to fetch required information
  The Place details is recorded and annotations are placed on the map
  */
@@ -60,6 +58,15 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
         self.mapView.delegate = self
         //call method to get users current location
         self.getUsersCurrentLocation()
+        
+        if(self.accommodationType! == "lodging")
+        {
+            self.title = "Hotels/Motels"
+        }
+        else
+        {
+            self.title = "Accomodation Agents"
+        }
         
         //Method to create the API call from the server
         DispatchQueue.main.async(){
@@ -134,6 +141,7 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
                     
                     let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.003,longitudeDelta: 0.003))
                     mapView.setRegion(area, animated: true)
+                    mapView.showAnnotations(mapView.annotations, animated: true)
                 }
             }
         }
@@ -275,7 +283,7 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
      */
     func setProgressView()
     {
-        self.progressView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        self.progressView = UIView(frame: CGRect(x: 0, y: 0, width: 280, height: 50))
         self.progressView.backgroundColor = UIColor.darkGray
         self.progressView.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -283,9 +291,18 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
         //UIColor(red: 254/255, green: 218/255, blue: 2/255, alpha: 1)
         wait.hidesWhenStopped = false
         wait.startAnimating()
+        var message: UILabel!
         
-        let message = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        message.text = "Finding \(self.accommodationType!)s..."
+        if(self.accommodationType! == "lodging")
+        {
+             message = UILabel(frame: CGRect(x: 60, y: 0, width: 250, height: 50))
+             message.text = "Finding hotels/motels..."
+        }
+        else
+        {
+            message = UILabel(frame: CGRect(x: 60, y: 0, width: 280, height: 50))
+            message.text = "Finding accommodation agents..."
+        }
         message.textColor = UIColor.white
         
         self.progressView.addSubview(wait)
@@ -376,18 +393,23 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
         let calloutView = views?[0] as! CallViewCustom
         //Add Image, name, open status and a details icon
         calloutView.restaurantName.text = hotelAnnotation.name
-        if(hotelAnnotation.isOpen != nil)
+       /* if(hotelAnnotation.isOpen != nil)
         {
             calloutView.restaurantIsOpen.text = (hotelAnnotation.isOpen == "true") ? "Open" : "Close"
         }
-        
+        */
         calloutView.restaurantImage.image = hotelAnnotation.image
         self.selectedPlace = hotelAnnotation.place
         
         //Adding gesture recognition for details icon
-        let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
+        let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(AccommodationMapViewController.detailsSelected))
         calloutView.detailsIcon.isUserInteractionEnabled = true
         calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForTransportation)
+        
+        //Adding gesture recognition for image icon
+        let tapGestureRecogniserForImageIcon = UITapGestureRecognizer(target: self, action:#selector(AccommodationMapViewController.detailsSelected))
+        calloutView.restaurantImage.isUserInteractionEnabled = true
+        calloutView.restaurantImage.addGestureRecognizer(tapGestureRecogniserForImageIcon)
         
         calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)

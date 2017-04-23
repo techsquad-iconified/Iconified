@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Delegate to send the indexof the selected photo and the array of photos
 protocol emerencyPhotoViewDelegate {
     func photoSegue(selectedImageIndex: Int, photoArray: [UIImage])
 }
@@ -33,9 +34,6 @@ class EmergencyPhotoAlbumViewController: UIViewController, UICollectionViewDataS
         super.viewDidLoad()
         self.photoReferenceArray = (self.selectedPlace?.photoReference)!
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         // setting up the progress view
         setProgressView()
         self.view.addSubview(self.progressView)
@@ -46,12 +44,7 @@ class EmergencyPhotoAlbumViewController: UIViewController, UICollectionViewDataS
         //}
         
     }
-    
-    override open var shouldAutorotate: Bool {
-        return false
-    }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
