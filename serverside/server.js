@@ -1,27 +1,49 @@
+/**
+ * This is the server side code for Iconified Project.
+ * The codes are used to running a server for accepting API calls
+ * and return data that will be displayed by Client side.
+ * The server will use Google APIs for a few locations queries.
+ * Besides, the code also use  mongoDB for General Practitioners 
+ * queries.
+ * 
+ * The APIs currently include: /emergency, /test, /apitest and
+ * /testpy.
+ * 
+ * Author: Tiankun Lu 
+ * Version: 0.1
+ */
+
+
+
+//using express package for server construction.
 const express = require("express");
+//using bodyParser package for query parser.
 const bodyParser = require("body-parser");
+//using https package for Google API query.
 const https = require("https");
+//using async package for organize the asyncronizing workflow.
 const async = require("async");
+//Create the app from express framework.
 const app = express();
+//import MongoClient package for MongoDB connection.
+const MongoClient = require("mongodb").MongoClient;
+//import PythonShell for running python scripts in Javascript.
+var PythonShell = require('python-shell');
 
-var db;
+//MongoDB instance initiation.
+var mdb;
 
-app.set('view engine','pug');
+//apply bodyparser.
 app.use(bodyParser.urlencoded({extended:true}));
-app.use('/static', express.static('public'));
 
+//Initiating the server, port 3000 is listening.
 app.listen(3000, () => {
     console.log('listening on 3000')
 })
 
-/*
-async.waterfall([basicInfo,detailedInfo],function(err, result){
-    if(err){
-        console.log(err);
-    }
-	console.log(result);
-});
-*/
+/* 
+ *function for check undefined values, return true or false.
+ */
 function checkUnd(theValue){
 	if(typeof(theValue) ==="undefined"){
 		return "unavailable";
@@ -34,6 +56,11 @@ function checkUnd(theValue){
 	}
 }
 
+/* 
+ *function for check the result values.
+ *return true for value "OK"
+ *return false for other values.
+ */
 function checkResu(result){
 	if (result.status === "OK"){
 		return true;
@@ -42,6 +69,10 @@ function checkResu(result){
 	}
 }
 
+/* 
+ *Initiating a data model for storing the data retrieved from
+ *Google API.
+ */
 function thePlace(){
 	this.place_id = "";
 	this.name = "";
@@ -56,46 +87,65 @@ function thePlace(){
 	this.photos = "";
 }
 
+/* 
+ *Function for retrieving the basic venue information around a given
+ *location.
+ *It can be used for different search type. For example:
+ *food, atm, etc.
+ */
 function basicInfo(type,location,callback){
 	var final = [];
 	var atype = type;
 	var alocation = location;
-	var shishirakey = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
-	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+shishirakey;
+	//Google API keys.
+	var g1key = "AIzaSyBN5b3i9TepTRKXV3nH7DlIWo7Hu3Vq1TU";
+	var g2key = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var s1key = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
+	var s2key = "AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4";
+	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ alocation +"&types="+atype + "&rankby=distance" + "&key="+g1key;
+	console.log(purl);
 	https.get(purl, function(response) {
 		var body ="";
 		response.on('data', function(chunk) {
 			body += chunk;
 		})
 		response.on('end', function () {
+			//Store the data from google apis to local data instance.
 			places = JSON.parse(body);
-			if(checkResu(places)){
-				var results = places.results;
-				for (i=0;i<10;i++){
-					var myPlace = new thePlace();
-					myPlace.name = results[i].name;
-					myPlace.location = results[i].geometry.location;
-					myPlace.open_now = checkUnd(results[i].opening_hours);
-					myPlace.place_id = results[i].place_id;
-					myPlace.price_level = results[i].price_level;
-					myPlace.rating = results[i].rating;
-					final.push(myPlace);
-				}
-			}else{
-				console.log("no results");
+			var results = places.results;
+			for (i=0;i<10;i++){
+				//Record the first 10 results.
+				var myPlace = new thePlace();
+				myPlace.name = results[i].name;
+				myPlace.location = results[i].geometry.location;
+				myPlace.open_now = checkUnd(results[i].opening_hours);
+				myPlace.place_id = results[i].place_id;
+				myPlace.price_level = results[i].price_level;
+				myPlace.rating = results[i].rating;
+				final.push(myPlace);
 			}
 			callback(null,final);
 		})
 	})
 }
-
+/* 
+ *function for retrieving detailed information based on
+ *a given google place ID. Including address, numbers, 
+ *websites, etc.
+ */
 function detailedInfo(final,callback){
+	//Store Google API keys.
+	var g1key = "AIzaSyBN5b3i9TepTRKXV3nH7DlIWo7Hu3Vq1TU";
+	var g2key = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
+	var s1key = "AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
+	var s2key = "AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4";
+	//Initiating a counter.
     var count = 0;
 	for (i=0;i<10;i++){
         ++count;
 		var placeId = final[i].place_id;
-		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8";
+		//Google API address.
+		var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + g1key;
         function back (durl,i){
 		https.get(durl,function(response) {
 			var body ="";
@@ -119,7 +169,161 @@ function detailedInfo(final,callback){
         back(durl,i);
 	}   
 }
+/* 
+ * Function for connecting to MongoDB.
+ * The MongoDB server is holding by Mlab service. In this
+ * function, will build a connection with the server and 
+ * initiate a database instance.
+ */
+function mlabConnect(callback){
+    MongoClient.connect('mongodb://admin:fit5120@ds149700.mlab.com:49700/hospitallocs', (err, database) => {
+    if (err) return console.log(err);
+    mdb = database;
+    console.log("MongoDB is successfully connected.");
+	callback(null);
+    })
+}
 
+/* 
+ * Function for finding the information of 3 hospital near the 
+ * given locations.
+ */
+function findHospital(thelocation,callback){
+	// Initiating the return variables.
+	var hospitalResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	// Use Built-in Near function for hospital queries.
+	// Return only 3 results, the max distance is 10000.
+	var doc = mdb.collection('hosp').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 50000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,hospitalResult);
+		}
+		hospitalResult.push(result);
+	});
+}
+
+/* 
+ * Function for finding the information of 3 police stations
+ * near the given locations.
+ */
+function findPolice(thelocation,callback){
+	// Initiating the police station result variables.
+	var policeResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	// Use Built-in Near function for hospital queries.
+	// Return only 3 results, the max distance is 10000.
+	var doc = mdb.collection('police').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 50000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,policeResult);
+		}
+		policeResult.push(result);
+	});
+}
+
+/* 
+ * Function for finding the information of 3 GPs
+ * near the given locations.
+ */
+function findGP(thelocation,callback){
+	var GPResult = [];
+	var location = thelocation.split(',');
+	var location1 = parseFloat(location[0]);
+	var location2 = parseFloat(location[1]);
+	var doc = mdb.collection('gp').find({ geometry: { $near: { $geometry: { type: "Point", coordinates: [location1,location2]},$maxDistance: 10000}}}).limit(3).each(function(err,result){
+		if(result == null){
+			mdb.close();
+			callback(null,GPResult);
+		}
+		GPResult.push(result);
+	});
+}
+
+/* 
+ * Function for finding the information of all GPs
+ * who can speak a specific language. 
+ * If the given language is Chinese, the result will 
+ * combine the Mandarin and Cantonese.
+ */
+function findGPL(language,callback){
+	var GPLResult = [];
+	var doc = mdb.collection('gp').find({ language: language}).each(function(err,result){
+		if(result == null){
+			if(language === "Chinese"){
+				var doc = mdb.collection('gp').find({language:"Cantonese"}).each(function(err,result){
+					if(result == null){
+						var doc = mdb.collection('gp').find({language:"Mandarin"}).each(function(err,result){
+							if(result == null){
+								mdb.close();
+								callback(null,GPLResult);
+							}else{
+							GPLResult.push(result);
+							}
+						});
+					}else{
+					GPLResult.push(result);
+					}
+				})
+			}else{
+			mdb.close();
+			callback(null, GPLResult);
+			}
+		}else{
+		GPLResult.push(result);
+		}
+	})
+}
+
+/* 
+ * Emergency API setup for accepting queries for 
+ * hospitals, GPs or police stations.
+ */
+app.get("/emergency",function(req,res){
+	// Initiating searchType parameters.
+	var type = req.query.searchType;
+	// Initiating location parameters.
+	var location = req.query.myLocation;
+	// Initiating the language parameters.
+	var language = req.query.language;
+	// Navigate the query to different functions.
+	// Use async function to organize the workflow.
+	// Use async.apply to pass parameters.
+	switch(type){
+		case "hospital":
+		async.waterfall([mlabConnect,async.apply(findHospital,location)],function(err,result){
+			console.log(result);
+			res.send(result);
+		});
+		break;
+		case "police":
+		async.waterfall([mlabConnect,async.apply(findPolice,location)],function(err,result){
+			res.send(result);
+		});
+		break;
+		case "gp":
+		async.waterfall([mlabConnect,async.apply(findGP,location)],function(err,result){
+			res.send(result);
+		});
+		break;
+		case "gpl":
+		async.waterfall([mlabConnect,async.apply(findGPL,language)],function(err,result){
+			res.send(result);
+		})
+		console.log("here!")
+		break;
+	}
+})
+
+/* 
+ * Test API setup for accepting queries for 
+ * food, atm, lodge, etc.
+ * Use async.waterfall to organize the workflow.
+ */
 app.get("/test",function(req,res){
 	var type = req.query.searchType;
 	var location = req.query.myLocation;
@@ -130,89 +334,35 @@ app.get("/test",function(req,res){
 		console.log(result);
 		res.send(result);
 	});
-	console.log("Test");
 });
 
-app.get("/api", function(req, res){
-	var type = req.query.searchType;
-	var location = req.query.myLocation;
-	var radius = 500;
-	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var furl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+location +"&types="+type + "&rankby=distance" + "&key="+gkey;
-	var turl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&types=food&rankby=distance&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	sendBack(furl,res);
-})
-function sendBack (url,res) {
-	var foo = [];
-	https.get(url, function(response) {
-		var body ="";
-		response.on('data', function(chunk) {
-			body += chunk;
-		})
-		response.on('end', function () {
-			places = JSON.parse(body);
-			var results = places.results;
-			console.log(results[0]);
-			for (i=0;i<5;i++){
-				foo.push(results[i].name);
-				foo.push(results[i].geometry.location);
-				foo.push(results[i].opening_hours);
-				foo.push(results[i].place_id);
-				foo.push(results[i].price_level);
-				foo.push(results[i].rating);
-				foo.push(results[i].vicinity);
-			};
-			res.send(foo);
-		});
-	})
-}
-
+/* 
+ * Apitest API setup for test the connecting avaliability.
+ * Simply return a success value for successful connection.
+ */
 app.get("/apitest", function(req, res){
-	var type = req.query.searchType;
-	var location = req.query.myLocation;
-	var placeId = "here";
-	var gkey = "AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var purl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ location +"&types="+type + "&rankby=distance" + "&key="+gkey;
-	var examp ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&types=food&rankby=distance&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var durl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyDWr-XTd2CRiUhzGgaGBIYm7_HZE09hgqg";
-	var foo = [];
-	var thePlaceId = [];
-	https.get(url, function(response) {
-		var body ="";
-		response.on('data', function(chunk) {
-			body += chunk;
-		})
-		response.on('end', function () {
-			places = JSON.parse(body);
-			var results = places.results;
-			res.send(results);
-			for (i=0;i<5;i++){
-				foo.push(results[i].name);
-				foo.push(results[i].geometry.location);
-				foo.push(results[i].opening_hours);
-				thePlaceId.push(results[i].place_id);
-				foo.push(results[i].price_level);
-				foo.push(results[i].rating);
-			}
+	res.send("success");
+})
 
-		});
+/* 
+ * Testpy API setup for accepting parameters from client 
+ * side and runs python code for generating a signiture to
+ * be used in PTV query.
+ */
+app.get("/testpy", function(req, res){
+	// Initiating parameters.
+	var loc = req.query.myLocation;
+	// Defining the arguments passed into python codes.
+	var options = {
+		args:[loc]
+	};
+	// Using PythonShell function to run the codes and get result.
+	PythonShell.run('try.py', options, function (err,results) {
+		if (err) throw err;
+		res.send(results);
 	});
-	sendBackTest(purl,res);
-});
-function sendBackTest (url,res) {
-	var foo = [];
-	https.get(url, function(response) {
-		var body ="";
-		response.on('data', function(chunk) {
-			body += chunk;
-		})
-		response.on('end', function () {
-			places = JSON.parse(body);
-			var results = places.results;
-			res.send(results);
-		});
-	})
-}
+})
+
 
 
 
