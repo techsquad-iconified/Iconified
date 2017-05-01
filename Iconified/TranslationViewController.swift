@@ -84,21 +84,21 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         switch(selectedLanguageCode)
         {
-        case "en" : if(lang.contains("en"))
+        case "en" : if(lang.contains("en-AU"))
         {
             print("sucess with English")
             return true
-            }
+        }
         case "ar" : if(lang.contains("ar"))
         {
             print("sucess with Arabic")
             return true
             }
-        case "zh-CN": if(lang.contains("zh-Hans-US"))
+        case "zh-CN": if(lang.contains("zh-Hans-AU"))
         {
             print("sucess with Chinese")
             return true
-            }
+        }
         case "fr": if(lang.contains("fr"))
         {
             print("sucess with French")

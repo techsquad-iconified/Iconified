@@ -266,7 +266,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func downloadLocationDataFromServer()
     {
         var url: URL
-        url = URL(string:"http://23.83.248.221/test?searchType=police&myLocation=\(self.latitude!),\(self.longitude!)")!
+        url = URL(string:"http://23.83.248.221/test?searchType=police&myLocation=-37.877009,145.046267")!
         //http://23.83.248.221/test?searchType=police&myLocation=-33.8670,151.1957
         //http://23.83.248.221/test?searchType=police&myLocation=-37.877009,145.044267
         print(url)

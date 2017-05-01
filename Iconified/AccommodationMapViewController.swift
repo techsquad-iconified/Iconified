@@ -301,7 +301,7 @@ class AccommodationMapViewController: UIViewController, CLLocationManagerDelegat
         else
         {
             message = UILabel(frame: CGRect(x: 60, y: 0, width: 280, height: 50))
-            message.text = "Finding accommodation agents..."
+            message.text = "Finding estate agents..."
         }
         message.textColor = UIColor.white
         
