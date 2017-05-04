@@ -129,7 +129,7 @@ class HomeViewController: UIViewController {
         print("Image clicked")
         if(self.checkInternetConnection())
         {
-            performSegue(withIdentifier: "bankSegue", sender: nil)
+            performSegue(withIdentifier: "BankSegue", sender: nil)
         }
     }
     //This method is called when the Bank icon is clicked (using gesture control feature)
@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
         print("Image clicked")
         if(self.checkInternetConnection())
         {
-            performSegue(withIdentifier: "shoppingSegue", sender: nil)
+            performSegue(withIdentifier: "SupermarketSegue", sender: nil)
         }
     }
     //This method is called when the Bank icon is clicked (using gesture control feature)

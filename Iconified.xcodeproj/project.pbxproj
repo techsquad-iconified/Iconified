@@ -72,6 +72,24 @@
 		1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CF91E94FB2A0003EF52 /* PtvWebViewController.swift */; };
 		1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */; };
 		356D928F162B3AE3E2BB10D3 /* Pods_IconifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A1199F9F3AD70DEB31F39A /* Pods_IconifiedTests.framework */; };
+		5401EE2A1EB854A40060D3E5 /* BankMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE281EB854A40060D3E5 /* BankMapViewController.swift */; };
+		5401EE2B1EB854A40060D3E5 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE291EB854A40060D3E5 /* BankViewController.swift */; };
+		5401EE2F1EB854C50060D3E5 /* SupermarketMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE2D1EB854C50060D3E5 /* SupermarketMapViewController.swift */; };
+		5401EE301EB854C50060D3E5 /* SupermarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE2E1EB854C50060D3E5 /* SupermarketViewController.swift */; };
+		5401EE341EB976640060D3E5 /* SuperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE331EB976640060D3E5 /* SuperTableViewController.swift */; };
+		5401EE361EB976A70060D3E5 /* SuperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE351EB976A70060D3E5 /* SuperTableViewCell.swift */; };
+		5401EE3A1EB993CF0060D3E5 /* BankDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE391EB993CF0060D3E5 /* BankDetailViewController.swift */; };
+		5401EE3C1EB997870060D3E5 /* SupermarketAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE3B1EB997870060D3E5 /* SupermarketAboutViewController.swift */; };
+		5401EE421EB99A640060D3E5 /* SupermarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE411EB99A640060D3E5 /* SupermarketDetailViewController.swift */; };
+		5401EE441EB9A0C60060D3E5 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE431EB9A0C60060D3E5 /* Market.swift */; };
+		5401EE461EB9A5D10060D3E5 /* MarketAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE451EB9A5D10060D3E5 /* MarketAnnotation.swift */; };
+		5401EE481EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE471EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift */; };
+		5401EE4A1EB9D9B20060D3E5 /* SupermarketWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE491EB9D9B20060D3E5 /* SupermarketWebViewController.swift */; };
+		5401EE4C1EB9E34B0060D3E5 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE4B1EB9E34B0060D3E5 /* Bank.swift */; };
+		5401EE4E1EB9E41B0060D3E5 /* BankPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE4D1EB9E41B0060D3E5 /* BankPhotoAlbumViewController.swift */; };
+		5401EE501EB9E4EA0060D3E5 /* BankAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE4F1EB9E4EA0060D3E5 /* BankAnnotation.swift */; };
+		5401EE521EB9E5260060D3E5 /* BankWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE511EB9E5260060D3E5 /* BankWebViewController.swift */; };
+		5401EE541EB9E6380060D3E5 /* BankAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE531EB9E6380060D3E5 /* BankAboutViewController.swift */; };
 		545483FF935FD8218052B1D0 /* Pods_IconifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DE86583785B53C05502B91 /* Pods_IconifiedUITests.framework */; };
 		549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577411EA63A95003E127E /* AccommodationDetailViewController.swift */; };
 		549577451EA63A95003E127E /* AccommodationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549577421EA63A95003E127E /* AccommodationMapViewController.swift */; };
@@ -193,6 +211,24 @@
 		1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiViewController.swift; sourceTree = "<group>"; };
 		1AF0E8AE1E94E44E00816054 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = SOURCE_ROOT; };
 		2E1F4552E5EA655BED78E940 /* Pods-Iconified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iconified.release.xcconfig"; path = "Pods/Target Support Files/Pods-Iconified/Pods-Iconified.release.xcconfig"; sourceTree = "<group>"; };
+		5401EE281EB854A40060D3E5 /* BankMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankMapViewController.swift; sourceTree = "<group>"; };
+		5401EE291EB854A40060D3E5 /* BankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		5401EE2D1EB854C50060D3E5 /* SupermarketMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketMapViewController.swift; sourceTree = "<group>"; };
+		5401EE2E1EB854C50060D3E5 /* SupermarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketViewController.swift; sourceTree = "<group>"; };
+		5401EE331EB976640060D3E5 /* SuperTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperTableViewController.swift; sourceTree = "<group>"; };
+		5401EE351EB976A70060D3E5 /* SuperTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperTableViewCell.swift; sourceTree = "<group>"; };
+		5401EE391EB993CF0060D3E5 /* BankDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailViewController.swift; sourceTree = "<group>"; };
+		5401EE3B1EB997870060D3E5 /* SupermarketAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketAboutViewController.swift; sourceTree = "<group>"; };
+		5401EE411EB99A640060D3E5 /* SupermarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketDetailViewController.swift; sourceTree = "<group>"; };
+		5401EE431EB9A0C60060D3E5 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		5401EE451EB9A5D10060D3E5 /* MarketAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAnnotation.swift; sourceTree = "<group>"; };
+		5401EE471EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		5401EE491EB9D9B20060D3E5 /* SupermarketWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketWebViewController.swift; sourceTree = "<group>"; };
+		5401EE4B1EB9E34B0060D3E5 /* Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
+		5401EE4D1EB9E41B0060D3E5 /* BankPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		5401EE4F1EB9E4EA0060D3E5 /* BankAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAnnotation.swift; sourceTree = "<group>"; };
+		5401EE511EB9E5260060D3E5 /* BankWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankWebViewController.swift; sourceTree = "<group>"; };
+		5401EE531EB9E6380060D3E5 /* BankAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAboutViewController.swift; sourceTree = "<group>"; };
 		549577411EA63A95003E127E /* AccommodationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationDetailViewController.swift; sourceTree = "<group>"; };
 		549577421EA63A95003E127E /* AccommodationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationMapViewController.swift; sourceTree = "<group>"; };
 		549577431EA63A95003E127E /* AccommodationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +423,8 @@
 		1AB24FF81E7F8B77007CFD1B /* Iconified */ = {
 			isa = PBXGroup;
 			children = (
+				5401EE2C1EB854AC0060D3E5 /* Supermarket */,
+				5401EE271EB854830060D3E5 /* Bank */,
 				1A873A2A1EAA309800464EB3 /* Emergency */,
 				549577401EA63A7F003E127E /* Accommodation */,
 				1A7AA6B41E8CFAE00027DD34 /* User Interface */,
@@ -442,6 +480,38 @@
 				1AA966D41E8E5036003271AE /* Iconified-Bridging-Header.h */,
 			);
 			name = Carousel;
+			sourceTree = "<group>";
+		};
+		5401EE271EB854830060D3E5 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				5401EE281EB854A40060D3E5 /* BankMapViewController.swift */,
+				5401EE291EB854A40060D3E5 /* BankViewController.swift */,
+				5401EE531EB9E6380060D3E5 /* BankAboutViewController.swift */,
+				5401EE391EB993CF0060D3E5 /* BankDetailViewController.swift */,
+				5401EE4B1EB9E34B0060D3E5 /* Bank.swift */,
+				5401EE4F1EB9E4EA0060D3E5 /* BankAnnotation.swift */,
+				5401EE4D1EB9E41B0060D3E5 /* BankPhotoAlbumViewController.swift */,
+				5401EE511EB9E5260060D3E5 /* BankWebViewController.swift */,
+			);
+			name = Bank;
+			sourceTree = "<group>";
+		};
+		5401EE2C1EB854AC0060D3E5 /* Supermarket */ = {
+			isa = PBXGroup;
+			children = (
+				5401EE2D1EB854C50060D3E5 /* SupermarketMapViewController.swift */,
+				5401EE2E1EB854C50060D3E5 /* SupermarketViewController.swift */,
+				5401EE331EB976640060D3E5 /* SuperTableViewController.swift */,
+				5401EE351EB976A70060D3E5 /* SuperTableViewCell.swift */,
+				5401EE3B1EB997870060D3E5 /* SupermarketAboutViewController.swift */,
+				5401EE411EB99A640060D3E5 /* SupermarketDetailViewController.swift */,
+				5401EE431EB9A0C60060D3E5 /* Market.swift */,
+				5401EE451EB9A5D10060D3E5 /* MarketAnnotation.swift */,
+				5401EE471EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift */,
+				5401EE491EB9D9B20060D3E5 /* SupermarketWebViewController.swift */,
+			);
+			name = Supermarket;
 			sourceTree = "<group>";
 		};
 		549577401EA63A7F003E127E /* Accommodation */ = {
@@ -786,42 +856,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5401EE3C1EB997870060D3E5 /* SupermarketAboutViewController.swift in Sources */,
+				5401EE301EB854C50060D3E5 /* SupermarketViewController.swift in Sources */,
 				1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */,
+				5401EE541EB9E6380060D3E5 /* BankAboutViewController.swift in Sources */,
 				1A50C0EB1E86444A0077CCA1 /* FoodDetailViewController.swift in Sources */,
+				5401EE2B1EB854A40060D3E5 /* BankViewController.swift in Sources */,
 				1A1453721E8900DF001D04BC /* FoodAboutViewController.swift in Sources */,
 				1AB24FFA1E7F8B77007CFD1B /* AppDelegate.swift in Sources */,
 				1AB250021E7F8B77007CFD1B /* Iconified.xcdatamodeld in Sources */,
+				5401EE3A1EB993CF0060D3E5 /* BankDetailViewController.swift in Sources */,
 				1AAD80471EA5C6B20090D192 /*  TranslationFoodViewController.swift in Sources */,
 				1A873A191EAA308600464EB3 /* EmergencyAnnotation.swift in Sources */,
 				1A873A1C1EAA308600464EB3 /* EmergencyPhotoAlbumViewController.swift in Sources */,
 				1A873A361EAC52EA00464EB3 /* FreeTramZoneViewController.swift in Sources */,
 				1A0C78E01E972A4B00C1FFD5 /* PtvVideoViewController.swift in Sources */,
 				1A873A251EAA308600464EB3 /* LanguageTableViewController.swift in Sources */,
+				5401EE421EB99A640060D3E5 /* SupermarketDetailViewController.swift in Sources */,
 				1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */,
 				1A873A1E1EAA308600464EB3 /* EmergencyViewController.swift in Sources */,
 				1AC243F51E95D355007AC863 /* CallViewCustom.swift in Sources */,
+				5401EE4E1EB9E41B0060D3E5 /* BankPhotoAlbumViewController.swift in Sources */,
+				5401EE461EB9A5D10060D3E5 /* MarketAnnotation.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
 				1A873A241EAA308600464EB3 /* LanguageTableViewCell.swift in Sources */,
+				5401EE441EB9A0C60060D3E5 /* Market.swift in Sources */,
 				1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */,
 				549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */,
+				5401EE4C1EB9E34B0060D3E5 /* Bank.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
+				5401EE481EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift in Sources */,
 				1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
 				1A873A2E1EAB2E6900464EB3 /* StopsAnnotation.swift in Sources */,
 				1A873A211EAA308600464EB3 /* FoodDescriptionViewController.swift in Sources */,
 				1A7B70941E94EE1E00411FC1 /* iCarousel.m in Sources */,
 				1A873A1D1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift in Sources */,
+				5401EE501EB9E4EA0060D3E5 /* BankAnnotation.swift in Sources */,
 				1A50C0E51E8494AB0077CCA1 /* Place.swift in Sources */,
 				1ABCE4F41EA4CC7500FFFB84 /* CuisineTableViewCell.swift in Sources */,
 				1A873A181EAA308600464EB3 /* EmergencyAboutViewController.swift in Sources */,
 				1A873A1F1EAA308600464EB3 /* EmergencyWebViewController.swift in Sources */,
+				5401EE2A1EB854A40060D3E5 /* BankMapViewController.swift in Sources */,
 				1ABCE4F21EA4CC2000FFFB84 /* CuisineTableViewController.swift in Sources */,
 				1A873A221EAA308600464EB3 /* Hospital.swift in Sources */,
 				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
+				5401EE521EB9E5260060D3E5 /* BankWebViewController.swift in Sources */,
 				1AAD80491EA711770090D192 /* MykiLocationViewController.swift in Sources */,
+				5401EE361EB976A70060D3E5 /* SuperTableViewCell.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
@@ -830,6 +915,8 @@
 				1AB2502E1E801010007CFD1B /* HomeViewController.swift in Sources */,
 				1A0C78ED1E9BAA0500C1FFD5 /* PtvStops.swift in Sources */,
 				1A873A261EAA308600464EB3 /* PoliceMapViewController.swift in Sources */,
+				5401EE341EB976640060D3E5 /* SuperTableViewController.swift in Sources */,
+				5401EE2F1EB854C50060D3E5 /* SupermarketMapViewController.swift in Sources */,
 				1AAD80511EA76FC90090D192 /* MykiInfoViewController.swift in Sources */,
 				1A873A301EAB2EDC00464EB3 /* PtvCalloutView.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
@@ -841,6 +928,7 @@
 				1A873A231EAA308600464EB3 /* HospitalMapViewController.swift in Sources */,
 				1AA966D91E8E51B6003271AE /* PhotoViewController.swift in Sources */,
 				1A0C78E71E97B50800C1FFD5 /* SettingsViewController.swift in Sources */,
+				5401EE4A1EB9D9B20060D3E5 /* SupermarketWebViewController.swift in Sources */,
 				1A873A1A1EAA308600464EB3 /* EmergencyCallout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
