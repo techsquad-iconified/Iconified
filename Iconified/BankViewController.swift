@@ -1,16 +1,15 @@
 //
-//  Supermarket.swift
+//  BankViewController.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 29/4/17.
+//  Created by 张翼扬 on 4/5/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
 import Foundation//
 //  File.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 4/4/17.
+//  Created by 张翼扬 on 29/4/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 import UIKit
@@ -28,7 +27,7 @@ class BankViewController: UIViewController {
     //UI attributes
     
     @IBOutlet weak var bankIcon: UIImageView!
-
+    
     @IBOutlet weak var ATMIcon: UIImageView!
     //Intilaliser
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +52,7 @@ class BankViewController: UIViewController {
         ATMIcon.isUserInteractionEnabled = true
         ATMIcon.addGestureRecognizer(tapGestureRecogniserForATM)
         
-    
+        
         // Do any additional setup after loading the view.
     }
     
@@ -80,6 +79,10 @@ class BankViewController: UIViewController {
     }
     
     
+    
+    
+    
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -88,7 +91,7 @@ class BankViewController: UIViewController {
         {
             let destinationVC: BankMapViewController = segue.destination as! BankMapViewController
             //destinationVC.placeArray = self.placeArray
-            destinationVC.requestType = self.requestType
+            destinationVC.bankType = self.requestType
             
         }
         

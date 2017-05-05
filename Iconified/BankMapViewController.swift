@@ -1,8 +1,8 @@
 //
-//  AccommodationMapViewController.swift
+//  BankMapViewController.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 29/4/17.
+//  Created by 张翼扬 on 4/5/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
@@ -15,12 +15,13 @@ import MapKit
  The selected type and user location is sent to the server to fetch required information
  The Place details is recorded and annotations are placed on the map
  */
-class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     //UI Mapview
     @IBOutlet var mapView: MKMapView!
-    //Variable for the seleted category
-    var requestType: String?
+    //Variable for the seleted category, and keyword
+    var bankType: String?
+    var keyword: String?
     //users location
     var latitude: Double?
     var longitude: Double?
@@ -37,10 +38,14 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
+    let cuiseButton = UIButton.init(type: .custom)
+    var selectedcuisine: String?
+    
     //Initialiser
     required init?(coder aDecoder: NSCoder) {
         self.placeArray = NSMutableArray()
-        self.requestType = nil
+        self.bankType = nil
+        self.keyword = nil
         self.latitude = nil
         self.longitude = nil
         self.selectedPlace = Bank()
@@ -57,6 +62,23 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         setProgressView()
         self.view.addSubview(self.progressView)
         
+        if(self.bankType == "bank")
+        {
+            self.title = "Bank"
+            cuiseButton.setImage(UIImage.init(named: "Australia"), for: UIControlState.normal)
+            cuiseButton.addTarget(self, action:#selector(FoodMapViewController.cuisineSelector), for: UIControlEvents.touchUpInside)
+            cuiseButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+            let barButton = UIBarButtonItem.init(customView: cuiseButton)
+            self.navigationItem.rightBarButtonItem = barButton
+        }
+        else if(self.bankType == "bank")
+        {
+            self.title == "Bank"
+        }
+        else
+        {
+            self.title == "ATM"
+        }
         self.mapView.delegate = self
         //call method to get users current location
         self.getUsersCurrentLocation()
@@ -67,8 +89,7 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
             //self.downloadLocationData()
         }
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,13 +132,11 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         //remove all annotations already existing
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
-        print("Outside if")
+        
         if(self.placeArray.count != 0 )
         {
-            print("in if: \(self.placeArray.count)")
-            for case let (bank as Bank) in placeArray
+            for case let bank as Bank in placeArray
             {
-                print("ADD annotation method")
                 if (bank.lat != nil)     // if it has a previous latitude
                 {
                     let loc = CLLocationCoordinate2D(latitude: Double((bank.lat)!) , longitude: Double((bank.lng)!))
@@ -125,14 +144,15 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                     let point = BankAnnotation(coordinate: loc)
                     
                     point.image = bank.firstPhoto
+                    
                     point.name = bank.placeName
                     if(bank.isOpen == "true" || bank.isOpen == "false")
                     {
                         point.isOpen = bank.isOpen
                     }
-                    print("ADD annotation in if")
                     point.Bank = bank
                     mapView.addAnnotation(point)
+                    
                     let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.005,longitudeDelta: 0.005))
                     mapView.setRegion(area, animated: true)
                     mapView.showAnnotations(mapView.annotations, animated: true)
@@ -146,7 +166,7 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     func downloadLocationDataFromServer()
     {
         var url: URL
-        url = URL(string:"http://23.83.248.221/test?searchType=\(self.requestType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
+        url = URL(string:"http://23.83.248.221/test?searchType=\(self.bankType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
         print(url)
         let urlRequest = URLRequest(url: url)
         
@@ -168,7 +188,6 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                 
                 // Do any additional setup after loading the view.
                 DispatchQueue.main.async(){
-                    print("called - method")
                     self.addLocationAnnotations()
                 }
             }
@@ -210,7 +229,7 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
                 placeId = place.object(forKey: "place_id") as! String
                 isOpen = place.object(forKey: "open_now") as! String
                 
-                //create a object of bank for the details obtained
+                //create a object of place for the details obtained
                 let newPlace = Bank(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
                 //addtional details for the place
                 newPlace.phoneNumber = place.object(forKey: "numbers") as? String
@@ -288,14 +307,15 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         wait.startAnimating()
         
         let message = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        if requestType == "bank"
+        
+        if bankType == "bank"
         {
             message.text = "Finding Banks..."
         }
             
         else
         {
-            message.text = "Finding ATMs..."
+            message.text = "Finding  ATMs..."
         }
         message.textColor = UIColor.white
         
@@ -341,11 +361,11 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         else{
             annotationView?.annotation = annotation
         }
-        if(self.requestType == "bank")
+        if(self.bankType == "bank")
         {
-            //Bank annotation
+            //hotel annotation
             let pinImage = UIImage(named: "Bank2")
-            let size = CGSize(width: 30, height: 25)
+            let size = CGSize(width: 20, height: 20)
             UIGraphicsBeginImageContext(size)
             pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             //  pinImage.draw(in: CGRect(0, 0, size.width, size.height))
@@ -353,9 +373,8 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
             UIGraphicsEndImageContext()
             annotationView?.image = resizedImage
         }
-        else if(self.requestType == "atm")
+        else if(self.bankType == "atm")
         {
-            print("View for annotations in type atm")
             //agency annotation
             let pinImage = UIImage(named: "atm2")
             let size = CGSize(width: 20, height: 20)
@@ -365,7 +384,8 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
             let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             annotationView?.image = resizedImage
-                   }
+            //agency annotation
+        }
         return annotationView
     }
     
@@ -396,15 +416,9 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         self.selectedPlace = BankAnnotation.Bank
         
         //Adding gesture recognition for details icon
-        let tapGestureRecogniserForDetailIcon = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
+        let tapGestureRecogniserForTransportation = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
         calloutView.detailsIcon.isUserInteractionEnabled = true
-        calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForDetailIcon)
-        
-        //Adding gesture recognition for image icon
-        let tapGestureRecogniserForImageIcon = UITapGestureRecognizer(target: self, action:#selector(FoodMapViewController.detailsSelected))
-        calloutView.restaurantImage.isUserInteractionEnabled = true
-        calloutView.restaurantImage.addGestureRecognizer(tapGestureRecogniserForImageIcon)
-
+        calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForTransportation)
         
         calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
@@ -433,8 +447,8 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "BankDetailSegue")
         {
-            let destinationVC: BankDetailViewController = segue.destination as! BankDetailViewController
-            destinationVC.selectedPlace = self.selectedPlace
+            let destinationDVC: BankDetailViewController = segue.destination as! BankDetailViewController
+            destinationDVC.selectedPlace = self.selectedPlace
         }
     }
 }

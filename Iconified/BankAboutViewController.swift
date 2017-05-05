@@ -1,8 +1,8 @@
 //
-//  BankAbout.swift
+//  BankAboutViewController.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 3/5/17.
+//  Created by 张翼扬 on 4/5/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
@@ -67,12 +67,12 @@ class BankAboutViewController: UIViewController {
         super.viewDidLoad()
         
         //Adding gesture recognition for navigation icon
-        let tapGestureRecogniserForNavigation = UITapGestureRecognizer(target: self, action:#selector(SupermarketAboutViewController.navigationIconSelected))
+        let tapGestureRecogniserForNavigation = UITapGestureRecognizer(target: self, action:#selector(BankAboutViewController.navigationIconSelected))
         navigationIcon.isUserInteractionEnabled = true
         navigationIcon.addGestureRecognizer(tapGestureRecogniserForNavigation)
         
         //Adding gesture recognition for website label
-        let tapGestureRecogniserForWebsite = UITapGestureRecognizer(target: self, action:#selector(SupermarketAboutViewController.websiteSelected))
+        let tapGestureRecogniserForWebsite = UITapGestureRecognizer(target: self, action:#selector(BankAboutViewController.websiteSelected))
         websiteLabel.isUserInteractionEnabled = true
         websiteLabel.addGestureRecognizer(tapGestureRecogniserForWebsite)
         
@@ -82,7 +82,7 @@ class BankAboutViewController: UIViewController {
         }
         else{
             //Adding gesture recognition for call icon
-            let tapGestureRecogniserForCall = UITapGestureRecognizer(target: self, action:#selector(SupermarketAboutViewController.callSelected))
+            let tapGestureRecogniserForCall = UITapGestureRecognizer(target: self, action:#selector(BankAboutViewController.callSelected))
             callIcon.isUserInteractionEnabled = true
             callIcon.addGestureRecognizer(tapGestureRecogniserForCall)
         }

@@ -2,7 +2,7 @@
 //  BankDetailViewController.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 3/5/17.
+//  Created by 张翼扬 on 4/5/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
     
     //The place selected by the user
     var selectedPlace: Bank
-    var cuisineSelected: Bool?
+    var bankSelected: Bool?
     var selectedUrl: String?
     
     //UI variables
@@ -32,9 +32,9 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
     required init?(coder aDecoder: NSCoder) {
         self.selectedPlace = Bank()
         self.browseType = nil
-        if(cuisineSelected == nil)
+        if(bankSelected == nil)
         {
-            cuisineSelected = false
+            bankSelected = false
         }
         super.init(coder: aDecoder)
     }
@@ -45,7 +45,7 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
         //About container is displayed by default
         aboutContainer.isHidden = false
         photosContainer.isHidden = true
-        if(self.cuisineSelected! == true)
+        if(self.bankSelected! == true)
         {
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)
@@ -55,7 +55,6 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)
         }
-        
         
         //set page title
         self.title = self.selectedPlace.placeName
@@ -68,9 +67,8 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
         {
             self.bannerImage.image = self.selectedPlace.firstPhoto
         }
-        
-        print("In detail view \(selectedPlace.placeName!)")
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,7 +86,6 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
         photosContainer.isHidden = true
         case 1:  aboutContainer.isHidden = true     //view photos
         photosContainer.isHidden = false
-            
         default: break;
         }
         
@@ -118,19 +115,21 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "bankAboutViewSegue")
-        {
-            let aboutdestinationVC: BankAboutViewController = segue.destination as! BankAboutViewController
-            aboutdestinationVC.selectedPlace = self.selectedPlace
-            aboutdestinationVC.delegate = self
+        
+        //segue for about container
+        if segue.identifier == "aboutSegue" {
+            let aboutVC: BankAboutViewController = segue.destination as! BankAboutViewController
+            aboutVC.selectedPlace = self.selectedPlace
+            aboutVC.delegate = self
         }
-        if(segue.identifier == "bankPhotoAlbumSegue")
-        {
-            let photodestinationVC: BankPhotoAlbumViewController = segue.destination as! BankPhotoAlbumViewController
-            photodestinationVC.selectedPlace = self.selectedPlace
-            photodestinationVC.delegate = self
+        
+        //segue for photo container
+        //segue for photo container
+        if segue.identifier == "photoAlbumSegue" {
+            let photoVC: BankPhotoAlbumViewController = segue.destination as! BankPhotoAlbumViewController
+            photoVC.selectedPlace = self.selectedPlace
+            photoVC.delegate = self
         }
-    
         ///segue for browsing
         if segue.identifier == "webViewSegue" {
             let webView = (segue.destination as? BankWebViewController)!
@@ -139,6 +138,7 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
             // containerViewController!.containerToMaster = self
         }
         
+        
         //segue for photo slide show
         if(segue.identifier == "photoViewSegue")
         {
@@ -146,6 +146,7 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
             destinationVC.imageArray = self.photoArray
             destinationVC.selectedImageIndex = self.selectedImageIndex
         }
+        
         
         
     }

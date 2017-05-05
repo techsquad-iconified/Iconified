@@ -2,10 +2,9 @@
 //  BankWebViewController.swift
 //  Iconified
 //
-//  Created by 张翼扬 on 3/5/17.
+//  Created by 张翼扬 on 5/5/17.
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
-
 
 import UIKit
 
