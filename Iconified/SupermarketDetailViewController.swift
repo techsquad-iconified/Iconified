@@ -12,7 +12,8 @@ class SupermarketDetailViewController: UIViewController, marketaboutViewDelegate
     
     //The place selected by the user
     var selectedPlace: Market
-    var marketSelected: Bool?
+
+    var cuisineSelected: Bool?
     var selectedUrl: String?
     
     //UI variables
@@ -32,9 +33,9 @@ class SupermarketDetailViewController: UIViewController, marketaboutViewDelegate
     required init?(coder aDecoder: NSCoder) {
         self.selectedPlace = Market()
         self.browseType = nil
-        if(marketSelected == nil)
+        if(cuisineSelected == nil)
         {
-            marketSelected = false
+            cuisineSelected = false
         }
         super.init(coder: aDecoder)
     }
@@ -45,7 +46,7 @@ class SupermarketDetailViewController: UIViewController, marketaboutViewDelegate
         //About container is displayed by default
         aboutContainer.isHidden = false
         photosContainer.isHidden = true
-        if(self.marketSelected! == true)
+        if(self.cuisineSelected! == true)
         {
             self.detailSegment.selectedSegmentIndex = 0
             self.detailSegment.removeSegment(at: 1, animated: true)

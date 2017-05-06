@@ -15,7 +15,7 @@ import MapKit
  The selected type and user location is sent to the server to fetch required information
  The Place details is recorded and annotations are placed on the map
  */
-class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     //UI Mapview
     @IBOutlet var mapView: MKMapView!
@@ -89,7 +89,12 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
             //self.downloadLocationData()
         }
     }
-  /*
+  
+    func cuisineSelector()
+    {
+        performSegue(withIdentifier: "cuisineSelectorSegue", sender: nil)
+    }
+    
     func generateURL() -> String
     {
         switch(self.selectedcuisine!)
@@ -104,7 +109,11 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
 
-    */
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        let sourceController = segue.source as! SuperTableViewController
+        // self.title = sourceController.currentItem
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -464,6 +473,94 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         {
             let destinationVC: SupermarketDetailViewController = segue.destination as! SupermarketDetailViewController
             destinationVC.selectedPlace = self.selectedPlace
+            if(self.selectedcuisine! == "Australia")
+            {
+                destinationVC.cuisineSelected = false
+            }
+            else
+            {
+                destinationVC.cuisineSelected = true
+            }
+
+        }
+        
+      
+    }
+    
+    //Method to parse the JSON response from the server
+    func parseJSON(articleJSON:NSData)
+    {
+        //Local variables to store place details
+        var placeLat: Double = 0.0
+        var placeLng: Double = 0.0
+        var placeId: String = "unknown"
+        var placeName: String = "unknown"
+        var isOpen: String = "unavailable"
+        var placeAddress: String = "unknown"
+        var firstOneDone : Bool = false
+        
+        do{
+            let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+            
+            let marketArray = jsonData.object(forKey: "Market") as! NSArray
+            
+            for eachRestaurant in marketArray
+            {
+                //firstOneDone = false    // Flag to get the forst image in the photo list
+                let res = eachRestaurant as! NSDictionary
+                let restaurant = res.object(forKey: "Market") as! NSDictionary
+                let result = restaurant.object(forKey: "R") as! NSDictionary
+                placeId = String(result.object(forKey: "res_id") as! Double)
+                let location = restaurant.object(forKey: "location") as! NSDictionary
+                placeLat = Double(location.object(forKey: "latitude") as! String)!
+                placeLng = Double(location.object(forKey: "longitude") as! String)!
+                placeAddress = location.object(forKey: "address") as! String
+                placeName = restaurant.object(forKey: "name") as! String
+                
+                //create a object of place for the details obtained
+                let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
+                
+                newPlace.priceLevel = restaurant.object(forKey: "price_range") as! Int
+                let photourl = restaurant.object(forKey: "thumb") as! String
+                
+                let url = NSURL(string: photourl)!
+                print(url)
+                let data = NSData(contentsOf:url as URL)
+                if(data != nil)
+                {
+                    print("Photo was not nil")
+                    newPlace.firstPhoto = UIImage(data:data! as Data)!
+                }
+                let userRating = restaurant.object(forKey: "user_rating") as! NSDictionary
+                newPlace.rating = Float(userRating.object(forKey: "aggregate_rating") as! String)
+                newPlace.website = restaurant.object(forKey: "url") as! String
+                newPlace.url = "https://www.google.co.in/maps/dir//\(newPlace.lat!),\(newPlace.lng!)"
+                
+                self.placeArray.add(newPlace)
+                
+                //printing the details in console for testing purpose
+                print("PLace name is \(newPlace.placeName)")
+                print("open now is \(newPlace.isOpen)")
+                print("place id is \(newPlace.placeId)")
+                print("place address is \(newPlace.placeAddress)")
+                print("latitude is \(newPlace.lat)")
+                print("price level is\(newPlace.priceLevel)")
+                print("rating is \(newPlace.rating)")
+                print("Webisite is \(newPlace.website)")
+                print("url is \(newPlace.url)")
+                print("no of photo reference is \(newPlace.photoReference.count)")
+            }
+            
+        }
+        catch{
+            print("JSON Serialization error")
         }
     }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+
 }

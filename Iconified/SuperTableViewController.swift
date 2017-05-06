@@ -56,7 +56,7 @@ class SuperTableViewController: UITableViewController {
     
     //Method to set values to tableview cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CuisineCell", for: indexPath) as! CuisineTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CuisineCell", for: indexPath) as! SuperTableViewCell
         cell.flagImageView.image = UIImage(named: self.cuisieTypes[indexPath.row])
         
         

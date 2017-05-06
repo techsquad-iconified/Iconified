@@ -38,8 +38,7 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
-    let cuiseButton = UIButton.init(type: .custom)
-    var selectedcuisine: String?
+
     
     //Initialiser
     required init?(coder aDecoder: NSCoder) {
@@ -65,12 +64,8 @@ class BankMapViewController: UIViewController, CLLocationManagerDelegate, MKMapV
         if(self.bankType == "bank")
         {
             self.title = "Bank"
-            cuiseButton.setImage(UIImage.init(named: "Australia"), for: UIControlState.normal)
-            cuiseButton.addTarget(self, action:#selector(FoodMapViewController.cuisineSelector), for: UIControlEvents.touchUpInside)
-            cuiseButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
-            let barButton = UIBarButtonItem.init(customView: cuiseButton)
-            self.navigationItem.rightBarButtonItem = barButton
-        }
+           
+                    }
         else if(self.bankType == "bank")
         {
             self.title == "Bank"
