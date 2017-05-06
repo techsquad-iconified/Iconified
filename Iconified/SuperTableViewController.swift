@@ -11,7 +11,7 @@ import UIKit
 //Delegate to return the selected cuisine
 protocol marketDelegate
 {
-    func cuisineSelected(cuisine: String)
+    func typeSelected(type: String)
 }
 
 
@@ -68,7 +68,7 @@ class SuperTableViewController: UITableViewController {
     //Method to return the selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Rowww selected")
-        self.delegate?.cuisineSelected(cuisine: self.cuisieTypes[indexPath.row])
+        self.delegate?.typeSelected(type: self.cuisieTypes[indexPath.row])
         self.performSegue(withIdentifier: "unwindToHome", sender: self)
     }
     

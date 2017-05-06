@@ -15,7 +15,7 @@ import MapKit
  The selected type and user location is sent to the server to fetch required information
  The Place details is recorded and annotations are placed on the map
  */
-class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, marketDelegate {
     
     //UI Mapview
     @IBOutlet var mapView: MKMapView!
@@ -66,33 +66,51 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         {
             self.title = "Supermarket"
             cuiseButton.setImage(UIImage.init(named: "Australia"), for: UIControlState.normal)
-            cuiseButton.addTarget(self, action:#selector(FoodMapViewController.cuisineSelector), for: UIControlEvents.touchUpInside)
+            cuiseButton.addTarget(self, action:#selector(SupermarketMapViewController.typeSelector), for: UIControlEvents.touchUpInside)
             cuiseButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
             let barButton = UIBarButtonItem.init(customView: cuiseButton)
             self.navigationItem.rightBarButtonItem = barButton
         }
         else if(self.marketType == "clothes")
         {
-            self.title == "Clothes"
+            self.title = "Clothes"
         }
         else
         {
-            self.title == "electronics"
+            self.title = "Electronics"
         }
         self.mapView.delegate = self
-        //call method to get users current location
-        self.getUsersCurrentLocation()
         
+        DispatchQueue.main.async(){
+            //call method to get users current location
+            self.getUsersCurrentLocation()
+        }
         //Method to create the API call from the server
         DispatchQueue.main.async(){
             self.downloadLocationDataFromServer()
             //self.downloadLocationData()
         }
     }
+    
+    func typeSelected(type: String) {
+        
+        // setting up the progress view
+        setProgressView()
+        self.view.addSubview(self.progressView)
+        cuiseButton.setImage(UIImage.init(named: type), for: UIControlState.normal)
+        self.placeArray = NSMutableArray()
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
+        
+        self.placeArray = NSMutableArray()
+        self.apiCallToServerForType(type: type)
+        print("In delegate method")
+    }
   
-    func cuisineSelector()
+    func typeSelector()
     {
-        performSegue(withIdentifier: "cuisineSelectorSegue", sender: nil)
+        performSegue(withIdentifier: "typeSelectorSegue", sender: nil)
     }
     
     func generateURL() -> String
@@ -143,9 +161,10 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
-        print("Users Current location \(self.longitude) and \(self.longitude)")
+        
         self.latitude = (locationManager.location?.coordinate.latitude)!
         self.longitude = (locationManager.location?.coordinate.longitude)!
+        print("Users Current location \(self.longitude) and \(self.longitude)")
     }
     
     /*
@@ -159,38 +178,101 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         
         if(self.placeArray.count != 0 )
         {
+            print("in add annotation in if")
             for case let market as Market in placeArray
             {
+                print("IN FOR")
                 if (market.lat != nil)     // if it has a previous latitude
                 {
+                    print("IN FOR-IF")
                     let loc = CLLocationCoordinate2D(latitude: Double((market.lat)!) , longitude: Double((market.lng)!))
                     let center = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
                     let point = MarketAnnotation(coordinate: loc)
                     
                     point.image = market.firstPhoto
-                    
                     point.name = market.placeName
+                    print("name is \(point.name)")
                     if(market.isOpen == "true" || market.isOpen == "false")
                     {
                         point.isOpen = market.isOpen
                     }
                     point.Market = market
-                    mapView.addAnnotation(point)
+                    self.mapView.addAnnotation(point)
                     
                     let area = MKCoordinateRegion(center: center , span: MKCoordinateSpan(latitudeDelta: 0.005,longitudeDelta: 0.005))
-                    mapView.setRegion(area, animated: true)
-                    mapView.showAnnotations(mapView.annotations, animated: true)
+                    self.mapView.setRegion(area, animated: true)
+                    self.mapView.showAnnotations(mapView.annotations, animated: true)
                 }
             }
         }
         self.stopProgressView()
         
     }
+    //Function make api call to server for supermarkets based on a different type.
+    func apiCallToServerForType(type: String)
+    {
+        var url: URL
+        url = URL(string:"http://23.83.248.221/test?searchType=\(self.marketType!)&myLocation=\(self.latitude!),\(self.longitude!)&keyword=\(self.getTypeForCountry(country: type))")!
+        
+        print("url isss \(url)")
+        let urlRequest = URLRequest(url: url)
+        
+        //setting up session
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            if (error != nil)    //checking if the any error message received during connection
+            {
+                print("Error \(error)")
+                let alert = UIAlertController(title: "Sorry! Server Failed!", message: "Please try again later.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                DispatchQueue.main.async(){
+                    self.parseServerJSON(articleJSON: data! as NSData)
+                }
+                
+                // Do any additional setup after loading the view.
+                DispatchQueue.main.async(){
+                    self.addLocationAnnotations()
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
+    func getTypeForCountry(country: String) -> String
+    {
+        //"Australia", "China", "India", "Italy", "Japan", "Mexico", "Vietnam"]
+        switch(country)
+        {
+            case "Australia": return ""
+            case "China": return "Chinese"
+            case "India": return "Indian"
+            case "Italy": return "Italian"
+            case "Japan": return "Japanese"
+            case "Mexico": return "Mexican"
+            case "Vietnam": return "Vietnamese"
+
+        default: return ""
+            
+        }
+    }
+    
     //Function makes a API call to the server to fetch the required place details
     func downloadLocationDataFromServer()
     {
         var url: URL
+        if(self.keyword != nil)
+        {
+            url = URL(string:"http://23.83.248.221/test?searchType=\(self.marketType!)&myLocation=\(self.latitude!),\(self.longitude!)&keyword=\(self.keyword!)")!
+        }
+        else
+        {
         url = URL(string:"http://23.83.248.221/test?searchType=\(self.marketType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
+        }
         print(url)
         let urlRequest = URLRequest(url: url)
         
@@ -392,24 +474,45 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
             let size = CGSize(width: 20, height: 20)
             UIGraphicsBeginImageContext(size)
             pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            //  pinImage.draw(in: CGRect(0, 0, size.width, size.height))
             let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             annotationView?.image = resizedImage
         }
-        else if(self.marketType == "grocery_or_supermarket")
+        else if(self.keyword == "electronics")
         {
-            //agency annotation
-            let pinImage = UIImage(named: "shop2")
+            //electronics annotation
+            let pinImage = UIImage(named: "electronics annotation")
             let size = CGSize(width: 20, height: 20)
             UIGraphicsBeginImageContext(size)
             pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            //  pinImage.draw(in: CGRect(0, 0, size.width, size.height))
             let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             annotationView?.image = resizedImage
             //agency annotation
         }
+        else if(self.keyword == "clothes")
+        {
+            //clothes annotation
+            let pinImage = UIImage(named: "Clothes annotation")
+            let size = CGSize(width: 20, height: 20)
+            UIGraphicsBeginImageContext(size)
+            pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            annotationView?.image = resizedImage
+        }
+        else if(self.keyword == "vegetables")
+        {
+            //clothes annotation
+            let pinImage = UIImage(named: "Vegetables")
+            let size = CGSize(width: 20, height: 20)
+            UIGraphicsBeginImageContext(size)
+            pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            annotationView?.image = resizedImage
+        }
+        
         return annotationView
     }
     
@@ -473,89 +576,19 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         {
             let destinationVC: SupermarketDetailViewController = segue.destination as! SupermarketDetailViewController
             destinationVC.selectedPlace = self.selectedPlace
-            if(self.selectedcuisine! == "Australia")
-            {
-                destinationVC.cuisineSelected = false
-            }
-            else
-            {
-                destinationVC.cuisineSelected = true
-            }
+            
 
         }
-        
+        if(segue.identifier == "typeSelectorSegue")
+        {
+            let destinationCuisineVC: SuperTableViewController = segue.destination as! SuperTableViewController
+            destinationCuisineVC.delegate = self
+            
+            
+        }
       
     }
     
-    //Method to parse the JSON response from the server
-    func parseJSON(articleJSON:NSData)
-    {
-        //Local variables to store place details
-        var placeLat: Double = 0.0
-        var placeLng: Double = 0.0
-        var placeId: String = "unknown"
-        var placeName: String = "unknown"
-        var isOpen: String = "unavailable"
-        var placeAddress: String = "unknown"
-        var firstOneDone : Bool = false
-        
-        do{
-            let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-            
-            let marketArray = jsonData.object(forKey: "Market") as! NSArray
-            
-            for eachRestaurant in marketArray
-            {
-                //firstOneDone = false    // Flag to get the forst image in the photo list
-                let res = eachRestaurant as! NSDictionary
-                let restaurant = res.object(forKey: "Market") as! NSDictionary
-                let result = restaurant.object(forKey: "R") as! NSDictionary
-                placeId = String(result.object(forKey: "res_id") as! Double)
-                let location = restaurant.object(forKey: "location") as! NSDictionary
-                placeLat = Double(location.object(forKey: "latitude") as! String)!
-                placeLng = Double(location.object(forKey: "longitude") as! String)!
-                placeAddress = location.object(forKey: "address") as! String
-                placeName = restaurant.object(forKey: "name") as! String
-                
-                //create a object of place for the details obtained
-                let newPlace = Place(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, placeAddress: placeAddress , isOpen: isOpen)
-                
-                newPlace.priceLevel = restaurant.object(forKey: "price_range") as! Int
-                let photourl = restaurant.object(forKey: "thumb") as! String
-                
-                let url = NSURL(string: photourl)!
-                print(url)
-                let data = NSData(contentsOf:url as URL)
-                if(data != nil)
-                {
-                    print("Photo was not nil")
-                    newPlace.firstPhoto = UIImage(data:data! as Data)!
-                }
-                let userRating = restaurant.object(forKey: "user_rating") as! NSDictionary
-                newPlace.rating = Float(userRating.object(forKey: "aggregate_rating") as! String)
-                newPlace.website = restaurant.object(forKey: "url") as! String
-                newPlace.url = "https://www.google.co.in/maps/dir//\(newPlace.lat!),\(newPlace.lng!)"
-                
-                self.placeArray.add(newPlace)
-                
-                //printing the details in console for testing purpose
-                print("PLace name is \(newPlace.placeName)")
-                print("open now is \(newPlace.isOpen)")
-                print("place id is \(newPlace.placeId)")
-                print("place address is \(newPlace.placeAddress)")
-                print("latitude is \(newPlace.lat)")
-                print("price level is\(newPlace.priceLevel)")
-                print("rating is \(newPlace.rating)")
-                print("Webisite is \(newPlace.website)")
-                print("url is \(newPlace.url)")
-                print("no of photo reference is \(newPlace.photoReference.count)")
-            }
-            
-        }
-        catch{
-            print("JSON Serialization error")
-        }
-    }
     
     func dismiss() {
         dismiss(animated: true, completion: nil)

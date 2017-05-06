@@ -85,8 +85,8 @@ class SupermarketViewController: UIViewController {
     //method is called when clothes shop icon is selected
     func ClothesSelected()
     {
-        //self.downloadLocationData()
-        self.marketType = "clothes"
+        self.marketType = "shops"
+        self.keyword = "clothes"
         performSegue(withIdentifier: "SupermarketMapSegue", sender: nil)
         print("electronics shop selected")
     }
@@ -95,7 +95,7 @@ class SupermarketViewController: UIViewController {
     func ElectronicSelected()
     {
         //self.downloadLocationData()
-        self.marketType = "electronics"
+        self.marketType = "shops"
         self.keyword = "electronics"
         performSegue(withIdentifier: "SupermarketMapSegue", sender: nil)
         print("Electronic shop selected")
@@ -104,8 +104,8 @@ class SupermarketViewController: UIViewController {
     //method is called when grocery icon is selected
     func GrocerySelected()
     {
-        //self.downloadLocationData()
-        self.marketType = "grocery"
+        self.marketType = "shops"
+        self.keyword = "vegetables"
         performSegue(withIdentifier: "SupermarketMapSegue", sender: nil)
         print("grocery selected")
     }
@@ -123,6 +123,7 @@ class SupermarketViewController: UIViewController {
             let destinationVC: SupermarketMapViewController = segue.destination as! SupermarketMapViewController
             //destinationVC.placeArray = self.placeArray
             destinationVC.marketType = self.marketType
+            destinationVC.keyword = self.keyword
             
         }
         

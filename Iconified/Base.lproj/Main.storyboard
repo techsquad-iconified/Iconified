@@ -2197,7 +2197,7 @@
                     <connections>
                         <outlet property="mapView" destination="5Mz-v4-yei" id="XGm-zw-FOH"/>
                         <segue destination="giz-lV-8FG" kind="show" identifier="SupermarketDetailSegue" id="ZaM-QL-cZu"/>
-                        <segue destination="2ym-JF-yPV" kind="presentation" identifier="cuisineSelectorSegue" id="hvo-hC-aYU"/>
+                        <segue destination="2ym-JF-yPV" kind="presentation" identifier="typeSelectorSegue" id="hvo-hC-aYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uva-pv-noG" userLabel="First Responder" sceneMemberID="firstResponder"/>
