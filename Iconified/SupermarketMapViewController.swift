@@ -588,8 +588,7 @@ class SupermarketMapViewController: UIViewController, CLLocationManagerDelegate,
         }
       
     }
-    
-    
+      //Method to dismiss view
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }

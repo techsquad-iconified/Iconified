@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -139,12 +138,62 @@
                         <outlet property="mykiIcon" destination="UPS-t7-Y5b" id="HBd-mc-0Z4"/>
                         <outlet property="typesIcon" destination="iNV-qJ-8C1" id="MGl-90-8wu"/>
                         <segue destination="ELf-rY-WRc" kind="show" identifier="publicTransportSegue" id="tAV-oA-3hJ"/>
-                        <segue destination="C4y-Rr-WXO" kind="show" identifier="mykiLocationSegue" id="sVM-LE-jQl"/>
+                        <segue destination="s8K-gw-B0Z" kind="show" identifier="mykiIntroSegue" id="N1a-B2-9V4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDz-PQ-fpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1908" y="253"/>
+        </scene>
+        <!--Myki-->
+        <scene sceneID="ryR-UF-d2G">
+            <objects>
+                <viewController id="s8K-gw-B0Z" customClass="MykiIntroViewController" customModule="Iconified" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eeO-R7-jGJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="svf-UJ-gIa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="053-io-MQz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mykiBanner" translatesAutoresizingMaskIntoConstraints="NO" id="8Le-25-prR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Info green" translatesAutoresizingMaskIntoConstraints="NO" id="BAp-EV-iIE">
+                                <rect key="frame" x="133" y="343" width="108" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ticket" translatesAutoresizingMaskIntoConstraints="NO" id="Z6I-rm-vGi">
+                                <rect key="frame" x="134" y="538" width="107" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Down Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ppp-F5-njx">
+                                <rect key="frame" x="137" y="445" width="101" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Myki is a reusable travel card for trains, trams and buses in Melbourne and regional Victorian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M73-GV-u5s">
+                                <rect key="frame" x="16" y="274" width="343" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Myki" id="4Qx-Ab-Kal"/>
+                    <connections>
+                        <outlet property="infoImage" destination="BAp-EV-iIE" id="RfL-k4-hWo"/>
+                        <outlet property="locationImage" destination="Z6I-rm-vGi" id="bPn-mN-jnq"/>
+                        <segue destination="C4y-Rr-WXO" kind="show" identifier="mykiLocationSegue" id="YWV-BL-XNW"/>
+                        <segue destination="diG-LR-qD7" kind="show" identifier="mykiInfoSegue" id="Lb7-Sm-H96"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cMP-Gk-hbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-919.20000000000005" y="-117.39130434782609"/>
         </scene>
         <!--Myki -->
         <scene sceneID="D5V-RW-ev4">
@@ -162,15 +211,15 @@
                                 <rect key="frame" x="0.0" y="-86" width="375" height="920"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="920" id="fBW-E8-fXL"/>
+                                    <constraint firstAttribute="height" constant="920" id="TRd-9A-tjL"/>
                                 </constraints>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="632-ae-zhI" secondAttribute="trailing" id="orb-ER-5xB"/>
-                            <constraint firstItem="632-ae-zhI" firstAttribute="top" secondItem="8UR-Le-N78" secondAttribute="topMargin" constant="-86" id="rM7-fD-Ctf"/>
-                            <constraint firstItem="632-ae-zhI" firstAttribute="leading" secondItem="8UR-Le-N78" secondAttribute="leading" id="tWg-zb-ZuG"/>
+                            <constraint firstItem="632-ae-zhI" firstAttribute="top" secondItem="8UR-Le-N78" secondAttribute="topMargin" constant="-86" id="4nV-UK-ULc"/>
+                            <constraint firstItem="632-ae-zhI" firstAttribute="leading" secondItem="8UR-Le-N78" secondAttribute="leading" id="j3V-Jd-KTa"/>
+                            <constraint firstAttribute="trailing" secondItem="632-ae-zhI" secondAttribute="trailing" id="luG-2C-9Na"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -188,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Uz-eM-Z1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-834.39999999999998" y="-12.143928035982009"/>
+            <point key="canvasLocation" x="580" y="-656"/>
         </scene>
         <!--Myki Details-->
         <scene sceneID="2ho-e6-vHY">
@@ -247,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL7-xA-R6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288.80000000000001" y="-12.143928035982009"/>
+            <point key="canvasLocation" x="580" y="126"/>
         </scene>
         <!--Stops-->
         <scene sceneID="1LU-yZ-xl3">
@@ -334,19 +383,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="freeTramZoneMap" translatesAutoresizingMaskIntoConstraints="NO" id="Ktf-RI-zJ9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pku-Rr-9Nv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Ktf-RI-zJ9" secondAttribute="trailing" id="8Sw-qq-PAX"/>
-                            <constraint firstItem="Ktf-RI-zJ9" firstAttribute="leading" secondItem="ZO2-7Q-8af" secondAttribute="leading" id="Jdg-up-xFD"/>
-                            <constraint firstItem="Ktf-RI-zJ9" firstAttribute="bottom" secondItem="IXI-oD-OO0" secondAttribute="top" id="Rd3-c7-jWx"/>
-                            <constraint firstItem="Ktf-RI-zJ9" firstAttribute="top" secondItem="7Am-3H-C8p" secondAttribute="bottom" id="ZGt-CA-s2q"/>
+                            <constraint firstItem="pku-Rr-9Nv" firstAttribute="top" secondItem="ZO2-7Q-8af" secondAttribute="top" id="5ny-kW-wOb"/>
+                            <constraint firstItem="pku-Rr-9Nv" firstAttribute="bottom" secondItem="IXI-oD-OO0" secondAttribute="top" id="MzW-0B-O4y"/>
+                            <constraint firstItem="pku-Rr-9Nv" firstAttribute="leading" secondItem="ZO2-7Q-8af" secondAttribute="leading" id="TeS-eH-Kgo"/>
+                            <constraint firstAttribute="trailing" secondItem="pku-Rr-9Nv" secondAttribute="trailing" id="sqv-fS-G2h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Free Tram Zone" id="Mp0-EG-cSp"/>
+                    <connections>
+                        <outlet property="webview" destination="pku-Rr-9Nv" id="Aqp-Tt-g1j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlU-Ja-bTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -365,7 +418,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="del-5t-dKW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ff-fM-cuG">
                                         <rect key="frame" x="0.0" y="86" width="375" height="252"/>
@@ -609,18 +662,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Iconified" id="fso-9c-F4O">
-                        <leftBarButtonItems>
-                            <barButtonItem image="Settings" id="uiv-m5-dpp">
-                                <connections>
-                                    <segue destination="dhc-dn-NP9" kind="show" id="JC9-01-y9h"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Menu" id="qUU-dr-9AB">
-                                <connections>
-                                    <segue destination="Fog-uR-427" kind="show" id="2Lt-ID-9Ga"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="uiv-m5-dpp">
+                            <connections>
+                                <segue destination="dhc-dn-NP9" kind="show" id="JC9-01-y9h"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Translate" id="sbO-Aw-Oa0">
                             <connections>
                                 <segue destination="iK6-vq-TKL" kind="show" id="Yz3-L1-BSm"/>
@@ -3140,6 +3186,7 @@
         <image name="Details" width="530" height="530"/>
         <image name="Dine in" width="530" height="530"/>
         <image name="Domain Filled-50" width="50" height="50"/>
+        <image name="Down Arrow" width="25" height="25"/>
         <image name="Drinks" width="530" height="530"/>
         <image name="Emergency" width="530" height="530"/>
         <image name="Food" width="530" height="530"/>
@@ -3148,6 +3195,7 @@
         <image name="Hotel_3" width="530" height="530"/>
         <image name="Image" width="25" height="25"/>
         <image name="Info" width="48" height="48"/>
+        <image name="Info green" width="52" height="52"/>
         <image name="Info-about" width="32" height="32"/>
         <image name="Marker-48" width="48" height="48"/>
         <image name="Near Me-48" width="48" height="48"/>
@@ -3159,6 +3207,7 @@
         <image name="Settings" width="25" height="25"/>
         <image name="Shopping" width="530" height="530"/>
         <image name="Speaker" width="50" height="50"/>
+        <image name="Ticket" width="50" height="50"/>
         <image name="Translate" width="25" height="25"/>
         <image name="Transportation" width="530" height="530"/>
         <image name="US Dollar-48" width="48" height="48"/>
@@ -3168,16 +3217,17 @@
         <image name="call000" width="1060" height="1060"/>
         <image name="clothes" width="1039" height="1054"/>
         <image name="electronics" width="512" height="512"/>
-        <image name="freeTramZoneMap" width="400" height="210"/>
         <image name="fruit" width="320" height="320"/>
         <image name="myki" width="109" height="102"/>
+        <image name="mykiBanner" width="295" height="130"/>
         <image name="store" width="512" height="512"/>
         <image name="student" width="530" height="530"/>
         <image name="transportTypes" width="530" height="530"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NtU-bA-gbC"/>
+        <segue reference="Lb7-Sm-H96"/>
         <segue reference="JC9-01-y9h"/>
+        <segue reference="NtU-bA-gbC"/>
         <segue reference="d4w-Qo-6NF"/>
     </inferredMetricsTieBreakers>
 </document>

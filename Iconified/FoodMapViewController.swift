@@ -592,7 +592,7 @@ func parseJSON(articleJSON:NSData)
         print("JSON Serialization error")
     }
   }
-    
+    //Method to dismiss view
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }

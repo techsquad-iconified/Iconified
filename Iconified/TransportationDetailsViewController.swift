@@ -45,7 +45,7 @@ class TransportationDetailsViewController: UIViewController {
     func mykiSelected()
     {
         //performSegue(withIdentifier: "mykiSegue", sender: nil)
-        performSegue(withIdentifier: "mykiLocationSegue", sender: nil)
+        performSegue(withIdentifier: "mykiIntroSegue", sender: nil)
     }
     
     //Method called when public transport types is selected
@@ -62,9 +62,9 @@ class TransportationDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //Segue to details on myki
-        if(segue.identifier == "mykiSegue")
+        if(segue.identifier == "mykiIntroSegue")
         {
-            let destinationVC: MykiViewController = segue.destination as! MykiViewController
+            let destinationVC: MykiIntroViewController = segue.destination as! MykiIntroViewController
         }
         //Segue to public transport
         if(segue.identifier == "publicTransportSegue")

@@ -23,6 +23,7 @@
 		1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0EE1E868FB50077CCA1 /* RestaurantAnnotation.swift */; };
 		1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */; };
 		1A5509911E8F6F38004786B1 /* Credits in Resources */ = {isa = PBXBuildFile; fileRef = 1A5509901E8F6F38004786B1 /* Credits */; };
+		1A6B960A1EBE169600F1BEBD /* MykiIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */; };
 		1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */; };
 		1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */; };
 		1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */; };
@@ -154,6 +155,7 @@
 		1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Iconified.xcodeproj; path = /Users/shishiraskanda/Desktop/Iconified/Iconified.xcodeproj; sourceTree = "<absolute>"; };
 		1A5509901E8F6F38004786B1 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Credits; path = Iconified/Credits; sourceTree = "<group>"; };
+		1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiIntroViewController.swift; sourceTree = "<group>"; };
 		1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Iconified/MenuViewController.swift; sourceTree = "<group>"; };
 		1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenu.swift; sourceTree = "<group>"; };
 		1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenuButtonAction.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				1A873A2F1EAB2EDC00464EB3 /* PtvCalloutView.swift */,
 				1A873A311EAB2EFA00464EB3 /* PtvCalloutView.xib */,
 				1A873A351EAC52EA00464EB3 /* FreeTramZoneViewController.swift */,
+				1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */,
 			);
 			name = Transportation;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				1A873A1E1EAA308600464EB3 /* EmergencyViewController.swift in Sources */,
 				1AC243F51E95D355007AC863 /* CallViewCustom.swift in Sources */,
 				5401EE461EB9A5D10060D3E5 /* MarketAnnotation.swift in Sources */,
+				1A6B960A1EBE169600F1BEBD /* MykiIntroViewController.swift in Sources */,
 				1A50C0E71E85F5270077CCA1 /* FoodMapViewController.swift in Sources */,
 				1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */,
 				1A50C0EF1E868FB50077CCA1 /* RestaurantAnnotation.swift in Sources */,
