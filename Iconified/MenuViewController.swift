@@ -30,7 +30,10 @@ class MenuViewController: UIViewController {
         //  let gesture = UITapGestureRecognizer(target: self, action: #selector(showMenu(sender:)))
         //view.addGestureRecognizer(gesture)
         view.backgroundColor = UIColor.white
+       // self.showMenu()
+        self.startButtonSelected(sender: self.view)
         
+        /*
         //Adding gesture recognition for start icon
         let tapGestureRecogniserForStart = UITapGestureRecognizer(target: self, action:#selector(MenuViewController.startButtonSelected))
         startButton.isUserInteractionEnabled = true
@@ -45,14 +48,15 @@ class MenuViewController: UIViewController {
         startButton.center = view.center
         view.addSubview(startButton)
         startButton.sendActions(for: .touchUpInside)
+        */
     }
     
     //This function is called when the start method is clicked
-    func startButtonSelected(sender: UITapGestureRecognizer) {
+    func startButtonSelected(sender: UIView) {
         _ = ALRadialMenu()
             .setButtons(buttons: generateButtons())
             .setDelay(delay: 0.05)
-            .setAnimationOrigin(animationOrigin: sender.location(in: view))
+            .setAnimationOrigin(animationOrigin: sender.center)
             .presentInView(view: view)
     }
     
@@ -141,7 +145,7 @@ class MenuViewController: UIViewController {
     }
     
     //Method to create and poulate Radial Menu on screen
-    func showMenu(sender: UITapGestureRecognizer) {
+    func showMenu(sender: UIGestureRecognizer) {
         menu.setButtons(buttons: generateButtons())
             .setDelay(delay: 0.05)
             .setAnimationOrigin(animationOrigin: sender.location(in: view))

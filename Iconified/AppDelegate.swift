@@ -44,12 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        let navBar: UIImage = UIImage(named: "black-pattern")!
         UINavigationBar.appearance().setBackgroundImage(navBar, for: .default)
        // UINavigationBar.appearance().tintColor = UIColor(red: 177/255, green: 56/255, blue: 53/255, alpha: 1)
-        UIApplication.shared.statusBarStyle = .lightContent
+      //  UIApplication.shared.statusBarStyle = .lightContent
         
        let navBarItemsColor = UIColor.white
        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navBarItemsColor]
        UIBarButtonItem.appearance().tintColor = navBarItemsColor
        UINavigationBar.appearance().tintColor = navBarItemsColor
+        
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
         
         //UITabBar.appearance().barTintColor = UIColor.lightGray
 
