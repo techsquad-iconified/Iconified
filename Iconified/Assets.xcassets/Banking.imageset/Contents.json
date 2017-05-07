@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Banking.png",
+      "filename" : "banking.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Banking-1.png",
+      "filename" : "banking-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Banking-2.png",
+      "filename" : "banking-2.png",
       "scale" : "3x"
     }
   ],

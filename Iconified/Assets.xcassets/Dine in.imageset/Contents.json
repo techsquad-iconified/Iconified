@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Dine in.png",
+      "filename" : "restaurant.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Dine in-1.png",
+      "filename" : "restaurant-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Dine in-2.png",
+      "filename" : "restaurant-2.png",
       "scale" : "3x"
     }
   ],

@@ -31,9 +31,9 @@ class MenuViewController: UIViewController {
         //view.addGestureRecognizer(gesture)
         view.backgroundColor = UIColor.white
        // self.showMenu()
-        self.startButtonSelected(sender: self.view)
+       // self.startButtonSelected(sender: self.view)
         
-        /*
+        
         //Adding gesture recognition for start icon
         let tapGestureRecogniserForStart = UITapGestureRecognizer(target: self, action:#selector(MenuViewController.startButtonSelected))
         startButton.isUserInteractionEnabled = true
@@ -48,15 +48,15 @@ class MenuViewController: UIViewController {
         startButton.center = view.center
         view.addSubview(startButton)
         startButton.sendActions(for: .touchUpInside)
-        */
+        
     }
     
     //This function is called when the start method is clicked
-    func startButtonSelected(sender: UIView) {
+    func startButtonSelected(sender: UITapGestureRecognizer) {
         _ = ALRadialMenu()
             .setButtons(buttons: generateButtons())
             .setDelay(delay: 0.05)
-            .setAnimationOrigin(animationOrigin: sender.center)
+            .setAnimationOrigin(animationOrigin: sender.location(in: view))
             .presentInView(view: view)
     }
     
