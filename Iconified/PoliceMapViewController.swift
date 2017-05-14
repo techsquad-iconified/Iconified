@@ -19,7 +19,8 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     var longitude: Double?
     
     var selectedPolice: Hospital
-    
+    //selcted annotation
+    var selectedAnnotation: EmergencyAnnotation
     //Array of place details retrieved from the user
     var policeArray: NSMutableArray
     
@@ -29,19 +30,25 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     // creating a view to display a progress spinner while data is being loaded from the server
     var progressView = UIView()
     
+    //Images used to represent the rating of the place
+    let fullStarImage:  UIImage = UIImage(named: "Star Full")!
+    let halfStarImage:  UIImage = UIImage(named: "Star Half")!
+    let emptyStarImage: UIImage = UIImage(named: "Star Grey")!
+    
     //Initialiser
     required init?(coder aDecoder: NSCoder) {
         self.policeArray = NSMutableArray()
         self.selectedPolice = Hospital()
         self.latitude = nil
         self.longitude = nil
+        self.selectedAnnotation = EmergencyAnnotation()
         self.locationManager = CLLocationManager()
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         // setting up the progress view
-        setProgressView()
+        setProgressView(type: "Police")
         self.view.addSubview(self.progressView)
         self.mapView.delegate = self
         
@@ -51,10 +58,9 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         //Method to create the API call from the server
         DispatchQueue.main.async(){
             //self.downloadLocationData()
-            self.downloadLocationDataFromServer()
+        self.downloadLocationDataFromServer()
         }
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -104,7 +110,8 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         
         if(self.policeArray.count != 0 )
         {
-            for case let hospital as Hospital in policeArray
+            let cleanedArray: NSMutableArray = self.cleanData(array: self.policeArray)
+            for case let hospital as Hospital in cleanedArray
             {
                 if (hospital.lat != nil)     // if it has a previous latitude
                 {
@@ -116,6 +123,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
                     
                     point.name = hospital.name
                     point.type = hospital.type
+                    point.isOpen = hospital.isOpen
                     point.hospital = hospital
                     mapView.addAnnotation(point)
                     
@@ -128,6 +136,23 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         self.stopProgressView()
        
     }
+    //Method to remove places which are not police stations
+    func cleanData(array: NSMutableArray) -> NSMutableArray
+    {
+        var cleanedArray = NSMutableArray()
+        for case let place as Hospital in array
+        {
+            if(place.name?.contains("Police"))!
+            {
+                cleanedArray.add(place)
+            }
+            else
+            {
+                print("Rejected \(place.name)")
+            }
+        }
+        return cleanedArray
+    }
     
     /*
      Setting up the progress view that displays a spinner while the serer data is being downloaded.
@@ -137,7 +162,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
      Author: Melih Şimşek
      URL: https://www.youtube.com/watch?v=iPTuhyU5HkI
      */
-    func setProgressView()
+    func setProgressView(type: String)
     {
         self.progressView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
         self.progressView.backgroundColor = UIColor.darkGray
@@ -149,7 +174,14 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         wait.startAnimating()
         
         let message = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        message.text = "Finding Police stations..."
+        if type == "Police"
+        {
+            message.text = "Finding police..."
+        }
+        else
+        {
+            message.text = "Getting details..."
+        }
         message.textColor = UIColor.white
         
         self.progressView.addSubview(wait)
@@ -194,7 +226,16 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         else{
             annotationView?.annotation = annotation
         }
-        annotationView?.image = UIImage(named: "Police Station")
+        //annotationView?.image = UIImage(named: "Police Station")
+        //agency annotation
+        let pinImage = UIImage(named: "Police Station")
+        let size = CGSize(width: 50, height: 50)
+        UIGraphicsBeginImageContext(size)
+        pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        //  pinImage.draw(in: CGRect(0, 0, size.width, size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        annotationView?.image = resizedImage
         
         return annotationView
     }
@@ -219,7 +260,9 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         
         //Add name to view
         calloutView.nameLabel.text = emergencyAnnotation.name
-        if(emergencyAnnotation.image.size == CGSize(width: 0.0, height: 0.0))
+        calloutView.openLabel.text = "Open"
+        
+       /* if(emergencyAnnotation.image.size == CGSize(width: 0.0, height: 0.0))
         {
             calloutView.imageView.image = UIImage(named: "Police Station")
         }
@@ -227,18 +270,20 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         {
             calloutView.imageView.image = emergencyAnnotation.image
         }
+         */
         self.selectedPolice = emergencyAnnotation.hospital
-        
-        
+        self.selectedAnnotation = emergencyAnnotation
+        self.getRating(calloutView: calloutView)
+
         //Adding gesture recognition for details icon
-        let tapGestureRecogniserForDetailIcon = UITapGestureRecognizer(target: self, action:#selector(HospitalMapViewController.detailsSelected))
-        calloutView.detailsIcon.isUserInteractionEnabled = true
-        calloutView.detailsIcon.addGestureRecognizer(tapGestureRecogniserForDetailIcon)
+        let tapGestureRecogniserForDetailIcon = UITapGestureRecognizer(target: self, action:#selector(PoliceMapViewController.detailsSelected))
+        calloutView.detailsButton.isUserInteractionEnabled = true
+        calloutView.detailsButton.addGestureRecognizer(tapGestureRecogniserForDetailIcon)
         
         //Adding gesture recognition for image icon
-        let tapGestureRecogniserForImageIcon = UITapGestureRecognizer(target: self, action:#selector(HospitalMapViewController.detailsSelected))
-        calloutView.imageView.isUserInteractionEnabled = true
-        calloutView.imageView.addGestureRecognizer(tapGestureRecogniserForImageIcon)
+        let tapGestureRecogniserForName = UITapGestureRecognizer(target: self, action:#selector(PoliceMapViewController.detailsSelected))
+        calloutView.nameLabel.isUserInteractionEnabled = true
+        calloutView.nameLabel.addGestureRecognizer(tapGestureRecogniserForName)
         
         calloutView.center = CGPoint(x: view.bounds.size.width / 4, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
@@ -259,17 +304,51 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     //method called wheh details button in the callout view is called
     func detailsSelected()
     {
-        performSegue(withIdentifier: "PoliceDetailSegue", sender: nil)
+        self.mapView.deselectAnnotation(self.selectedAnnotation, animated: true)
+        // setting up the progress view
+        setProgressView(type: "details")
+        self.view.addSubview(self.progressView)
+        
+        //Method to create the API call from the server to fetch details
+        DispatchQueue.main.async(){
+            self.downloadPlaceDetailsFromServer()
+        }
+        
+    }
+
+    //Funtion displays the rating of teh place using images of stars
+    func getRating(calloutView: EmergencyCallout)
+    {
+        if(self.selectedPolice.rating != nil)
+        {
+            if let ourRating = self.selectedPolice.rating
+            {
+                calloutView.ratingOne.image = getStarImage(starNumber: 1, forRating: ourRating)
+                calloutView.ratingTwo.image = getStarImage(starNumber: 2, forRating: ourRating)
+                calloutView.ratingThree.image = getStarImage(starNumber: 3, forRating: ourRating)
+                calloutView.ratingFour.image = getStarImage(starNumber: 4, forRating: ourRating)
+                calloutView.ratingFive.image = getStarImage(starNumber: 5, forRating: ourRating)
+            }
+        }
+    }
+    
+    //funtion returns approriate star images
+    func getStarImage(starNumber: Float, forRating rating: Float) -> UIImage {
+        if rating >= starNumber {
+            return fullStarImage
+        } else if rating + 0.5 >= starNumber {
+            return halfStarImage
+        } else {
+            return emptyStarImage
+        }
     }
 
     //Function makes a API call to the server to fetch the required place details
     func downloadLocationDataFromServer()
     {
         var url: URL
-        url = URL(string:"http://23.83.248.221/test?searchType=police&myLocation=-37.877009,145.046267")!
-        //http://23.83.248.221/test?searchType=police&myLocation=-33.8670,151.1957
-        //http://23.83.248.221/test?searchType=police&myLocation=-37.877009,145.044267
-        print(url)
+        //url = URL(string:"http://23.83.248.221/test?searchType=police&myLocation=-37.877009,145.046267")!
+        url = URL(string:"http://23.83.248.221/generalquery?searchType=police&myLocation=\(self.latitude!),\(self.longitude!)")!
         let urlRequest = URLRequest(url: url)
         
         //setting up session
@@ -301,79 +380,152 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func parseServerJSON(articleJSON:NSData)
     {
         //Local variables to store place details
-        var hospitalLat: Double = 0.0
-        var hospitalLng: Double = 0.0
-        var name: String = "unknown"
-        var type: String = "unavailable"
-        var address: String = "unknown"
+        var placeLat: Double = 0.0
+        var placeLng: Double = 0.0
+        var placeId: String = "unknown"
+        var placeName: String = "unknown"
+        var isOpen: String = "unavailable"
         var firstOneDone : Bool = false
         
         do{
             let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
             
             print("Json Data is \(jsonData)")
-            for eachItem in jsonData
+            for eachPlace in jsonData
             {
-                firstOneDone = false    // Flag to get the first image in the photo list
-                let hospital = eachItem as! NSDictionary
-                if let location = hospital["location"] as? NSDictionary
+                firstOneDone = false    // Flag to get the forst image in the photo list
+                let place = eachPlace as! NSDictionary
+                if let location = place["location"] as? NSDictionary
                 {
                     //get location details of the place
-                    hospitalLat = location.object(forKey: "lat")! as! Double
-                    hospitalLng = location.object(forKey: "lng")! as! Double
+                    placeLat = location.object(forKey: "lat")! as! Double
+                    placeLng = location.object(forKey: "lng")! as! Double
+                    print("location is \(placeLat) and \(placeLng)")
                 }
                 //get address, name, open status and id of the place
-                address = hospital.object(forKey: "address") as! String
-                name = hospital.object(forKey: "name") as! String
-                type = "Hospital"
+                // placeAddress = place.object(forKey: "address") as! String
+                placeName = place.object(forKey: "name") as! String
+                placeId = place.object(forKey: "place_id") as! String
+                isOpen = place.object(forKey: "open_now") as! String
+                
                 //create a object of place for the details obtained
-                let newHospital = Hospital(name: name, address: address, type: type, lat: hospitalLat, lng: hospitalLng)
+                let newPlace = Hospital(lat: placeLat, lng: placeLng, placeId: placeId, placeName: placeName, isOpen: isOpen)
+                //addtional details for the place
+                newPlace.rating = place.object(forKey: "rating") as? Float
+                
+                
+                //Add the place to the placeArray
+                self.policeArray.add(newPlace)
+                
+                //printing the details in console for testing purpose
+                print("PLace name is \(newPlace.name)")
+                print("open now is \(newPlace.isOpen)")
+                print("place id is \(newPlace.placeId)")
+                print("rating is \(newPlace.rating)")
+            }
+        }
+        catch
+        {
+            print("JSON Serialization error")
+        }
+        print("while parsing count is \(self.policeArray.count)")
+    }
+    
+    //Method to download details of the selected place from server
+    func downloadPlaceDetailsFromServer()
+    {
+        var url: URL
+        //  url = URL(string:"http://23.83.248.221/test?searchType=\(self.bankType!)&myLocation=\(self.latitude!),\(self.longitude!)")!
+        url = URL(string:"http://23.83.248.221/detailedquery?placeId=\(self.selectedPolice.placeId!)")!
+        print(url)
+        let urlRequest = URLRequest(url: url)
+        
+        //setting up session
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            if (error != nil)    //checking if the any error message received during connection
+            {
+                print("Error \(error)")
+                let alert = UIAlertController(title: "Sorry! Server Failed!", message: "Please try again later.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                DispatchQueue.main.async(){
+                    self.parseDetailsJSON(articleJSON: data! as NSData)
+                }
+            }
+        })
+        
+        task.resume()
+        
+    }
+    //Method to parse details of the selected place
+    func parseDetailsJSON(articleJSON:NSData)
+    {
+        //Local variables to store place details
+        var placeLat: Double = 0.0
+        var placeLng: Double = 0.0
+        var placeId: String = "unknown"
+        var placeName: String = "unknown"
+        var isOpen: String = "unavailable"
+        var placeAddress: String = "unknown"
+        var rating: Float = 0.0
+        var firstOneDone : Bool = false
+        
+        do{
+            let jsonData = try JSONSerialization.jsonObject(with: articleJSON as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
+            
+            print("Json Data is \(jsonData)")
+            for eachPlace in jsonData
+            {
+                firstOneDone = false    // Flag to get the forst image in the photo list
+                let place = eachPlace as! NSDictionary
                 
                 //addtional details for the place
-                newHospital.phoneNumber = hospital.object(forKey: "numbers") as? String
-                newHospital.priceLevel = hospital.object(forKey: "price_level") as? Int
-                newHospital.rating = hospital.object(forKey: "rating") as? Float
-                newHospital.website = hospital.object(forKey: "website") as? String
-                newHospital.url = hospital.object(forKey: "url") as? String
+                self.selectedPolice.address = place.object(forKey: "address") as? String
+                self.selectedPolice.phoneNumber = place.object(forKey: "numbers") as? String
+                self.selectedPolice.priceLevel = place.object(forKey: "price_level") as? Int
+                self.selectedPolice.website = place.object(forKey: "website") as? String
+                self.selectedPolice.url = place.object(forKey: "url") as? String
                 
                 //If photo exists get the first photo and an array of photo reference string.
-                if let photos = hospital["photos"] as? NSArray
+                if let photos = place["photos"] as? NSArray
                 {
                     for photo in photos
                     {
                         let eachPhoto = photo as? NSDictionary
                         let reference: String = (eachPhoto?.object(forKey: "photo_reference") as? String)!
                         print("reference is \(reference)")
-                        newHospital.photoReference.append(reference)
+                        self.selectedPolice.photoReference.append(reference)
                         if(firstOneDone == false)
                         {
                             // retrieve images for each place.
-                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyAMW8Z_cdUbbVMMviRfe845JBj7xbKhRp4")!
+                            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(reference)&key=AIzaSyCptoojRETZJtKZCTgk7Oc29Xz0i-B6cv8")!
                             print(url)
                             let data = NSData(contentsOf:url as URL)
                             if(data != nil)
                             {
                                 print("Photo was not nil")
-                                newHospital.firstPhoto = UIImage(data:data! as Data)!
+                                self.selectedPolice.firstPhoto = UIImage(data:data! as Data)!
                                 // newPlace.photos.append(UIImage(data:data! as Data)!)
                             }
                         }
                         firstOneDone = true
                     }
                 }
-                //Add the place to the placeArray
-                self.policeArray.add(newHospital)
-                
                 //printing the details in console for testing purpose
-                print("name is \(newHospital.name)")
-                print("type is \(newHospital.type)")
-                print("address is \(newHospital.address)")
-                print("latitude is \(newHospital.lat)")
-                print("price level is\(newHospital.priceLevel)")
-                print("rating is \(newHospital.rating)")
-                print("Webisite is \(newHospital.website)")
-                print("url is \(newHospital.url)")
-                print("no of photo reference is \(newHospital.photoReference.count)")
+                print("PLace name is \(self.selectedPolice.name)")
+                print("open now is \(self.selectedPolice.isOpen)")
+                print("place id is \(self.selectedPolice.placeId)")
+                print("place address is \(self.selectedPolice.address)")
+                print("latitude is \(self.selectedPolice.lat)")
+                print("price level is\(self.selectedPolice.priceLevel)")
+                print("rating is \(self.selectedPolice.rating)")
+                print("Webisite is \(self.selectedPolice.website)")
+                print("url is \(self.selectedPolice.url)")
+                print("no of photo reference is \(self.selectedPolice.photoReference.count)")
             }
             
         }
@@ -381,9 +533,13 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             print("JSON Serialization error")
         }
         print("while parsing count is \(self.policeArray.count)")
+        
+        self.stopProgressView()
+        performSegue(withIdentifier: "PoliceDetailSegue", sender: nil)
+        
+        
     }
-    
-    
+
     
     // MARK: - Navigation
     
@@ -395,6 +551,7 @@ class PoliceMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             destinationDetailVC.selectedPlace = self.selectedPolice
             destinationDetailVC.gpSelected = false
         }
+        
         
     }
     

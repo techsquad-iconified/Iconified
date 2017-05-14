@@ -16,9 +16,13 @@ class EmergencyAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
         var name: String!
         var type: String!
+        var isOpen: String!
         var image: UIImage!
         var hospital: Hospital!
     
+    override init() {
+        self.coordinate = CLLocationCoordinate2D()
+    }
     
         init(coordinate: CLLocationCoordinate2D) {
             self.coordinate = coordinate

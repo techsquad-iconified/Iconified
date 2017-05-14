@@ -18,6 +18,9 @@ class HotelAnnotation: NSObject, MKAnnotation {
     var image: UIImage!
     var place: Place!
     
+    override init() {
+        self.coordinate = CLLocationCoordinate2D()
+    }
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
     }

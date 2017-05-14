@@ -41,7 +41,7 @@ class MykiInfoViewController: UIViewController {
         studentOffer.isUserInteractionEnabled = true
         studentOffer.addGestureRecognizer(tapGestureRecogniserForStudentOffer)
         
-        
+        self.checkDefaultLangugeSet()
         
         // Do any additional setup after loading the view.
     }
@@ -69,20 +69,26 @@ class MykiInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getDefaultBrowsingLanguage()
-        if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
-        {
+       // if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
+        //{
             if(self.defaultLangugeCode! == "it" || self.defaultLangugeCode! == "el" || self.defaultLangugeCode! == "ja" || self.defaultLangugeCode! == "fr" || self.defaultLangugeCode! == "de" || self.defaultLangugeCode! == "en" )
             {
                 self.videoInfo.isHidden = true
             }
-        }
+            else
+            {
+                self.videoInfo.isHidden = false
+            }
+            
+        
+        //}
     }
 
     //Method called when myki details selected
     func aboutMykiSelected()
     {
-        if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
-        {
+       // if(self.checkDefaultLangugeSet()) // Checking if a initial lanuage was set
+        //{
             if(self.defaultLangugeCode! == "en")  // If languaage is English
             {
                 self.selectedUrl = "https://www.ptv.vic.gov.au/tickets/myki/"
@@ -107,14 +113,14 @@ class MykiInfoViewController: UIViewController {
                 }
                 performSegue(withIdentifier: "mykiWebSegue", sender: nil)
             }
-        }
+        //}
     }
     
     //Method called when video selected
     func videoMykiSelected()
     {
-        if(self.checkDefaultLangugeSet()) //check if langueg is set
-        {
+       // if(self.checkDefaultLangugeSet()) //check if langueg is set
+        //{
            if(self.defaultLangugeCode! == "it" || self.defaultLangugeCode! == "el" || self.defaultLangugeCode! == "ja" || self.defaultLangugeCode! == "fr" || self.defaultLangugeCode! == "de" || self.defaultLangugeCode! == "en" )
             {
                 //Pop up to direct user to set default browsing language
@@ -127,24 +133,32 @@ class MykiInfoViewController: UIViewController {
             {
                 performSegue(withIdentifier: "mykiVideoSegue", sender: nil)
             }
-        }
+       // }
     }
 
     //Method called if student offer is selected
     func studentOfferSelected()
     {
-        if(self.checkDefaultLangugeSet())
+      //  if(self.checkDefaultLangugeSet())
+       // {
+        if(self.defaultLangugeCode! == "en")
+        {
+            performSegue(withIdentifier: "arabicSegue", sender: nil)
+        }
+        else
         {
             if(self.defaultLangugeCode! == "en")
             {
                 self.selectedUrl = "https://www.ptv.vic.gov.au/tickets/fares/concession/tertiary-students/international-students/"
             }
+            
             else
             {
                 self.selectedUrl = "https://translate.google.com.au/translate?hl=en&sl=auto&tl=\(self.defaultLangugeCode!)&u=https://www.ptv.vic.gov.au/tickets/fares/concession/tertiary-students/international-students/"
             }
             performSegue(withIdentifier: "translationSegue", sender: nil)
         }
+        //}
     }
     //Method o check if defaut language is set
     func checkDefaultLangugeSet() -> Bool
@@ -160,7 +174,12 @@ class MykiInfoViewController: UIViewController {
         }
         else
         {
-            return true
+            let alert = UIAlertController(title: "Select a browsing language", message: "Please select a language tobrowse further details", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title:"Select Language", style: .default, handler:
+                { action in self.performSegue(withIdentifier: "settingsFromMykiSegue", sender: self) }))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
         }
         
     }
@@ -200,6 +219,12 @@ class MykiInfoViewController: UIViewController {
         if (segue.identifier == "translationSegue")
         {
             let destinationWebVC : TranslationWebViewController = segue.destination as! TranslationWebViewController
+            destinationWebVC.selectedUrl = self.selectedUrl!
+        }
+        //Segue to arabic Translation web view
+        if (segue.identifier == "arabicSegue")
+        {
+            let destinationWebVC : ArabicWebViewController = segue.destination as! ArabicWebViewController
             destinationWebVC.selectedUrl = self.selectedUrl!
         }
         //Segue to Myki video view

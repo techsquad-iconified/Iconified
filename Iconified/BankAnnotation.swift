@@ -19,6 +19,12 @@ class BankAnnotation: NSObject, MKAnnotation {
     var image: UIImage!
     var Bank: Bank!
     
+    
+    override init() {
+       self.coordinate = CLLocationCoordinate2D()
+    }
+    
+    
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
     }

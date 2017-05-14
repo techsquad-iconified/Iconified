@@ -59,7 +59,7 @@ class EmergencyViewController: UIViewController {
     //Funtion called when call icon is selected
     func callSelected()
     {
-        if let url = URL(string: "telprompt://000") {
+        if let url = URL(string: "telprompt://0000") {
             UIApplication.shared.openURL(url)
         }
     }

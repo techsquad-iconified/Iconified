@@ -148,6 +148,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     //Action for translate button
     @IBAction func translateButton(_ sender: Any) {
+        self.view.endEditing(true)
        DispatchQueue.main.async(){
                 self.translate(toTranslate: self.tranalateText.text!)
             }
@@ -155,6 +156,7 @@ class TranslationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.checkSpeakerOptionForTargetLanguageSelected()
             
         }
+        
         
       
     }

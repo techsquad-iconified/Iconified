@@ -59,6 +59,16 @@ class Market: NSObject {
         self.isOpen = isOpen
         
     }
+    //Parameterized constructor using just latitue, longitude, id, name, rating and isOpen
+    init(lat:Double, lng: Double, placeId: String, placeName: String, isOpen: String )
+    {
+        self.lat = lat
+        self.lng = lng
+        self.placeId = placeId
+        self.placeName = placeName
+        self.isOpen = isOpen
+        
+    }
     //Parameterized constructor using all attrinutes
     init(lat:Double, lng: Double, placeId: String, placeName: String, placeAddress: String, isOpen: String, phoneNumber: String, rating: Float, priceLevel: Int, website: String, url: String, firstPhoto: UIImage)
     {

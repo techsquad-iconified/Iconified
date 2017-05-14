@@ -6,7 +6,7 @@
 //  Copyright © 2017 Shishira Skanda. All rights reserved.
 //
 /*
- the view controller presents a webview to load teh google directions page or website of the place selected
+ the view controller presents a webview to load the google directions page or website of the place selected
  */
 import UIKit
 
@@ -31,6 +31,15 @@ class WebViewController: UIViewController {
         
         //set screen title
         self.title = self.selectedPlace?.placeName
+        let tlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        tlabel.text = self.title
+        tlabel.textColor = UIColor.white
+        tlabel.numberOfLines = 2
+        tlabel.textAlignment = NSTextAlignment.center
+        //tlabel.font = UIFont(name: "Heading", size: 18.0)
+        tlabel.backgroundColor = UIColor.clear
+        tlabel.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = tlabel
         self.loadWebPage()
         
         // Do any additional setup after loading the view.

@@ -32,6 +32,7 @@ class TransportationDetailsViewController: UIViewController {
         typesIcon.isUserInteractionEnabled = true
         typesIcon.addGestureRecognizer(tapGestureRecogniserForTypes)
        
+        self.title = "Transportation"
         
         // Do any additional setup after loading the view.
     }

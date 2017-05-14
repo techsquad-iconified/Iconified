@@ -58,6 +58,15 @@ class BankDetailViewController: UIViewController, bankaboutViewDelegate, bphotoV
         
         //set page title
         self.title = self.selectedPlace.placeName
+        let tlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        tlabel.text = self.title
+        tlabel.textColor = UIColor.white
+        tlabel.numberOfLines = 2
+        tlabel.textAlignment = NSTextAlignment.center
+        //tlabel.font = UIFont(name: "Heading", size: 18.0)
+        tlabel.backgroundColor = UIColor.clear
+        tlabel.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = tlabel
         //set banner image
         if(self.selectedPlace.firstPhoto.size == CGSize(width: 0.0, height: 0.0))
         {

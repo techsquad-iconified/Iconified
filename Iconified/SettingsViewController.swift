@@ -11,6 +11,8 @@ import UIKit
 class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet var languagePicker: UIPickerView!
+    @IBOutlet var aboutUsLabel: UILabel!
+    @IBOutlet var aboutUsIcon: UIImageView!
   
     var plistPath: String!
     var selectedLanguage: String?
@@ -25,13 +27,24 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         languagePicker.delegate = self
         languagePicker.dataSource = self
         self.loadData()
+        
+        let tapGestureRecogniserForAboutUs = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.aboutUsSelected))
+        self.aboutUsLabel.isUserInteractionEnabled = true
+        self.aboutUsLabel.addGestureRecognizer(tapGestureRecogniserForAboutUs)
+        
+        let tapGestureRecogniserForAboutUsIcon = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.aboutUsSelected))
+        self.aboutUsIcon.isUserInteractionEnabled = true
+        self.aboutUsIcon.addGestureRecognizer(tapGestureRecogniserForAboutUsIcon)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func aboutUsSelected()
+    {
+        performSegue(withIdentifier: "AboutUsSegue", sender: nil)
+    }
     func loadData()
     {
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -150,14 +163,17 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       if(segue.identifier == "AboutUsSegue")
+       {
+        let destinationVC: AboutUsViewController = segue.destination as! AboutUsViewController
+        
+        }
     }
-    */
+    
 
 }

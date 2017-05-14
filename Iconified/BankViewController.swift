@@ -52,7 +52,7 @@ class BankViewController: UIViewController {
         ATMIcon.isUserInteractionEnabled = true
         ATMIcon.addGestureRecognizer(tapGestureRecogniserForATM)
         
-        
+        self.title = "Bank"
         // Do any additional setup after loading the view.
     }
     

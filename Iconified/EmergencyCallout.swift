@@ -11,11 +11,27 @@ import UIKit
 
 class EmergencyCallout: UIView {
 
-    //UI Controls
-    @IBOutlet var imageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var typelabel: UILabel!
-    @IBOutlet var detailsIcon: UIImageView!
-   
+    @IBOutlet var openLabel: UILabel!
+    @IBOutlet var detailsButton: UIImageView!
+    
+    @IBOutlet var ratingOne: UIImageView!
+    
+    @IBOutlet var ratingTwo: UIImageView!
+    
+    @IBOutlet var ratingThree: UIImageView!
+    
+    @IBOutlet var ratingFour: UIImageView!
+    
+    @IBOutlet var ratingFive: UIImageView!
+    
+    
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
 
 }

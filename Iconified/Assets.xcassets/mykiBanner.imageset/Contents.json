@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mykiBanner.jpg",
+      "filename" : "myki bannerv2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mykiBanner-1.jpg",
+      "filename" : "myki bannerv2-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mykiBanner-2.jpg",
+      "filename" : "myki bannerv2-2.png",
       "scale" : "3x"
     }
   ],

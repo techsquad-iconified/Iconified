@@ -18,6 +18,10 @@ class MarketAnnotation: NSObject, MKAnnotation {
     var image: UIImage!
     var Market: Market!
     
+    override init() {
+         self.coordinate = CLLocationCoordinate2D()
+    }
+    
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
     }

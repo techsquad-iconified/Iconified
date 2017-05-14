@@ -64,6 +64,7 @@ class SupermarketViewController: UIViewController {
         groceryIcon.isUserInteractionEnabled = true
         groceryIcon.addGestureRecognizer(tapGestureRecogniserForGrocery)
         
+        self.title = "Shopping"
         
         // Do any additional setup after loading the view.
     }

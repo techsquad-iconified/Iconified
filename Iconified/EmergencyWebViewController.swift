@@ -33,6 +33,15 @@ class EmergencyWebViewController: UIViewController {
         
         //set screen title
         self.title = self.selectedPlace?.name
+        let tlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        tlabel.text = self.title
+        tlabel.textColor = UIColor.white
+        tlabel.numberOfLines = 2
+        tlabel.textAlignment = NSTextAlignment.center
+        //tlabel.font = UIFont(name: "Heading", size: 18.0)
+        tlabel.backgroundColor = UIColor.clear
+        tlabel.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = tlabel
         self.loadWebPage()
         
         // Do any additional setup after loading the view.

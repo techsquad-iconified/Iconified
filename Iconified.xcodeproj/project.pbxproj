@@ -24,6 +24,8 @@
 		1A50C0F11E86A8EA0077CCA1 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A50C0F01E86A8EA0077CCA1 /* AnnotationView.swift */; };
 		1A5509911E8F6F38004786B1 /* Credits in Resources */ = {isa = PBXBuildFile; fileRef = 1A5509901E8F6F38004786B1 /* Credits */; };
 		1A6B960A1EBE169600F1BEBD /* MykiIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */; };
+		1A6B960D1EC03BF900F1BEBD /* BankCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B960C1EC03BF900F1BEBD /* BankCalloutView.xib */; };
+		1A6B960F1EC03C2900F1BEBD /* BankCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B960E1EC03C2900F1BEBD /* BankCallout.swift */; };
 		1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */; };
 		1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */; };
 		1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */; };
@@ -37,7 +39,6 @@
 		1A873A1E1EAA308600464EB3 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */; };
 		1A873A1F1EAA308600464EB3 /* EmergencyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */; };
 		1A873A201EAA308600464EB3 /* EmergenyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */; };
-		1A873A211EAA308600464EB3 /* FoodDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */; };
 		1A873A221EAA308600464EB3 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A131EAA308600464EB3 /* Hospital.swift */; };
 		1A873A231EAA308600464EB3 /* HospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */; };
 		1A873A241EAA308600464EB3 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */; };
@@ -50,6 +51,9 @@
 		1A873A341EAC4C6500464EB3 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A331EAC4C6500464EB3 /* AppUtility.swift */; };
 		1A873A361EAC52EA00464EB3 /* FreeTramZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A873A351EAC52EA00464EB3 /* FreeTramZoneViewController.swift */; };
 		1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93BAD71E8A5950009FFE04 /* WebViewController.swift */; };
+		1AA2DF6C1EC1619500D0D76C /* SupermarketCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA2DF6B1EC1619500D0D76C /* SupermarketCalloutView.xib */; };
+		1AA2DF6E1EC161C200D0D76C /* SupermarketCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA2DF6D1EC161C200D0D76C /* SupermarketCallout.swift */; };
+		1AA899061EC7D67D0092F46A /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA899051EC7D67D0092F46A /* AboutUsViewController.swift */; };
 		1AA966CD1E8DE258003271AE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CC1E8DE258003271AE /* Reachability.swift */; };
 		1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */; };
 		1AA966D31E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */; };
@@ -72,6 +76,7 @@
 		1AE38CF81E94F65D0003EF52 /* TransportationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CF71E94F65D0003EF52 /* TransportationDetailsViewController.swift */; };
 		1AE38CFA1E94FB2A0003EF52 /* PtvWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CF91E94FB2A0003EF52 /* PtvWebViewController.swift */; };
 		1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */; };
+		1AEE66D71EC805A60042BE18 /* ArabicWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE66D61EC805A60042BE18 /* ArabicWebViewController.swift */; };
 		356D928F162B3AE3E2BB10D3 /* Pods_IconifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A1199F9F3AD70DEB31F39A /* Pods_IconifiedTests.framework */; };
 		5401EE2F1EB854C50060D3E5 /* SupermarketMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE2D1EB854C50060D3E5 /* SupermarketMapViewController.swift */; };
 		5401EE301EB854C50060D3E5 /* SupermarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EE2E1EB854C50060D3E5 /* SupermarketViewController.swift */; };
@@ -156,6 +161,8 @@
 		1A50C0F21E86AC6C0077CCA1 /* Iconified.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Iconified.xcodeproj; path = /Users/shishiraskanda/Desktop/Iconified/Iconified.xcodeproj; sourceTree = "<absolute>"; };
 		1A5509901E8F6F38004786B1 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Credits; path = Iconified/Credits; sourceTree = "<group>"; };
 		1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiIntroViewController.swift; sourceTree = "<group>"; };
+		1A6B960C1EC03BF900F1BEBD /* BankCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankCalloutView.xib; sourceTree = "<group>"; };
+		1A6B960E1EC03C2900F1BEBD /* BankCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCallout.swift; sourceTree = "<group>"; };
 		1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Iconified/MenuViewController.swift; sourceTree = "<group>"; };
 		1A7AA6AF1E8BC9430027DD34 /* ALRadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenu.swift; sourceTree = "<group>"; };
 		1A7AA6B11E8BC9850027DD34 /* ALRadialMenuButtonAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALRadialMenuButtonAction.swift; sourceTree = "<group>"; };
@@ -169,7 +176,6 @@
 		1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyViewController.swift; path = Iconified/EmergencyViewController.swift; sourceTree = "<group>"; };
 		1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyWebViewController.swift; path = Iconified/EmergencyWebViewController.swift; sourceTree = "<group>"; };
 		1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergenyDetailViewController.swift; path = Iconified/EmergenyDetailViewController.swift; sourceTree = "<group>"; };
-		1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoodDescriptionViewController.swift; path = Iconified/FoodDescriptionViewController.swift; sourceTree = "<group>"; };
 		1A873A131EAA308600464EB3 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hospital.swift; path = Iconified/Hospital.swift; sourceTree = "<group>"; };
 		1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalMapViewController.swift; path = Iconified/HospitalMapViewController.swift; sourceTree = "<group>"; };
 		1A873A151EAA308600464EB3 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = Iconified/LanguageTableViewCell.swift; sourceTree = "<group>"; };
@@ -182,6 +188,9 @@
 		1A873A331EAC4C6500464EB3 /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		1A873A351EAC52EA00464EB3 /* FreeTramZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTramZoneViewController.swift; sourceTree = "<group>"; };
 		1A93BAD71E8A5950009FFE04 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1AA2DF6B1EC1619500D0D76C /* SupermarketCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupermarketCalloutView.xib; sourceTree = "<group>"; };
+		1AA2DF6D1EC161C200D0D76C /* SupermarketCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketCallout.swift; sourceTree = "<group>"; };
+		1AA899051EC7D67D0092F46A /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		1AA966CC1E8DE258003271AE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Iconified/Reachability.swift; sourceTree = "<group>"; };
 		1AA966CE1E8E2304003271AE /* FoodPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		1AA966D21E8E31A9003271AE /* FoodPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -211,6 +220,7 @@
 		1AE38CF71E94F65D0003EF52 /* TransportationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportationDetailsViewController.swift; sourceTree = "<group>"; };
 		1AE38CF91E94FB2A0003EF52 /* PtvWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtvWebViewController.swift; sourceTree = "<group>"; };
 		1AE38CFB1E95C0780003EF52 /* MykiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MykiViewController.swift; sourceTree = "<group>"; };
+		1AEE66D61EC805A60042BE18 /* ArabicWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArabicWebViewController.swift; sourceTree = "<group>"; };
 		1AF0E8AE1E94E44E00816054 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = SOURCE_ROOT; };
 		2E1F4552E5EA655BED78E940 /* Pods-Iconified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iconified.release.xcconfig"; path = "Pods/Target Support Files/Pods-Iconified/Pods-Iconified.release.xcconfig"; sourceTree = "<group>"; };
 		5401EE2D1EB854C50060D3E5 /* SupermarketMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermarketMapViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +341,7 @@
 				1A873A311EAB2EFA00464EB3 /* PtvCalloutView.xib */,
 				1A873A351EAC52EA00464EB3 /* FreeTramZoneViewController.swift */,
 				1A6B96091EBE169600F1BEBD /* MykiIntroViewController.swift */,
+				1AEE66D61EC805A60042BE18 /* ArabicWebViewController.swift */,
 			);
 			name = Transportation;
 			sourceTree = "<group>";
@@ -362,6 +373,7 @@
 				1A7AA6AB1E8BBEB80027DD34 /* MenuViewController.swift */,
 				1AA966CC1E8DE258003271AE /* Reachability.swift */,
 				1A0C78E61E97B50800C1FFD5 /* SettingsViewController.swift */,
+				1AA899051EC7D67D0092F46A /* AboutUsViewController.swift */,
 			);
 			name = General;
 			path = ..;
@@ -386,7 +398,6 @@
 				1A873A161EAA308600464EB3 /* LanguageTableViewController.swift */,
 				1A873A141EAA308600464EB3 /* HospitalMapViewController.swift */,
 				1A873A131EAA308600464EB3 /* Hospital.swift */,
-				1A873A121EAA308600464EB3 /* FoodDescriptionViewController.swift */,
 				1A873A111EAA308600464EB3 /* EmergenyDetailViewController.swift */,
 				1A873A101EAA308600464EB3 /* EmergencyWebViewController.swift */,
 				1A873A0F1EAA308600464EB3 /* EmergencyViewController.swift */,
@@ -496,6 +507,8 @@
 				5401EE5B1EBB5EFF0060D3E5 /* BankDetailViewController.swift */,
 				5401EE5D1EBB70F40060D3E5 /* BankPhotoAlbumViewController.swift */,
 				5401EE5F1EBB71BA0060D3E5 /* BankWebViewController.swift */,
+				1A6B960C1EC03BF900F1BEBD /* BankCalloutView.xib */,
+				1A6B960E1EC03C2900F1BEBD /* BankCallout.swift */,
 			);
 			name = Bank;
 			sourceTree = "<group>";
@@ -513,6 +526,8 @@
 				5401EE451EB9A5D10060D3E5 /* MarketAnnotation.swift */,
 				5401EE471EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift */,
 				5401EE491EB9D9B20060D3E5 /* SupermarketWebViewController.swift */,
+				1AA2DF6B1EC1619500D0D76C /* SupermarketCalloutView.xib */,
+				1AA2DF6D1EC161C200D0D76C /* SupermarketCallout.swift */,
 			);
 			name = Supermarket;
 			sourceTree = "<group>";
@@ -691,10 +706,12 @@
 			files = (
 				1A5509911E8F6F38004786B1 /* Credits in Resources */,
 				1A0C78E51E9765C600C1FFD5 /* userData.plist in Resources */,
+				1A6B960D1EC03BF900F1BEBD /* BankCalloutView.xib in Resources */,
 				1AB250071E7F8B77007CFD1B /* LaunchScreen.storyboard in Resources */,
 				1AB250041E7F8B77007CFD1B /* Assets.xcassets in Resources */,
 				1A873A321EAB2EFA00464EB3 /* PtvCalloutView.xib in Resources */,
 				1A873A1B1EAA308600464EB3 /* EmergencyCalloutView.xib in Resources */,
+				1AA2DF6C1EC1619500D0D76C /* SupermarketCalloutView.xib in Resources */,
 				1A03CE521E94E7FD001E68A8 /* CustomCalloutView.xib in Resources */,
 				1AB24FFF1E7F8B77007CFD1B /* Main.storyboard in Resources */,
 			);
@@ -859,6 +876,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A6B960F1EC03C2900F1BEBD /* BankCallout.swift in Sources */,
 				5401EE3C1EB997870060D3E5 /* SupermarketAboutViewController.swift in Sources */,
 				5401EE301EB854C50060D3E5 /* SupermarketViewController.swift in Sources */,
 				1A7AA6AC1E8BBEB90027DD34 /* MenuViewController.swift in Sources */,
@@ -889,13 +907,13 @@
 				549577441EA63A95003E127E /* AccommodationDetailViewController.swift in Sources */,
 				5401EE4C1EB9E34B0060D3E5 /* Bank.swift in Sources */,
 				1A27D6021E80D86300C028C1 /* FoodViewController.swift in Sources */,
+				1AA2DF6E1EC161C200D0D76C /* SupermarketCallout.swift in Sources */,
 				1A7AA6B01E8BC9430027DD34 /* ALRadialMenu.swift in Sources */,
 				5401EE581EBB4C610060D3E5 /* BankViewController.swift in Sources */,
 				5401EE481EB9D90B0060D3E5 /* SupermarketPhotoAlbumViewController.swift in Sources */,
 				1A21534A1E9F3EE2004F28EE /* TranslationViewController.swift in Sources */,
 				1A93BAD81E8A5950009FFE04 /* WebViewController.swift in Sources */,
 				1A873A2E1EAB2E6900464EB3 /* StopsAnnotation.swift in Sources */,
-				1A873A211EAA308600464EB3 /* FoodDescriptionViewController.swift in Sources */,
 				1A7B70941E94EE1E00411FC1 /* iCarousel.m in Sources */,
 				1A873A1D1EAA308600464EB3 /* EmergencyPhotoCollectionViewCell.swift in Sources */,
 				5401EE501EB9E4EA0060D3E5 /* BankAnnotation.swift in Sources */,
@@ -911,6 +929,7 @@
 				1AA966CF1E8E2304003271AE /* FoodPhotoAlbumViewController.swift in Sources */,
 				1AAD80491EA711770090D192 /* MykiLocationViewController.swift in Sources */,
 				5401EE361EB976A70060D3E5 /* SuperTableViewCell.swift in Sources */,
+				1AA899061EC7D67D0092F46A /* AboutUsViewController.swift in Sources */,
 				1A7AA6B21E8BC9850027DD34 /* ALRadialMenuButtonAction.swift in Sources */,
 				1A0C78EB1E9B281900C1FFD5 /* PtvMapViewController.swift in Sources */,
 				1A0C78E91E9A699500C1FFD5 /* TranslationWebViewController.swift in Sources */,
@@ -924,6 +943,7 @@
 				1AAD80511EA76FC90090D192 /* MykiInfoViewController.swift in Sources */,
 				1A873A301EAB2EDC00464EB3 /* PtvCalloutView.swift in Sources */,
 				1AE38CFC1E95C0780003EF52 /* MykiViewController.swift in Sources */,
+				1AEE66D71EC805A60042BE18 /* ArabicWebViewController.swift in Sources */,
 				549577451EA63A95003E127E /* AccommodationMapViewController.swift in Sources */,
 				1A873A341EAC4C6500464EB3 /* AppUtility.swift in Sources */,
 				549577461EA63A95003E127E /* AccommodationViewController.swift in Sources */,
@@ -1087,6 +1107,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7D4UJ9WS5;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1104,6 +1125,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7D4UJ9WS5;
 				INFOPLIST_FILE = Iconified/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
