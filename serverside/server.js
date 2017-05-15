@@ -6,8 +6,8 @@
  * Besides, the code also use  mongoDB for General Practitioners 
  * queries.
  * 
- * The APIs currently include: /emergency, /test, /apitest and
- * /testpy.
+ * The APIs currently include: /emergency, /test, /apitest, 
+ * /testpy, /generalquery, detailedquery.
  * 
  * Author: Tiankun Lu 
  * Version: 0.1
@@ -31,7 +31,6 @@ const MongoClient = require("mongodb").MongoClient;
 var PythonShell = require('python-shell');
 //import keys to the app.
 var mykey = require("./keylist.js");
-console.log(mykey);
 
 //MongoDB instance initiation.
 var mdb;
@@ -388,6 +387,11 @@ app.get("/testpy", function(req, res){
 		res.send(results);
 	});
 })
+
+/**
+ * generalquery api allows the client to fetch the basic infos
+ * only. So that the loading speed will be really boosted.
+ */
 app.get("/generalquery", function(req, res){
 	// Initiating searchType parameters.
 	var type = req.query.searchType;
@@ -398,6 +402,10 @@ app.get("/generalquery", function(req, res){
 		res.send(arguments[1]);
 	})
 })
+/**
+ * detailedquery is used to query detailed infos based on a 
+ * given id.
+ */
 app.get("/detailedquery", function(req, res){
 	var theId = req.query.placeId;
 	idQuery(theId, function(result){
